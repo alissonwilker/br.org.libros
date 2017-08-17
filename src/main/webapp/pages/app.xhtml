@@ -1,0 +1,71 @@
+<ui:composition template="/WEB-INF/pages/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	<ui:param name="pageTitle" value="#{msg['app.inicio']}" />
+	<ui:define name="content">
+		<p:fieldset legend="#{msg['app.bibliotecas']}">
+			<p:dataTable id="bibliotecas" var="biblioteca" reflow="true"  
+				value="#{bibliotecasController.itens}" rows="3" paginator="true"
+				emptyMessage="#{msg['app.nenhumItem']}">
+				<p:column styleClass="textAtCenter" headerText="#{msg['app.id']}">
+					<p:outputLabel value="#{biblioteca.id}" />
+				</p:column>
+				<p:column headerText="#{msg['bibliotecas.nomeBiblioteca']}">
+					<p:link outcome="gerenciarBiblioteca" value="#{biblioteca.nome}" />
+				</p:column>
+				<p:column rendered="#{loginController.isUserInRole(fn:split('ADMINISTRATOR', ','))}" headerText="#{msg['app.remover']}" styleClass="textAtCenter">
+					<h:form>
+						<p:commandLink
+							action="#{bibliotecasController.remover(biblioteca)}" ajax="true"
+							update="bibliotecas">
+							<span class="fa fa-trash"/>
+						</p:commandLink>
+					</h:form>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+		<p:fieldset legend="#{msg['app.clientes']}">
+			<p:dataTable id="clientes" var="cliente" reflow="true" 
+				value="#{clientesController.itens}" rows="3" paginator="true"
+				emptyMessage="#{msg['app.nenhumItem']}">
+				<p:column styleClass="textAtCenter" headerText="#{msg['app.cpf']}">
+					<p:outputLabel value="#{cliente.cpf}" converter="cpfConverter" />
+				</p:column>
+				<p:column headerText="#{msg['clientes.nomeCliente']}">
+					<p:link outcome="gerenciarCliente" value="#{cliente.nome}" />
+				</p:column>
+				<p:column headerText="#{msg['app.remover']}" styleClass="textAtCenter">
+					<h:form>
+						<p:commandLink action="#{clientesController.remover(cliente)}"
+							ajax="true" update="clientes" >
+							<span class="fa fa-trash"/>
+						</p:commandLink>
+					</h:form>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+		<p:fieldset legend="#{msg['app.livros']}">
+			<p:dataTable id="livros" var="livro" reflow="true" 
+				value="#{livrosController.itens}" rows="3" paginator="true"
+				emptyMessage="#{msg['app.nenhumItem']}">
+				<p:column styleClass="textAtCenter" headerText="#{msg['app.isbn']}">
+					<p:outputLabel value="#{livro.isbn}" converter="isbnConverter" />
+				</p:column>
+				<p:column headerText="#{msg['livros.nomeLivro']}">
+					<p:link outcome="gerenciarLivro" value="#{livro.nome}" />
+				</p:column>
+				<p:column headerText="#{msg['app.remover']}" styleClass="textAtCenter">
+					<h:form>
+						<p:commandLink action="#{livrosController.remover(livro)}"
+							ajax="true" update="livros" >
+							<span class="fa fa-trash"/>
+						</p:commandLink>
+					</h:form>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>

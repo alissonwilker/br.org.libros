@@ -15,6 +15,8 @@ import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
  *            tipo do DTO.
  * @param <PK>
  *            tipo da chave primária da Entidade representada pelo DTO.
+ *            
+ * @see br.org.libros.comum.model.business.IBusiness
  */
 public interface IBusinessFacade<D, PK extends Serializable> extends Serializable {
 	public D adicionar(D dto) throws EntidadeJaExisteExcecao;

@@ -19,7 +19,7 @@ import br.org.libros.comum.model.business.IBusiness;
  * 
  * @see br.org.libros.comum.model.business.facade.IBusinessFacade
  */
-public class AbstractFacade<E, D, PK extends Serializable> implements IBusinessFacade<D, PK> {
+public class AbstractBusinessFacade<E, D, PK extends Serializable> implements IBusinessFacade<D, PK> {
 	private static final long serialVersionUID = 1L;
 
 	@Inject

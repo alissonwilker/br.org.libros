@@ -18,6 +18,12 @@ public class ClienteController extends AbstractController<ClienteDto, Integer> {
 
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Cadastra um novo cliente.
+	 * @param cpfCliente CPF do cliente a ser adicionado.
+	 * @param nomeCliente nome do cliente a ser adicionado.
+	 * @return página inicial da aplicação.
+	 */
 	public String adicionarCliente(String cpfCliente, String nomeCliente) {
 		ClienteDto clienteDto = new ClienteDto(cpfCliente, nomeCliente);
 		if (super.adicionar(clienteDto)) {

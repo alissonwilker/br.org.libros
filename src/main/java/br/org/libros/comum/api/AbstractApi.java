@@ -17,6 +17,8 @@ import br.org.libros.comum.model.business.facade.IBusinessFacade;
  *
  * @param <D> tipo do DTO que representa a Entidade.
  * @param <PK> tipo da chave primária da Entidade.
+ * 
+ * @see br.org.libros.comum.model.business.facade.AbstractBusinessFacade
  */
 public abstract class AbstractApi<D, PK extends Serializable> {
 	protected Logger logger;

@@ -15,8 +15,10 @@ import br.org.libros.comum.view.utils.FacesMessageUtils;
  * acionar o Modelo. Este também é responsável pelos fluxos de navegação de
  * páginas.
  *
- * @param <D> tipo do DTO que representa a Entidade.
- * @param <PK> tipo da chave primária da Entidade.
+ * @param <D>
+ *            tipo do DTO que representa a Entidade.
+ * @param <PK>
+ *            tipo da chave primária da Entidade.
  */
 public abstract class AbstractController<D, PK extends Serializable> implements Serializable {
 
@@ -25,6 +27,14 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 	@Inject
 	private IBusinessFacade<D, PK> businessFacade;
 
+	/**
+	 * Cadastra uma Entidade representada pelo DTO.
+	 * 
+	 * @param dto
+	 *            o DTO que representa a Entidade a ser adicionada.
+	 * @return <i>true</i> se a Entidade foi adicionada com sucesso.
+	 *         <i>false</i>, caso contrário.
+	 */
 	public boolean adicionar(D dto) {
 		try {
 			businessFacade.adicionar(dto);
@@ -36,6 +46,12 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 		}
 	}
 
+	/**
+	 * Remove uma Entidade representada pelo DTO.
+	 * 
+	 * @param dto
+	 *            o DTO que representa a Entidade a ser removida.
+	 */
 	public void remover(D dto) {
 		try {
 			businessFacade.remover(dto);
@@ -45,10 +61,24 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 		}
 	}
 
+	/**
+	 * Lista os registros de Entidade cadastrados na base de dados.
+	 * 
+	 * @return uma lista contendo todos os registros da Entidade na base de
+	 *         dados.
+	 */
 	public List<D> getItens() {
 		return businessFacade.listar();
 	}
 
+	/**
+	 * Recupera um DTO que representa uma Entidade identificada pela chave
+	 * primária.
+	 * 
+	 * @param chavePrimaria
+	 *            a chave primária da Entidade cujo DTO deve ser retornado.
+	 * @return o DTO que representa a Entidade identificada pela chave primária.
+	 */
 	public D getItem(PK chavePrimaria) {
 		try {
 			return businessFacade.recuperar(chavePrimaria);

@@ -11,6 +11,8 @@ import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
  *
  * @param <E> tipo da Entidade.
  * @param <PK> tipo da chave primária da Entidade.
+ * 
+ * @see br.org.libros.comum.model.persistence.dao.IDao
  */
 public interface IBusiness<E, PK extends Serializable> {
 

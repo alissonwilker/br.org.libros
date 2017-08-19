@@ -18,6 +18,11 @@ public class BibliotecaController extends AbstractController<BibliotecaDto, Inte
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Cadastra uma nova biblioteca.
+	 * @param nomeBiblioteca nome da biblioteca a ser adicionada.
+	 * @return página inicial da aplicação.
+	 */
 	public String adicionarBiblioteca(String nomeBiblioteca) {
 		BibliotecaDto bibliotecaDto = new BibliotecaDto(nomeBiblioteca);
 		if (super.adicionar(bibliotecaDto)) {

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.org</groupId>
 	<artifactId>libros</artifactId>
-	<packaging>war</packaging> 
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.github.kongchen/swagger-maven-plugin -->
@@ -102,7 +102,7 @@
 							<host>${ambiente.testes}</host>
 							<basePath>/api</basePath>
 							<schemes>http</schemes>
-							<swaggerDirectory>${project.basedir}/src/main/webapp/api-docs</swaggerDirectory>
+							<swaggerDirectory>${project.apidocsdir}</swaggerDirectory>
 						</apiSource>
 					</apiSources>
 				</configuration>
@@ -114,6 +114,25 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${project.javadocsdir}</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>${project.apidocsdir}</directory>
+							<includes>
+								<include>swagger.json</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -129,12 +148,26 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc.version}</version>
+				<configuration>
+					<destDir>${javadocs}</destDir>
+					<reportOutputDirectory>${project.webappdir}</reportOutputDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 		<finalName>libros</finalName>
 	</build>
 	<properties>
+		<javadocsdir>javadocs</javadocsdir>
+		<project.webappdir>src/main/webapp</project.webappdir>
+		<project.apidocsdir>${project.webappdir}/api-docs</project.apidocsdir>
+		<project.javadocsdir>${project.webappdir}/${javadocs}</project.javadocsdir>
 		<ambiente.testes>localhost:8080/libros</ambiente.testes>
 		<swagger.version>3.1.5</swagger.version>
+		<maven-javadoc.version>3.0.0-M1</maven-javadoc.version>
 		<maven-compiler.version>3.5.1</maven-compiler.version>
 		<mapstruct.version>1.1.0.Final</mapstruct.version>
 		<jsf.version>2.2.14</jsf.version>

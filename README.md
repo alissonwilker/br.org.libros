@@ -71,10 +71,15 @@ Obs.: note que o conteúdo desse XML faz referência ao jar do driver JDBC do Po
 Pronto! Digite 'mvn clean package javadoc:javadoc' a partir do diretório raiz do projeto para compilar e empacotar a aplicação, gerando também javadocs. O pacote WAR será criado no diretório 'target' e, uma vez realizado o deploy no servidor de aplicação, você poderá acessar a aplicação pelos seguintes endereços:
 
 http://localhost:8080/libros (interface web da aplicação)
+
 http://localhost:8080/libros/javadocs (javadocs do projeto)
+
 http://localhost:8080/libros/api-docs (documentação das APIs REST da aplicação)
+
 http://localhost:8080/libros/api/bibliotecas/ (API REST do módulo Biblioteca)
+
 http://localhost:8080/libros/api/clientes/ (API REST do módulo Cliente)
+
 http://localhost:8080/libros/api/livros/ (API REST do módulo Livro)
 
 Obs.: se for utilizar a IDE Eclipse para compilar e fazer deploy da aplicação, é preciso instalar o plugin 'm2e-apt' a fim de habilitar o recurso de Annotation Processing utilizado pela biblioteca MapStruct. O plugin pode ser instalado a partir do Eclipse Market. Depois de instalar o plugin, entre em 'Eclipse -> Preferências -> Maven -> Annotation Processing' e selecione a opção 'Automatically configure JDT APT'.

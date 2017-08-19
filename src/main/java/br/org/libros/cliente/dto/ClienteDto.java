@@ -1,10 +1,6 @@
 package br.org.libros.cliente.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import br.org.libros.comum.model.persistence.entity.Livro;
 
 public class ClienteDto implements Serializable {
 
@@ -15,8 +11,6 @@ public class ClienteDto implements Serializable {
 	private String cpf;
 
 	private String nome;
-
-	private List<Livro> livros = new ArrayList<Livro>();
 
 	public ClienteDto() {
 	}
@@ -48,14 +42,6 @@ public class ClienteDto implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public List<Livro> getLivros() {
-		return livros;
-	}
-
-	public void setLivros(List<Livro> livros) {
-		this.livros = livros;
 	}
 
 }

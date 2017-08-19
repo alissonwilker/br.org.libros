@@ -37,7 +37,6 @@ public class BibliotecasApi extends AbstractApi<BibliotecaDto, Integer> {
 	@Path("/{nomeBiblioteca}")
 	@ApiOperation(value = "Adicionar uma biblioteca")
 	public Response adicionar(@PathParam("nomeBiblioteca") String nomeBiblioteca) {
-		logger.error("este");
 		BibliotecaDto bibliotecaDto = new BibliotecaDto(nomeBiblioteca);
 		try {
 			bibliotecaDto = businessFacade.adicionar(bibliotecaDto);

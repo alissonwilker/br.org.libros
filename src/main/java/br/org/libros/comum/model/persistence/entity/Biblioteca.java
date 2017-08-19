@@ -14,6 +14,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Biblioteca", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
@@ -23,19 +27,25 @@ public class Biblioteca implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", nullable = false, unique = true, length = 11)
+	@Column(name = "ID", nullable = false, unique = true, length = 10)
+	@NotNull
+	@Max(Integer.MAX_VALUE)
 	private int id;
 
 	@Column(name = "NOME", length = 20, unique = true, nullable = false)
+	@NotNull
+	@Size(max = 20)
 	private String nome;
 
 	@ManyToMany
 	@JoinTable(name = "Biblioteca_Livro", joinColumns = @JoinColumn(name = "BIBLIOTECA_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "LIVRO_ID", referencedColumnName = "ID"))
 	private List<Livro> livros = new ArrayList<Livro>();
 
+	@Valid
 	public Biblioteca() {
 	}
 
+	@Valid
 	public Biblioteca(String nome) {
 		setNome(nome);
 	}
@@ -48,7 +58,7 @@ public class Biblioteca implements Serializable {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(@NotNull @Max(999999999) int id) {
 		this.id = id;
 	}
 
@@ -56,7 +66,7 @@ public class Biblioteca implements Serializable {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(@NotNull @Size(max = 20) String nome) {
 		this.nome = nome;
 	}
 

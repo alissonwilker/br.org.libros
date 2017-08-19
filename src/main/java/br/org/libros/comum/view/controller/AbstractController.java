@@ -10,14 +10,22 @@ import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 import br.org.libros.comum.view.utils.FacesMessageUtils;
 
-public abstract class AbstractController<T, PK extends Serializable> implements Serializable {
+/**
+ * Classe abstrata que representa um Controlador chamado pela página web para
+ * acionar o Modelo. Este também é responsável pelos fluxos de navegação de
+ * páginas.
+ *
+ * @param <D> tipo do DTO que representa a Entidade.
+ * @param <PK> tipo da chave primária da Entidade.
+ */
+public abstract class AbstractController<D, PK extends Serializable> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private IBusinessFacade<T, PK> businessFacade;
+	private IBusinessFacade<D, PK> businessFacade;
 
-	public boolean adicionar(T dto) {
+	public boolean adicionar(D dto) {
 		try {
 			businessFacade.adicionar(dto);
 			adicionarMensagemSucesso();
@@ -28,7 +36,7 @@ public abstract class AbstractController<T, PK extends Serializable> implements 
 		}
 	}
 
-	public void remover(T dto) {
+	public void remover(D dto) {
 		try {
 			businessFacade.remover(dto);
 			adicionarMensagemSucesso();
@@ -37,11 +45,11 @@ public abstract class AbstractController<T, PK extends Serializable> implements 
 		}
 	}
 
-	public List<T> getItens() {
+	public List<D> getItens() {
 		return businessFacade.listar();
 	}
 
-	public T getItem(PK chavePrimaria) {
+	public D getItem(PK chavePrimaria) {
 		try {
 			return businessFacade.recuperar(chavePrimaria);
 		} catch (EntidadeNaoEncontradaExcecao e) {

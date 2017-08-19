@@ -16,6 +16,10 @@ import javax.validation.Payload;
 
 import br.org.libros.comum.model.persistence.entity.validator.IsbnBeanValidator;
 
+/**
+ * Anotação associada a um validador de ISBN para Beans.
+ *
+ */
 @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
 @Retention(RUNTIME)
 @Constraint(validatedBy = IsbnBeanValidator.class)

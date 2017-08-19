@@ -9,6 +9,10 @@ import br.org.libros.biblioteca.dto.mapper.IBibliotecaMapper;
 import br.org.libros.comum.model.business.facade.AbstractFacade;
 import br.org.libros.comum.model.persistence.entity.Biblioteca;
 
+/**
+ * 
+ * @see br.org.libros.comum.model.business.facade.AbstractFacade
+ */
 @Named
 @RequestScoped
 @Transactional

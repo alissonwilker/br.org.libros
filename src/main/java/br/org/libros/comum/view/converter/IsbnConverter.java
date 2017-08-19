@@ -6,6 +6,11 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
+/**
+ * Conversor de ISBN utilizado pelo JSF. Adiciona/remove '.' e '-' para formatar o ISBN.
+ *
+ * @see javax.faces.convert.Converter
+ */
 @FacesConverter(value = "isbnConverter")
 public class IsbnConverter implements Converter {
 	public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {

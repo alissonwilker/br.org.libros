@@ -1,5 +1,9 @@
 package br.org.libros.comum.utils;
 
+/**
+ * Classe que verifica se um ISBN é válido.
+ *
+ */
 public class VerificadorIsbn {
 	public static boolean isValido(String isbn) {
 		if (isbn == null) {

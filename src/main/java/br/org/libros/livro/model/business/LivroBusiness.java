@@ -6,6 +6,10 @@ import javax.inject.Named;
 import br.org.libros.comum.model.business.AbstractBusiness;
 import br.org.libros.comum.model.persistence.entity.Livro;
 
+/**
+ * 
+ * @see br.org.libros.comum.model.business.AbstractBusiness
+ */
 @Named
 @RequestScoped
 public class LivroBusiness extends AbstractBusiness<Livro, Integer> {

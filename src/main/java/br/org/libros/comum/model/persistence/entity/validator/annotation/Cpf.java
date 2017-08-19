@@ -16,6 +16,10 @@ import javax.validation.Payload;
 
 import br.org.libros.comum.model.persistence.entity.validator.CpfBeanValidator;
 
+/**
+ * Anotação associada a um validador de CPF para Beans.
+ *
+ */
 @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
 @Retention(RUNTIME)
 @Constraint(validatedBy = CpfBeanValidator.class)

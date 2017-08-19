@@ -15,7 +15,15 @@ import org.hibernate.exception.ConstraintViolationException;
 import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 
-public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T, PK>, Serializable {
+/**
+ * Classe abstrata que implementa comportamento padrão de um DAO.
+ *
+ * @param <E> tipo da Entidade.
+ * @param <PK> tipo da chave primária da Entidade.
+ * 
+ * @see br.org.libros.comum.model.persistence.dao.IDao
+ */
+public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E, PK>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +51,7 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T,
 	}
 
 	@Override
-	public T adicionar(T entidade) throws EntidadeJaExisteExcecao {
+	public E adicionar(E entidade) throws EntidadeJaExisteExcecao {
 		try {
 			entityManager.persist(entidade);
 			return entidade;
@@ -58,7 +66,7 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T,
 
 	@Override
 	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
-		T entidade = recuperar(chavePrimaria);
+		E entidade = recuperar(chavePrimaria);
 		if (entidade != null) {
 			entityManager.remove(entidade);
 		} else {
@@ -67,7 +75,7 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T,
 	}
 
 	@Override
-	public void remover(T entidade) throws EntidadeNaoEncontradaExcecao {
+	public void remover(E entidade) throws EntidadeNaoEncontradaExcecao {
 		try {
 			entidade = entityManager.merge(entidade);
 			entityManager.remove(entidade);
@@ -77,7 +85,7 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T,
 	}
 
 	@Override
-	public T atualizar(T entidade) throws EntidadeNaoEncontradaExcecao {
+	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao {
 		try {
 			return entityManager.merge(entidade);
 		} catch (IllegalArgumentException iaex) {
@@ -86,8 +94,8 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T,
 	}
 
 	@Override
-	public T atualizar(PK chavePrimaria, T entidade) throws EntidadeNaoEncontradaExcecao {
-		T entidadeRecuperada = recuperar(chavePrimaria);
+	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao {
+		E entidadeRecuperada = recuperar(chavePrimaria);
 		if (entidadeRecuperada != null) {
 			try {
 				return entityManager.merge(entidade);
@@ -100,8 +108,8 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T,
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
-		T entity = (T) entityManager.find(getDomainClass(), chavePrimaria);
+	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+		E entity = (E) entityManager.find(getDomainClass(), chavePrimaria);
 		if (entity == null) {
 			throw new EntidadeNaoEncontradaExcecao();
 		}
@@ -110,7 +118,7 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T,
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> listar() {
+	public List<E> listar() {
 		return entityManager.createQuery("from " + getDomainClass().getSimpleName()).getResultList();
 	}
 	

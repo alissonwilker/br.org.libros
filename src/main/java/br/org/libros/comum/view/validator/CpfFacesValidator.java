@@ -9,6 +9,11 @@ import javax.faces.validator.ValidatorException;
 import br.org.libros.comum.utils.VerificadorCpf;
 import br.org.libros.comum.view.utils.FacesMessageUtils;
 
+/**
+ * Validador de CPF utilizado pelo JSF.
+ *
+ * @see javax.faces.validator.Validator
+ */
 @FacesValidator(value = "cpfValidator")
 public class CpfFacesValidator implements Validator {
 

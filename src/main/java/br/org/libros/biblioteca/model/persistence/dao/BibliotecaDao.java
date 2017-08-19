@@ -6,6 +6,10 @@ import javax.inject.Named;
 import br.org.libros.comum.model.persistence.dao.AbstractDao;
 import br.org.libros.comum.model.persistence.entity.Biblioteca;
 
+/**
+ * 
+ * @see br.org.libros.comum.model.persistence.dao.AbstractDao
+ */
 @Named
 @RequestScoped
 public class BibliotecaDao extends AbstractDao<Biblioteca, Integer> {

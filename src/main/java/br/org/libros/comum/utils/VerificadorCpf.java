@@ -1,5 +1,9 @@
 package br.org.libros.comum.utils;
 
+/**
+ * Classe que verifica se um CPF é válido.
+ *
+ */
 public class VerificadorCpf {
 	public static boolean isValido(String cpf) {
 		if (cpf == null) {

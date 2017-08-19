@@ -1,5 +1,10 @@
 package br.org.libros.comum.exception;
 
+/**
+ * Classe abstrata que representa uma exceção genérica do sistema. 
+ *
+ * @see java.lang.Exception
+ */
 public abstract class Excecao extends Exception {
 
 	private static final long serialVersionUID = 1L;

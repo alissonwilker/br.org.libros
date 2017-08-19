@@ -9,20 +9,28 @@ import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.persistence.dao.IDao;
 
-public abstract class AbstractBusiness<T, PK extends Serializable> implements IBusiness<T, PK>, Serializable {
+/**
+ * Classe abstrata que contém implementação de comportamento padrão da camada negocial de um módulo.
+ *
+ * @param <E> tipo da Entidade.
+ * @param <PK> tipo da chave primária da Entidade.
+ * 
+ * @see br.org.libros.comum.model.business.IBusiness
+ */
+public abstract class AbstractBusiness<E, PK extends Serializable> implements IBusiness<E, PK>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private IDao<T, PK> dao;
+	private IDao<E, PK> dao;
 
 	@Override
-	public T adicionar(T entidade) throws EntidadeJaExisteExcecao {
+	public E adicionar(E entidade) throws EntidadeJaExisteExcecao {
 		return dao.adicionar(entidade);
 	}
 
 	@Override
-	public void remover(T entidade) throws EntidadeNaoEncontradaExcecao {
+	public void remover(E entidade) throws EntidadeNaoEncontradaExcecao {
 		dao.remover(entidade);
 	}
 
@@ -32,22 +40,22 @@ public abstract class AbstractBusiness<T, PK extends Serializable> implements IB
 	}
 
 	@Override
-	public T atualizar(T entidade) throws EntidadeNaoEncontradaExcecao {
+	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao {
 		return dao.atualizar(entidade);
 	}
 
 	@Override
-	public List<T> listar() {
+	public List<E> listar() {
 		return dao.listar();
 	}
 
 	@Override
-	public T recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
 		return dao.recuperar(chavePrimaria);
 	}
 	
 	@Override
-	public T atualizar(PK chavePrimaria, T entidade) throws EntidadeNaoEncontradaExcecao {
+	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao {
 		return dao.atualizar(chavePrimaria, entidade);
 	}
 

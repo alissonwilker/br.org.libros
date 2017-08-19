@@ -2,6 +2,10 @@ package br.org.libros.biblioteca.dto;
 
 import java.io.Serializable;
 
+/**
+ * DTO que representa a Entidade {@link br.org.libros.comum.model.persistence.entity.Biblioteca Biblioteca}.
+ *
+ */
 public class BibliotecaDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;

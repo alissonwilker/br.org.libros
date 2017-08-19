@@ -6,6 +6,11 @@ import javax.validation.ConstraintValidatorContext;
 import br.org.libros.comum.model.persistence.entity.validator.annotation.Cpf;
 import br.org.libros.comum.utils.VerificadorCpf;
 
+/**
+ * Validador de CPF para Beans.
+ *
+ * @see javax.validation.ConstraintValidator
+ */
 public class CpfBeanValidator implements ConstraintValidator<Cpf, String> {
 
 	@Override

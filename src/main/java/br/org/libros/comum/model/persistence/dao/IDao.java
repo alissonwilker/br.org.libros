@@ -6,20 +6,26 @@ import java.util.List;
 import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 
-public interface IDao<T, PK extends Serializable> {
+/**
+ * Interface padrão de um DAO.
+ *
+ * @param <E> tipo da Entidade.
+ * @param <PK> tipo da chave primária da Entidade.
+ */
+public interface IDao<E, PK extends Serializable> {
 
-	public T adicionar(T entidade) throws EntidadeJaExisteExcecao;
+	public E adicionar(E entidade) throws EntidadeJaExisteExcecao;
 
-	public List<T> listar();
+	public List<E> listar();
 
-	public void remover(T entidade) throws EntidadeNaoEncontradaExcecao;
+	public void remover(E entidade) throws EntidadeNaoEncontradaExcecao;
 
 	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao;
 
-	public T atualizar(T entidade) throws EntidadeNaoEncontradaExcecao;
+	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao;
 
-	public T recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao;
+	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao;
 
-	public T atualizar(PK chavePrimaria, T entidade) throws EntidadeNaoEncontradaExcecao;
+	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao;
 
 }

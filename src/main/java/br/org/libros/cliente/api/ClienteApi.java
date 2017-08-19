@@ -23,6 +23,10 @@ import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+/**
+ * 
+ * @see br.org.libros.comum.api.AbstractApi
+ */
 @Path("/clientes")
 @Api(value = "clientes")
 @Produces({ MediaType.APPLICATION_JSON })

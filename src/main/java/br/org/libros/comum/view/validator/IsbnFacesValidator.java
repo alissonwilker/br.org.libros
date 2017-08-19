@@ -9,6 +9,11 @@ import javax.faces.validator.ValidatorException;
 import br.org.libros.comum.utils.VerificadorIsbn;
 import br.org.libros.comum.view.utils.FacesMessageUtils;
 
+/**
+ * Validador de ISBN utilizado pelo JSF.
+ *
+ * @see javax.faces.validator.Validator
+ */
 @FacesValidator(value = "isbnValidator")
 public class IsbnFacesValidator implements Validator {
 

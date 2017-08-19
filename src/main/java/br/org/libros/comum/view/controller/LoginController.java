@@ -12,6 +12,10 @@ import br.org.libros.comum.view.utils.FacesMessageUtils;
 import br.org.libros.comum.view.utils.JsfUtils;
 import br.org.libros.comum.view.utils.JsfUtils.Pagina;
 
+/**
+ * Controlador responsável pelo fluxo de Login.
+ *
+ */
 @Named
 @RequestScoped
 public class LoginController implements Serializable {

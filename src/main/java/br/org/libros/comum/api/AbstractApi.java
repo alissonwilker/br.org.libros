@@ -12,14 +12,20 @@ import org.slf4j.Logger;
 import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 
-public abstract class AbstractApi<T, PK extends Serializable> {
+/**
+ * Classe abstrata que contém comportamento padrão de APIs do sistema.
+ *
+ * @param <D> tipo do DTO que representa a Entidade.
+ * @param <PK> tipo da chave primária da Entidade.
+ */
+public abstract class AbstractApi<D, PK extends Serializable> {
 	protected Logger logger;
 
 	@Inject
-	protected IBusinessFacade<T, PK> businessFacade;
+	protected IBusinessFacade<D, PK> businessFacade;
 
 	public Response listar() {
-		List<T> dtos = businessFacade.listar();
+		List<D> dtos = businessFacade.listar();
 		return Response.ok(dtos).build();
 	}
 	
@@ -32,7 +38,7 @@ public abstract class AbstractApi<T, PK extends Serializable> {
 		}
 	}
 	
-	public Response atualizar(PK chavePrimaria, T dto) {
+	public Response atualizar(PK chavePrimaria, D dto) {
 		try {
 			dto = businessFacade.atualizar(chavePrimaria, dto);
 			return Response.ok(dto).build();
@@ -43,7 +49,7 @@ public abstract class AbstractApi<T, PK extends Serializable> {
 	
 	public Response recuperar(PK chavePrimaria) {
 		try {
-			T dto = businessFacade.recuperar(chavePrimaria);
+			D dto = businessFacade.recuperar(chavePrimaria);
 			return Response.ok(dto).build();
 		} catch (EntidadeNaoEncontradaExcecao e) {
 			return Response.status(Status.NOT_FOUND).build();

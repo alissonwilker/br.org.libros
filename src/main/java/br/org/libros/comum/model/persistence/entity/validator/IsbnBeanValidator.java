@@ -6,6 +6,11 @@ import javax.validation.ConstraintValidatorContext;
 import br.org.libros.comum.model.persistence.entity.validator.annotation.Isbn;
 import br.org.libros.comum.utils.VerificadorIsbn;
 
+/**
+ * Validador de ISBN para Beans.
+ *
+ * @see javax.validation.ConstraintValidator
+ */
 public class IsbnBeanValidator implements ConstraintValidator<Isbn, String> {
 
 	@Override

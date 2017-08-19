@@ -8,6 +8,10 @@ import br.org.libros.comum.view.controller.AbstractController;
 import br.org.libros.comum.view.utils.JsfUtils;
 import br.org.libros.comum.view.utils.JsfUtils.Pagina;
 
+/**
+ * 
+ * @see br.org.libros.comum.view.controller.AbstractController
+ */
 @Named
 @RequestScoped
 public class BibliotecaController extends AbstractController<BibliotecaDto, Integer> {

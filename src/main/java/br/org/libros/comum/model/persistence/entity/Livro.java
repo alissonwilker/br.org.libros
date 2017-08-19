@@ -16,6 +16,10 @@ import javax.validation.constraints.Size;
 
 import br.org.libros.comum.model.persistence.entity.validator.annotation.Isbn;
 
+/**
+ * Entidade que representa um Livro.
+ *
+ */
 @Entity
 @Table(name = "Livro", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
 public class Livro implements Serializable {

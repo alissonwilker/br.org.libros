@@ -10,6 +10,10 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Classe com métodos utilitários para facilitar acesso a diversos recursos oferecidos pelo JSF, como FacesContext, Resource Bundle...
+ *
+ */
 public class JsfUtils {
 	public enum Pagina {
 		app, login;

@@ -23,6 +23,10 @@ import br.org.libros.livro.dto.LivroDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+/**
+ * 
+ * @see br.org.libros.comum.api.AbstractApi
+ */
 @Path("/livros")
 @Api(value = "livros")
 @Produces({ MediaType.APPLICATION_JSON })

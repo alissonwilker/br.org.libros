@@ -1,8 +1,6 @@
-Tutorial de configuração do servidor de aplicação e do SGBD.
+O Libros é um sistema de gerenciamento de bibliotecas construído com as seguintes tecnologias: J2EE, JSF, JAX-RS, JPA (Hibernate) e PrimeFaces.
 
-Para esse projeto funcionar corretamente, é preciso ter um servidor de aplicação e um gerenciador de banco de dados (SGBD). 
-
-Esse projeto foi testado com o servidor de aplicação Wildfly 10.1.0.Final e com o SGBD PostgreSQL 9.6. 
+Para executar esse projeto, é preciso ter um servidor de aplicação e um sistema gerenciador de banco de dados (SGBD). Os passos a seguir o ajudarão a configurar o servidor de aplicação Wildfly 10.1.0.Final e o SGBD PostgreSQL 9.6.
 
 Para integrar o Wildfly com uma base de dados do PostgreSQL, é preciso criar um DataSource no arquivo '<WILDFLY_HOME_DIR>/standalone/configuration/standalone.xml'. Procure a tag '<datasources>' e adicione o conteúdo necessário:
 
@@ -70,7 +68,14 @@ Além disso, é preciso adicionar no servidor de aplicação um driver JDBC de a
 
 Obs.: note que o conteúdo desse XML faz referência ao jar do driver JDBC do PostgreSQL. Esse jar pode ser baixado do endereço 'https://mvnrepository.com/artifact/org.postgresql/postgresql/42.1.3' e deve ser colocado no mesmo diretório do arquivo 'module.xml'.
 
-Pronto! Digite 'mvn clean package' a partir do diretório raiz do projeto para compilar e empacotar a aplicação. O pacote WAR será criado no diretório 'target'. 
+Pronto! Digite 'mvn clean package javadoc:javadoc' a partir do diretório raiz do projeto para compilar e empacotar a aplicação, gerando também javadocs. O pacote WAR será criado no diretório 'target' e, uma vez realizado o deploy no servidor de aplicação, você poderá acessar a aplicação pelos seguintes endereços:
 
-Se for utilizar a IDE Eclipse para compilar e fazer deploy da aplicação, é preciso instalar o plugin 'm2e-apt' a fim de habilitar o recurso de Annotation Processing utilizado pela biblioteca MapStruct. O plugin pode ser instalado a partir do Eclipse Market. Depois de instalar o plugin, entre em 'Eclipse -> Preferências -> Maven -> Annotation Processing' e selecione a opção 'Automatically configure JDT APT'.
+http://localhost:8080/libros (interface web da aplicação)
+http://localhost:8080/libros/javadocs (javadocs do projeto)
+http://localhost:8080/libros/api-docs (documentação das APIs REST da aplicação)
+http://localhost:8080/libros/api/bibliotecas/ (API REST do módulo Biblioteca)
+http://localhost:8080/libros/api/clientes/ (API REST do módulo Cliente)
+http://localhost:8080/libros/api/livros/ (API REST do módulo Livro)
+
+Obs.: se for utilizar a IDE Eclipse para compilar e fazer deploy da aplicação, é preciso instalar o plugin 'm2e-apt' a fim de habilitar o recurso de Annotation Processing utilizado pela biblioteca MapStruct. O plugin pode ser instalado a partir do Eclipse Market. Depois de instalar o plugin, entre em 'Eclipse -> Preferências -> Maven -> Annotation Processing' e selecione a opção 'Automatically configure JDT APT'.
 

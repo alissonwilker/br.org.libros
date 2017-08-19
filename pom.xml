@@ -117,7 +117,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>${maven-clean.version}</version>
 				<configuration>
 					<filesets>
 						<fileset>
@@ -167,6 +167,7 @@
 		<project.javadocsdir>${project.webappdir}/${javadocsdir}</project.javadocsdir>
 		<ambiente.testes>localhost:8080/libros</ambiente.testes>
 		<swagger.version>3.1.5</swagger.version>
+		<maven-clean.version>3.0.0</maven-clean.version>
 		<maven-javadoc.version>3.0.0-M1</maven-javadoc.version>
 		<maven-compiler.version>3.5.1</maven-compiler.version>
 		<mapstruct.version>1.1.0.Final</mapstruct.version>

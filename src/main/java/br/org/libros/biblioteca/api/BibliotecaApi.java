@@ -26,11 +26,11 @@ import io.swagger.annotations.ApiOperation;
 @Path("/bibliotecas")
 @Api(value = "bibliotecas")
 @Produces({ MediaType.APPLICATION_JSON })
-public class BibliotecasApi extends AbstractApi<BibliotecaDto, Integer> {
+public class BibliotecaApi extends AbstractApi<BibliotecaDto, Integer> {
 
 	@PostConstruct
 	public void init() {
-		logger = LoggerFactory.getLogger(BibliotecasApi.class);
+		logger = LoggerFactory.getLogger(BibliotecaApi.class);
 	}
 
 	@POST

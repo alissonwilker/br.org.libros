@@ -8,7 +8,7 @@
 	<ui:define name="content">
 		<p:fieldset legend="#{msg['app.bibliotecas']}">
 			<p:dataTable id="bibliotecas" var="biblioteca" reflow="true"  
-				value="#{bibliotecasController.itens}" rows="3" paginator="true"
+				value="#{bibliotecaController.itens}" rows="3" paginator="true"
 				emptyMessage="#{msg['app.nenhumItem']}">
 				<p:column styleClass="textAtCenter" headerText="#{msg['app.id']}">
 					<p:outputLabel value="#{biblioteca.id}" />
@@ -20,7 +20,7 @@
 				<p:column rendered="#{loginController.isUserInRole(fn:split('ADMINISTRATOR', ','))}" headerText="#{msg['app.remover']}" styleClass="textAtCenter">
 					<h:form>
 						<p:commandLink
-							action="#{bibliotecasController.remover(biblioteca)}" ajax="true"
+							action="#{bibliotecaController.remover(biblioteca)}" ajax="true"
 							update="bibliotecas">
 							<span class="fa fa-trash"/>
 						</p:commandLink>
@@ -30,7 +30,7 @@
 		</p:fieldset>
 		<p:fieldset legend="#{msg['app.clientes']}">
 			<p:dataTable id="clientes" var="cliente" reflow="true" 
-				value="#{clientesController.itens}" rows="3" paginator="true"
+				value="#{clienteController.itens}" rows="3" paginator="true"
 				emptyMessage="#{msg['app.nenhumItem']}">
 				<p:column styleClass="textAtCenter" headerText="#{msg['app.cpf']}">
 					<p:outputLabel value="#{cliente.cpf}" converter="cpfConverter" />
@@ -40,7 +40,7 @@
 				</p:column>
 				<p:column headerText="#{msg['app.remover']}" styleClass="textAtCenter">
 					<h:form>
-						<p:commandLink action="#{clientesController.remover(cliente)}"
+						<p:commandLink action="#{clienteController.remover(cliente)}"
 							ajax="true" update="clientes" >
 							<span class="fa fa-trash"/>
 						</p:commandLink>
@@ -50,7 +50,7 @@
 		</p:fieldset>
 		<p:fieldset legend="#{msg['app.livros']}">
 			<p:dataTable id="livros" var="livro" reflow="true" 
-				value="#{livrosController.itens}" rows="3" paginator="true"
+				value="#{livroController.itens}" rows="3" paginator="true"
 				emptyMessage="#{msg['app.nenhumItem']}">
 				<p:column styleClass="textAtCenter" headerText="#{msg['app.isbn']}">
 					<p:outputLabel value="#{livro.isbn}" converter="isbnConverter" />
@@ -60,7 +60,7 @@
 				</p:column>
 				<p:column headerText="#{msg['app.remover']}" styleClass="textAtCenter">
 					<h:form>
-						<p:commandLink action="#{livrosController.remover(livro)}"
+						<p:commandLink action="#{livroController.remover(livro)}"
 							ajax="true" update="livros" >
 							<span class="fa fa-trash"/>
 						</p:commandLink>

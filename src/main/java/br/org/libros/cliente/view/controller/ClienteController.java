@@ -10,7 +10,7 @@ import br.org.libros.comum.view.utils.JsfUtils.Pagina;
 
 @Named
 @RequestScoped
-public class ClientesController extends AbstractController<ClienteDto, Integer> {
+public class ClienteController extends AbstractController<ClienteDto, Integer> {
 
 	private static final long serialVersionUID = 1L;
 	

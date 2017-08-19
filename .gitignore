@@ -4,4 +4,5 @@
 .classpath
 .project
 .factorypath
-WebContent/
+src/main/webapp/javadocs
+src/main/webapp/api-docs/swagger.json

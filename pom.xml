@@ -153,7 +153,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>${maven-javadoc.version}</version>
 				<configuration>
-					<destDir>${javadocs}</destDir>
+					<destDir>${javadocsdir}</destDir>
 					<reportOutputDirectory>${project.webappdir}</reportOutputDirectory>
 				</configuration>
 			</plugin>
@@ -164,7 +164,7 @@
 		<javadocsdir>javadocs</javadocsdir>
 		<project.webappdir>src/main/webapp</project.webappdir>
 		<project.apidocsdir>${project.webappdir}/api-docs</project.apidocsdir>
-		<project.javadocsdir>${project.webappdir}/${javadocs}</project.javadocsdir>
+		<project.javadocsdir>${project.webappdir}/${javadocsdir}</project.javadocsdir>
 		<ambiente.testes>localhost:8080/libros</ambiente.testes>
 		<swagger.version>3.1.5</swagger.version>
 		<maven-javadoc.version>3.0.0-M1</maven-javadoc.version>

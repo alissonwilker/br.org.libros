@@ -14,7 +14,8 @@
 					<p:outputLabel value="#{biblioteca.id}" />
 				</p:column>
 				<p:column headerText="#{msg['bibliotecas.nomeBiblioteca']}">
-					<p:link outcome="gerenciarBiblioteca" value="#{biblioteca.nome}" />
+					<p:link rendered="#{loginController.isUserInRole(fn:split('ADMINISTRATOR', ','))}" outcome="/pages/biblioteca/gerenciarBiblioteca" value="#{biblioteca.nome}" />
+					<p:outputLabel rendered="#{loginController.isUserInRole(fn:split('USER', ','))}" value="#{biblioteca.nome}" />
 				</p:column>
 				<p:column rendered="#{loginController.isUserInRole(fn:split('ADMINISTRATOR', ','))}" headerText="#{msg['app.remover']}" styleClass="textAtCenter">
 					<h:form>
@@ -35,7 +36,7 @@
 					<p:outputLabel value="#{cliente.cpf}" converter="cpfConverter" />
 				</p:column>
 				<p:column headerText="#{msg['clientes.nomeCliente']}">
-					<p:link outcome="gerenciarCliente" value="#{cliente.nome}" />
+					<p:link outcome="/pages/cliente/gerenciarCliente" value="#{cliente.nome}" />
 				</p:column>
 				<p:column headerText="#{msg['app.remover']}" styleClass="textAtCenter">
 					<h:form>
@@ -55,7 +56,7 @@
 					<p:outputLabel value="#{livro.isbn}" converter="isbnConverter" />
 				</p:column>
 				<p:column headerText="#{msg['livros.nomeLivro']}">
-					<p:link outcome="gerenciarLivro" value="#{livro.nome}" />
+					<p:link outcome="/pages/livro/gerenciarLivro" value="#{livro.nome}" />
 				</p:column>
 				<p:column headerText="#{msg['app.remover']}" styleClass="textAtCenter">
 					<h:form>

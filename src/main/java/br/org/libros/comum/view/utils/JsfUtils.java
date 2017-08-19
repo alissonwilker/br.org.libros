@@ -45,7 +45,7 @@ public class JsfUtils {
 
 	public static String getRedirecionamentoComMensagens(Pagina pagina) {
 		getExternalContext().getFlash().setKeepMessages(true);
-		return pagina.name() + "?faces-redirect=true";
+		return "/pages/" + pagina.name() + "?faces-redirect=true";
 	}
 
 	public static void redirecionar(Pagina pagina) throws IOException {

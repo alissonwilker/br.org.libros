@@ -6,13 +6,13 @@
 	<h:form>
 		<p:menu>
 			<p:submenu label="#{msg['app.acoes']}">
-				<p:menuitem value="#{msg['app.inicio']}" outcome="app" />
+				<p:menuitem value="#{msg['app.inicio']}" outcome="/pages/app" />
 				<p:menuitem value="#{msg['app.cadastrarBiblioteca']}" rendered="#{loginController.isUserInRole(fn:split('ADMINISTRATOR', ','))}"
-					outcome="cadastrarBiblioteca" />
+					outcome="/pages/biblioteca/cadastrarBiblioteca" />
 				<p:menuitem value="#{msg['app.cadastrarCliente']}"
-					outcome="cadastrarCliente" />
+					outcome="/pages/cliente/cadastrarCliente" />
 				<p:menuitem value="#{msg['app.cadastrarLivro']}"
-					outcome="cadastrarLivro" />
+					outcome="/pages/livro/cadastrarLivro" />
 			</p:submenu>
 		</p:menu>
 	</h:form>

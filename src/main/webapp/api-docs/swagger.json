@@ -42,12 +42,6 @@
         "description" : "",
         "operationId" : "recuperar",
         "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "idBiblioteca",
-          "in" : "path",
-          "required" : true,
-          "type" : "string"
-        } ],
         "responses" : {
           "200" : {
             "description" : "successful operation",
@@ -178,12 +172,6 @@
         "description" : "",
         "operationId" : "recuperar",
         "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "idCliente",
-          "in" : "path",
-          "required" : true,
-          "type" : "string"
-        } ],
         "responses" : {
           "200" : {
             "description" : "successful operation",
@@ -274,12 +262,6 @@
         "description" : "",
         "operationId" : "recuperar",
         "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "idLivro",
-          "in" : "path",
-          "required" : true,
-          "type" : "string"
-        } ],
         "responses" : {
           "200" : {
             "description" : "successful operation",

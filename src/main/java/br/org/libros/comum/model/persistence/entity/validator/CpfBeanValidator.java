@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 import br.org.libros.comum.model.persistence.entity.validator.annotation.Cpf;
 import br.org.libros.comum.utils.VerificadorCpf;
 
-public class CpfValidator implements ConstraintValidator<Cpf, String> {
+public class CpfBeanValidator implements ConstraintValidator<Cpf, String> {
 
 	@Override
 	public boolean isValid(String cpf, ConstraintValidatorContext constraintContext) {

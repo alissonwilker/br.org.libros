@@ -14,11 +14,11 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import br.org.libros.comum.model.persistence.entity.validator.IsbnValidator;
+import br.org.libros.comum.model.persistence.entity.validator.IsbnBeanValidator;
 
 @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
 @Retention(RUNTIME)
-@Constraint(validatedBy = IsbnValidator.class)
+@Constraint(validatedBy = IsbnBeanValidator.class)
 @Documented
 public @interface Isbn {
 

@@ -10,7 +10,7 @@ import br.org.libros.comum.utils.VerificadorIsbn;
 import br.org.libros.comum.view.utils.FacesMessageUtils;
 
 @FacesValidator(value = "isbnValidator")
-public class IsbnValidator implements Validator {
+public class IsbnFacesValidator implements Validator {
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object isbn) throws ValidatorException {

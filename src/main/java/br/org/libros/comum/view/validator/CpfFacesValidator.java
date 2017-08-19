@@ -10,7 +10,7 @@ import br.org.libros.comum.utils.VerificadorCpf;
 import br.org.libros.comum.view.utils.FacesMessageUtils;
 
 @FacesValidator(value = "cpfValidator")
-public class CpfValidator implements Validator {
+public class CpfFacesValidator implements Validator {
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object cpf) throws ValidatorException {

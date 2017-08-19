@@ -14,11 +14,11 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import br.org.libros.comum.model.persistence.entity.validator.CpfValidator;
+import br.org.libros.comum.model.persistence.entity.validator.CpfBeanValidator;
 
 @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
 @Retention(RUNTIME)
-@Constraint(validatedBy = CpfValidator.class)
+@Constraint(validatedBy = CpfBeanValidator.class)
 @Documented
 public @interface Cpf {
 

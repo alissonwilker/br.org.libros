@@ -51,7 +51,7 @@ Outra configuração a ser feita no mesmo arquivo 'standalone.xml' diz respeito 
                 ...
             </security-domains>
  
-Obs.: note que o conteúdo acima faz referência ao DataSource configurado anteriormente nesse tutorial. Além disso, o conteúdo também faz referência à tabela 'users', que deve ser criada na base de dados referenciada pelo DataSource. Para isso, conecte-se à base de dados através de uma ferramenta de acesso ao PostgreSQL (como o pgAdmin, por exemplo) e execute o(s) script(s) presente(s) no diretório 'src/main/resources/sql/' desse projeto. Será criado um usuário 'admin' com senha 'admin' e perfil 'ADMINISTRATOR' para acesso à aplicação (veja o script para outros usuários).
+Obs.: note que o conteúdo acima faz referência ao DataSource configurado anteriormente nesse tutorial. Além disso, o conteúdo também faz referência à tabela 'users', que será criada automaticamente na base de dados referenciada pelo DataSource quando a aplicação for iniciada no servidor de aplicação.
  
 Além disso, é preciso adicionar no servidor de aplicação um driver JDBC de acesso ao PostgreSQL. Para isso, crie o arquivo '<WILDFLY_HOME_DIR>/modules/system/layers/base/org/postgresql/main/module.xml' com o seguinte conteúdo:
 
@@ -81,6 +81,8 @@ http://localhost:8080/libros/api/bibliotecas (API REST do módulo Biblioteca)
 http://localhost:8080/libros/api/clientes (API REST do módulo Cliente)
 
 http://localhost:8080/libros/api/livros (API REST do módulo Livro)
+
+Obs.: o usuário 'admin' (com senha 'admin') ou o usuário 'user' (com senha 'user') estão disponíveis e podem ser utilizados para logar na aplicação.
 
 Obs.: se for utilizar a IDE Eclipse para compilar e fazer deploy da aplicação, é preciso instalar o plugin 'm2e-apt' a fim de habilitar o recurso de Annotation Processing utilizado pela biblioteca MapStruct. O plugin pode ser instalado a partir do Eclipse Market. Depois de instalar o plugin, entre em 'Eclipse -> Preferências -> Maven -> Annotation Processing' e selecione a opção 'Automatically configure JDT APT'.
 

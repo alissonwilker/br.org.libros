@@ -12,6 +12,11 @@ import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import br.org.libros.usuario.dto.UsuarioDto;
 import br.org.libros.usuario.model.business.facade.UsuarioBusinessFacade;
 
+/**
+ * Essa classe é responsável por executar ações de configuração durante a
+ * inicialização da aplicação.
+ *
+ */
 @Singleton
 @Startup
 public class AppStartupConfigurator {
@@ -20,8 +25,15 @@ public class AppStartupConfigurator {
 	@Inject
 	private UsuarioBusinessFacade usuarioBusinessFacade;
 
+	/**
+	 * Método que configura a aplicação durante sua inicialização.
+	 */
 	@PostConstruct
 	public void configureAppAtStartup() {
+		/*
+		 * cria os usuários 'admin', com senha 'admin', e 'user', com senha
+		 * 'user'. As senhas são codificadas com algoritmo MD5.
+		 */
 		try {
 			usuarioBusinessFacade
 					.adicionar(new UsuarioDto("admin", "21232f297a57a5a743894a0e4a801fc3", "ADMINISTRATOR"));

@@ -22,7 +22,7 @@ Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource
                 ...
             </datasources>
  
-Obs.: o DataSource 'ExampleDS' pode já estar configurado no arquivo. Porém, se quiser acessar a base de dados por um cliente externo (como o Eclipse Data Tools Platform (DTP), por exemplo), será necessário iniciar o H2 Database Engine em modo servidor e alterar a URL de conexão deste DataSource para 'jdbc:h2:tcp://localhost:9092/libros', por exemplo.
+Obs.: o DataSource 'ExampleDS' pode já estar configurado no arquivo. Porém, se quiser acessar a base de dados por um cliente externo (como o Eclipse Data Tools Platform (DTP), por exemplo), será necessário iniciar o H2 Database Engine em modo servidor e alterar a URL de conexão deste DataSource para 'jdbc:h2:tcp://localhost:9092/libros;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE', por exemplo.
  
 Outra configuração a ser feita no mesmo arquivo 'standalone.xml' diz respeito à criação de um Security Domain. O Security Domain é utilizado para definir como um usuário se autentica e recebe autorização para acessar os recursos da aplicação. Procure a tag '<security-domains>' e adicione o conteúdo necessário:
 

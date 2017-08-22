@@ -23,6 +23,8 @@ import br.org.libros.comum.view.utils.FacesMessageUtils;
 public abstract class AbstractController<D, PK extends Serializable> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private List<D> entidades;
 
 	@Inject
 	private IBusinessFacade<D, PK> businessFacade;
@@ -62,30 +64,11 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 	}
 
 	/**
-	 * Lista os registros de Entidade cadastrados na base de dados.
+	 * Carrega os registros de Entidade cadastrados na base de dados e armazena-os na propriedade 'entidades'.
 	 * 
-	 * @return uma lista contendo todos os registros da Entidade na base de
-	 *         dados.
 	 */
-	public List<D> getItens() {
-		return businessFacade.listar();
-	}
-
-	/**
-	 * Recupera um DTO que representa uma Entidade identificada pela chave
-	 * primária.
-	 * 
-	 * @param chavePrimaria
-	 *            a chave primária da Entidade cujo DTO deve ser retornado.
-	 * @return o DTO que representa a Entidade identificada pela chave primária.
-	 */
-	public D getItem(PK chavePrimaria) {
-		try {
-			return businessFacade.recuperar(chavePrimaria);
-		} catch (EntidadeNaoEncontradaExcecao e) {
-			adicionarMensagemItemNaoEncontrado();
-			return null;
-		}
+	public void carregarEntidades() {
+		entidades = businessFacade.listar();
 	}
 
 	private void adicionarMensagemItemNaoEncontrado() {
@@ -94,6 +77,10 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 
 	private void adicionarMensagemSucesso() {
 		FacesMessageUtils.addInfoFacesMessage("app.sucesso");
+	}
+
+	public List<D> getEntidades() {
+		return entidades;
 	}
 
 }

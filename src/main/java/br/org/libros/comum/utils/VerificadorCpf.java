@@ -5,13 +5,19 @@ package br.org.libros.comum.utils;
  *
  */
 public class VerificadorCpf {
+
 	public static boolean isValido(String cpf) {
 		if (cpf == null) {
 			return false;
 		}
 
-		return (cpf.length() == 11 && !isCpfPadrao(cpf)
-				&& calcularDigitoVerificador(cpf.substring(0, 9)).equals(cpf.substring(9, 11)));
+		try {
+			return (cpf.length() == 11 && !isCpfPadrao(cpf)
+					&& calcularDigitoVerificador(cpf.substring(0, 9)).equals(cpf.substring(9, 11)));
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+
 	}
 
 	private static boolean isCpfPadrao(String cpf) {

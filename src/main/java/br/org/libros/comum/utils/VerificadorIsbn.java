@@ -10,7 +10,7 @@ public class VerificadorIsbn {
 			return false;
 		}
 
-		return (isbn.length() == 13 && (isbn.startsWith("978") && isbn.startsWith("979"))
+		return (isbn.length() == 13 && (isbn.startsWith("978") || isbn.startsWith("979"))
 				&& calcularDigitoVerificador(isbn.substring(0, 12)).equals(isbn.substring(12, 13)));
 	}
 

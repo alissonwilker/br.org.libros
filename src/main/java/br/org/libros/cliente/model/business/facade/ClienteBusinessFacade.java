@@ -1,5 +1,6 @@
 package br.org.libros.cliente.model.business.facade;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.transaction.Transactional;
@@ -20,7 +21,8 @@ public class ClienteBusinessFacade extends AbstractBusinessFacade<Cliente, Clien
 
 	private static final long serialVersionUID = 1L;
 
-	public ClienteBusinessFacade() {
+	@PostConstruct
+	public void init() {
 		mapper = IClienteMapper.INSTANCE;
 	}
 

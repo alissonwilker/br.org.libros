@@ -1,5 +1,6 @@
 package br.org.libros.usuario.model.business.facade;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.transaction.Transactional;
@@ -20,8 +21,8 @@ public class UsuarioBusinessFacade extends AbstractBusinessFacade<Usuario, Usuar
 
 	private static final long serialVersionUID = 1L;
 
-	public UsuarioBusinessFacade() {
+	@PostConstruct
+	public void init() {
 		mapper = IUsuarioMapper.INSTANCE;
 	}
-
 }

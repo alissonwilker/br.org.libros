@@ -1,5 +1,6 @@
 package br.org.libros.biblioteca.model.business.facade;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.transaction.Transactional;
@@ -20,7 +21,8 @@ public class BibliotecaBusinessFacade extends AbstractBusinessFacade<Biblioteca,
 
 	private static final long serialVersionUID = 1L;
 
-	public BibliotecaBusinessFacade() {
+	@PostConstruct
+	public void init() {
 		mapper = IBibliotecaMapper.INSTANCE;
 	}
 

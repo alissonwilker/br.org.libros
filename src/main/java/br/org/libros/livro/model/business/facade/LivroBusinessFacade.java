@@ -1,5 +1,6 @@
 package br.org.libros.livro.model.business.facade;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.transaction.Transactional;
@@ -20,8 +21,8 @@ public class LivroBusinessFacade extends AbstractBusinessFacade<Livro, LivroDto,
 
 	private static final long serialVersionUID = 1L;
 
-	public LivroBusinessFacade() {
+	@PostConstruct
+	public void init() {
 		mapper = ILivroMapper.INSTANCE;
 	}
-
 }

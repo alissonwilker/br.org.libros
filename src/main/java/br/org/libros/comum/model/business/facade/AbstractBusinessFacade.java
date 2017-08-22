@@ -11,15 +11,18 @@ import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.business.IBusiness;
 
 /**
- * Classe abstrata que implementa comportamento padrão de uma fachada de módulo. 
+ * Classe abstrata que implementa comportamento padrão de uma fachada de módulo.
  *
- * @param <E> tipo da Entidade.
- * @param <D> tipo do DTO que representa a Entidade.
- * @param <PK> tipo da chave primária da Entidade.
+ * @param <E>
+ *            tipo da Entidade.
+ * @param <D>
+ *            tipo do DTO que representa a Entidade.
+ * @param <PK>
+ *            tipo da chave primária da Entidade.
  * 
  * @see br.org.libros.comum.model.business.facade.IBusinessFacade
  */
-public class AbstractBusinessFacade<E, D, PK extends Serializable> implements IBusinessFacade<D, PK> {
+public abstract class AbstractBusinessFacade<E, D, PK extends Serializable> implements IBusinessFacade<D, PK> {
 	private static final long serialVersionUID = 1L;
 
 	@Inject

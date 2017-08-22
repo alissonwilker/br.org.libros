@@ -67,6 +67,8 @@ http://localhost:8080/libros/api/clientes (API REST do módulo Cliente)
 
 http://localhost:8080/libros/api/livros (API REST do módulo Livro)
 
+Obs.: digite 'mvn test' a partir do diretório raiz do projeto para executar os testes unitários.
+
 Obs.: o usuário 'admin' (com senha 'admin') e o usuário 'user' (com senha 'user') estão disponíveis e podem ser utilizados para logar na aplicação.
 
 Obs.: se for utilizar a IDE Eclipse para compilar e fazer deploy da aplicação, é preciso instalar o plugin 'm2e-apt' a fim de habilitar o recurso de Annotation Processing utilizado pela biblioteca MapStruct. O plugin pode ser instalado a partir do Eclipse Market. Depois de instalar o plugin, entre em 'Eclipse -> Preferências -> Maven -> Annotation Processing' e selecione a opção 'Automatically configure JDT APT'.

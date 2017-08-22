@@ -5,13 +5,25 @@ package br.org.libros.comum.utils;
  *
  */
 public class VerificadorIsbn {
+
+	/**
+	 * Verifica se um ISBN é válido.
+	 * 
+	 * @param isbn
+	 *            um ISBN não formatado (apenas números).
+	 * @return <i>true</i> se o ISBN é válido. <i>false</i>, caso contrário.
+	 */
 	public static boolean isValido(String isbn) {
 		if (isbn == null) {
 			return false;
 		}
 
-		return (isbn.length() == 13 && (isbn.startsWith("978") || isbn.startsWith("979"))
-				&& calcularDigitoVerificador(isbn.substring(0, 12)).equals(isbn.substring(12, 13)));
+		try {
+			return (isbn.length() == 13 && (isbn.startsWith("978") || isbn.startsWith("979"))
+					&& calcularDigitoVerificador(isbn.substring(0, 12)).equals(isbn.substring(12, 13)));
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
 	}
 
 	private static String calcularDigitoVerificador(String num) {

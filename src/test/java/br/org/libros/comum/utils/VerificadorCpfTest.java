@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.org.libros.comum.utils;
 
 import static org.junit.Assert.assertFalse;
@@ -9,7 +6,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Classe de teste que testa o comportamento do verificador de CPF.
+ * Classe de teste que testa o comportamento de
+ * {@link br.org.libros.comum.utils.VerificadorCpf VerificadorCpf}.
  *
  */
 public class VerificadorCpfTest {
@@ -69,6 +67,17 @@ public class VerificadorCpfTest {
 	@Test
 	public void testIsValidoCpfDigitoVerificadorErrado() {
 		assertFalse(VerificadorCpf.isValido("05374909494"));
+	}
+
+	/**
+	 * Testa com CPF com letras e números.
+	 * 
+	 * Test method for
+	 * {@link br.org.libros.comum.utils.VerificadorCpf#isValido(java.lang.String)}.
+	 */
+	@Test
+	public void testIsValidoCpfLetrasNumeros() {
+		assertFalse(VerificadorCpf.isValido("053ABCDEF95"));
 	}
 
 	/**

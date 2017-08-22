@@ -6,6 +6,13 @@ package br.org.libros.comum.utils;
  */
 public class VerificadorCpf {
 
+	/**
+	 * Verifica se um CPF é válido.
+	 * 
+	 * @param cpf
+	 *            um CPF não formatado (apenas números).
+	 * @return <i>true</i> se o CPF é válido. <i>false</i>, caso contrário.
+	 */
 	public static boolean isValido(String cpf) {
 		if (cpf == null) {
 			return false;

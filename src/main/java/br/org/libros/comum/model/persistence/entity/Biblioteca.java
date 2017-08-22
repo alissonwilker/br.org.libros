@@ -49,7 +49,7 @@ public class Biblioteca implements Serializable {
 		return id;
 	}
 
-	public void setId(@NotNull @Max(999999999) int id) {
+	public void setId(@NotNull @Max(Integer.MAX_VALUE) int id) {
 		this.id = id;
 	}
 

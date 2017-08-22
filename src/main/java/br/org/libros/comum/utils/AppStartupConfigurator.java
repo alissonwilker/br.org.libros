@@ -1,5 +1,7 @@
 package br.org.libros.comum.utils;
 
+import java.lang.invoke.MethodHandles;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -20,7 +22,7 @@ import br.org.libros.usuario.model.business.facade.UsuarioBusinessFacade;
 @Singleton
 @Startup
 public class AppStartupConfigurator {
-	private Logger logger = LoggerFactory.getLogger(AppStartupConfigurator.class);
+	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private UsuarioBusinessFacade usuarioBusinessFacade;

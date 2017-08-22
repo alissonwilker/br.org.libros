@@ -1,9 +1,9 @@
 package br.org.libros.livro.api;
 
+import java.lang.invoke.MethodHandles;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.annotation.PostConstruct;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.org.libros.comum.api.AbstractApi;
@@ -32,10 +33,7 @@ import io.swagger.annotations.ApiOperation;
 @Produces({ MediaType.APPLICATION_JSON })
 public class LivroApi extends AbstractApi<LivroDto, Integer> {
 
-	@PostConstruct
-	public void init() {
-		logger = LoggerFactory.getLogger(LivroApi.class);
-	}
+	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@POST
 	@Path("/{isbnLivro}/{nomeLivro}")

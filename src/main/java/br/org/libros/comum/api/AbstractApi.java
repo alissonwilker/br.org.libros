@@ -7,8 +7,6 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import org.slf4j.Logger;
-
 import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 
@@ -21,7 +19,6 @@ import br.org.libros.comum.model.business.facade.IBusinessFacade;
  * @see br.org.libros.comum.model.business.facade.AbstractBusinessFacade
  */
 public abstract class AbstractApi<D, PK extends Serializable> {
-	protected Logger logger;
 
 	@Inject
 	protected IBusinessFacade<D, PK> businessFacade;

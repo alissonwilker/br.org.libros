@@ -53,7 +53,9 @@ Outra configuração a ser feita no mesmo arquivo 'standalone.xml' diz respeito 
  
 Obs.: note que o conteúdo acima faz referência ao DataSource configurado anteriormente nesse tutorial. Além disso, o conteúdo também faz referência à tabela 'users', que será criada automaticamente pela aplicação quando esta for iniciada no servidor de aplicação.
  
-Pronto! Digite 'mvn clean package javadoc:javadoc' a partir do diretório raiz do projeto para compilar e empacotar a aplicação, gerando também javadocs. O pacote WAR será criado no diretório 'target' e, uma vez realizado o deploy no servidor de aplicação, você poderá acessar a aplicação pelos seguintes endereços:
+Pronto! Digite 'mvn clean package javadoc:javadoc' a partir do diretório raiz do projeto para compilar, executar testes e empacotar a aplicação, gerando também javadocs. O pacote WAR será criado no diretório 'target'.
+
+Uma vez realizado o deploy no servidor de aplicação, você poderá acessar a aplicação pelos seguintes endereços:
 
 http://localhost:8080/libros (interface web da aplicação)
 
@@ -67,9 +69,9 @@ http://localhost:8080/libros/api/clientes (API REST do módulo Cliente)
 
 http://localhost:8080/libros/api/livros (API REST do módulo Livro)
 
-Obs.: digite 'mvn test' a partir do diretório raiz do projeto para executar os testes unitários.
-
 Obs.: o usuário 'admin' (com senha 'admin') e o usuário 'user' (com senha 'user') estão disponíveis e podem ser utilizados para logar na aplicação.
+
+Obs.: digite 'mvn test' a partir do diretório raiz do projeto para executar apenas os testes unitários.
 
 Obs.: se for utilizar a IDE Eclipse para compilar e fazer deploy da aplicação, é preciso instalar o plugin 'm2e-apt' a fim de habilitar o recurso de Annotation Processing utilizado pela biblioteca MapStruct. O plugin pode ser instalado a partir do Eclipse Market. Depois de instalar o plugin, entre em 'Eclipse -> Preferências -> Maven -> Annotation Processing' e selecione a opção 'Automatically configure JDT APT'.
 

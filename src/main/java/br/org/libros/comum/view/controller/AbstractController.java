@@ -3,8 +3,6 @@ package br.org.libros.comum.view.controller;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
@@ -26,8 +24,11 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 	
 	private List<D> entidades;
 
-	@Inject
-	private IBusinessFacade<D, PK> businessFacade;
+    protected IBusinessFacade<D, PK> businessFacade;
+    
+    public AbstractController(IBusinessFacade<D, PK> facade) {
+        this.businessFacade = facade;
+    }
 
 	/**
 	 * Cadastra uma Entidade representada pelo DTO.
@@ -39,7 +40,7 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 	 */
 	public boolean adicionar(D dto) {
 		try {
-			businessFacade.adicionar(dto);
+			this.businessFacade.adicionar(dto);
 			adicionarMensagemSucesso();
 			return true;
 		} catch (EntidadeJaExisteExcecao e) {
@@ -56,7 +57,7 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 	 */
 	public void remover(D dto) {
 		try {
-			businessFacade.remover(dto);
+			this.businessFacade.remover(dto);
 			adicionarMensagemSucesso();
 		} catch (EntidadeNaoEncontradaExcecao e) {
 			adicionarMensagemItemNaoEncontrado();
@@ -68,7 +69,7 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 	 * 
 	 */
 	public void carregarEntidades() {
-		entidades = businessFacade.listar();
+		this.entidades = this.businessFacade.listar();
 	}
 
 	private void adicionarMensagemItemNaoEncontrado() {
@@ -80,7 +81,7 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 	}
 
 	public List<D> getEntidades() {
-		return entidades;
+		return this.entidades;
 	}
 
 }

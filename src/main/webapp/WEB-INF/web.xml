@@ -58,7 +58,7 @@
       <url-pattern>/pages/cliente/*</url-pattern>
       <url-pattern>/pages/livro/*</url-pattern>
     </web-resource-collection>
-    <auth-constraint>
+    <auth-constraint> 
       <role-name>USER</role-name>
       <role-name>ADMINISTRATOR</role-name>
     </auth-constraint>

@@ -1,7 +1,5 @@
 package br.org.libros.biblioteca.model.business.facade;
 
-import static org.junit.Assert.fail;
-
 import java.io.File;
 
 import javax.inject.Inject;
@@ -43,14 +41,15 @@ public class BibliotecaBusinessFacadeITCase {
 	 */
 	@Test
 	public void testAdicionar() {
+        Assert.fail(" dsfsdf");
 		BibliotecaDto bibliotecaDto = new BibliotecaDto("nome1");
 		BibliotecaDto bibliotecaDtoResposta;
 		try {
-			bibliotecaDtoResposta = bibliotecaBusinessFacade.adicionar(bibliotecaDto);
+			bibliotecaDtoResposta = this.bibliotecaBusinessFacade.adicionar(bibliotecaDto);
 			Assert.assertEquals(bibliotecaDto.getNome(), bibliotecaDtoResposta.getNome());
 			Assert.assertNotNull(bibliotecaDtoResposta.getId());
 		} catch (EntidadeJaExisteExcecao e) {
-			fail("Entidade já existe.");
+			Assert.fail("Entidade já existe.");
 		}
 	}
 

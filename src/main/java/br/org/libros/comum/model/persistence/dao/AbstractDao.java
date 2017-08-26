@@ -18,8 +18,10 @@ import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 /**
  * Classe abstrata que implementa comportamento padrão de um DAO.
  *
- * @param <E> tipo da Entidade.
- * @param <PK> tipo da chave primária da Entidade.
+ * @param <E>
+ *            tipo da Entidade.
+ * @param <PK>
+ *            tipo da chave primária da Entidade.
  * 
  * @see br.org.libros.comum.model.persistence.dao.IDao
  */
@@ -58,7 +60,7 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 		} catch (PersistenceException eeex) {
 			if (eeex.getCause() instanceof ConstraintViolationException) {
 				throw new EntidadeJaExisteExcecao(eeex);
-			} else { 
+			} else {
 				throw eeex;
 			}
 		}
@@ -69,6 +71,7 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 		E entidade = recuperar(chavePrimaria);
 		if (entidade != null) {
 			entityManager.remove(entidade);
+			entityManager.flush();
 		} else {
 			throw new EntidadeNaoEncontradaExcecao();
 		}
@@ -79,7 +82,8 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 		try {
 			entidade = entityManager.merge(entidade);
 			entityManager.remove(entidade);
-			entityManager.flush(); //requerido para mandar mensagem JMS pelo EntityListener da Entidade.
+			entityManager.flush(); // requerido para mandar mensagem JMS pelo
+									// EntityListener da Entidade.
 		} catch (IllegalArgumentException iaex) {
 			throw new EntidadeNaoEncontradaExcecao(iaex);
 		}
@@ -88,7 +92,8 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 	@Override
 	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao {
 		try {
-			return entityManager.merge(entidade);
+			E entidadeAtualizada = entityManager.merge(entidade);
+			return entidadeAtualizada;
 		} catch (IllegalArgumentException iaex) {
 			throw new EntidadeNaoEncontradaExcecao(iaex);
 		}
@@ -99,7 +104,9 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 		E entidadeRecuperada = recuperar(chavePrimaria);
 		if (entidadeRecuperada != null) {
 			try {
-				return entityManager.merge(entidade);
+				E entidadeAtualizada = entityManager.merge(entidade);
+				entityManager.flush();
+				return entidadeAtualizada;
 			} catch (IllegalArgumentException iaex) {
 				throw new EntidadeNaoEncontradaExcecao(iaex);
 			}
@@ -122,5 +129,5 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 	public List<E> listar() {
 		return entityManager.createQuery("from " + getDomainClass().getSimpleName()).getResultList();
 	}
-	
+
 }

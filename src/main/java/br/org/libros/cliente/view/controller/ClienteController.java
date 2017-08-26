@@ -1,9 +1,12 @@
 package br.org.libros.cliente.view.controller;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
 
 import br.org.libros.cliente.dto.ClienteDto;
+import br.org.libros.comum.model.business.facade.IBusinessFacade;
 import br.org.libros.comum.view.controller.AbstractController;
 import br.org.libros.comum.view.utils.JsfUtils;
 import br.org.libros.comum.view.utils.JsfUtils.Pagina;
@@ -12,16 +15,25 @@ import br.org.libros.comum.view.utils.JsfUtils.Pagina;
  * 
  * @see br.org.libros.comum.view.controller.AbstractController
  */
-@Named
-@RequestScoped
+@ManagedBean
+@ViewScoped
 public class ClienteController extends AbstractController<ClienteDto, Integer> {
 
 	private static final long serialVersionUID = 1L;
-	
+
+	@PostConstruct
+	@Inject
+	public void init(IBusinessFacade<ClienteDto, Integer> businessFacade) {
+		this.businessFacade = businessFacade;
+	}
+
 	/**
 	 * Cadastra um novo cliente.
-	 * @param cpfCliente CPF do cliente a ser adicionado.
-	 * @param nomeCliente nome do cliente a ser adicionado.
+	 * 
+	 * @param cpfCliente
+	 *            CPF do cliente a ser adicionado.
+	 * @param nomeCliente
+	 *            nome do cliente a ser adicionado.
 	 * @return página inicial da aplicação.
 	 */
 	public String adicionarCliente(String cpfCliente, String nomeCliente) {

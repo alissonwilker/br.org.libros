@@ -4,7 +4,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import br.org.libros.comum.model.persistence.dao.AbstractDao;
-import br.org.libros.comum.model.persistence.entity.Livro;
+import br.org.libros.livro.model.persistence.entity.Livro;
 
 /**
  * 

@@ -58,7 +58,7 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 		} catch (PersistenceException eeex) {
 			if (eeex.getCause() instanceof ConstraintViolationException) {
 				throw new EntidadeJaExisteExcecao(eeex);
-			} else {
+			} else { 
 				throw eeex;
 			}
 		}
@@ -79,6 +79,7 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 		try {
 			entidade = entityManager.merge(entidade);
 			entityManager.remove(entidade);
+			entityManager.flush(); //requerido para mandar mensagem JMS pelo EntityListener da Entidade.
 		} catch (IllegalArgumentException iaex) {
 			throw new EntidadeNaoEncontradaExcecao(iaex);
 		}

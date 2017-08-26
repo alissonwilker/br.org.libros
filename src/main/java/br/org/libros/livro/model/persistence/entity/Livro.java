@@ -1,9 +1,8 @@
-package br.org.libros.comum.model.persistence.entity;
-
-import java.io.Serializable;
+package br.org.libros.livro.model.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +13,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.org.libros.comum.model.persistence.entity.IEntidade;
+import br.org.libros.comum.model.persistence.entity.listener.DefaultEntityListener;
 import br.org.libros.comum.model.persistence.entity.validator.annotation.Isbn;
 
 /**
@@ -22,7 +23,8 @@ import br.org.libros.comum.model.persistence.entity.validator.annotation.Isbn;
  */
 @Entity
 @Table(name = "Livro", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
-public class Livro implements Serializable {
+@EntityListeners(DefaultEntityListener.class)
+public class Livro implements IEntidade {
 
 	private static final long serialVersionUID = 1L;
 

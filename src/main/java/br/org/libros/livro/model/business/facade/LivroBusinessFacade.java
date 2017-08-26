@@ -6,9 +6,9 @@ import javax.inject.Named;
 import javax.transaction.Transactional;
 
 import br.org.libros.comum.model.business.facade.AbstractBusinessFacade;
-import br.org.libros.comum.model.persistence.entity.Livro;
 import br.org.libros.livro.dto.LivroDto;
 import br.org.libros.livro.dto.mapper.ILivroMapper;
+import br.org.libros.livro.model.persistence.entity.Livro;
 
 /**
  * 

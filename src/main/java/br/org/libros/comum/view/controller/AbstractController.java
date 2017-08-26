@@ -3,8 +3,6 @@ package br.org.libros.comum.view.controller;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
@@ -26,8 +24,7 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 	
 	private List<D> entidades;
 
-	@Inject
-	private IBusinessFacade<D, PK> businessFacade;
+	protected IBusinessFacade<D, PK> businessFacade;
 
 	/**
 	 * Cadastra uma Entidade representada pelo DTO.

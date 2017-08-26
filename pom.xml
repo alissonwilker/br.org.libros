@@ -326,7 +326,7 @@
 		<hibernate.version>5.0.10.Final</hibernate.version>
 		<junit.version>4.12</junit.version>
 		<rest-assured.version>3.0.3</rest-assured.version>
-		<wildfly.version>10.1.0.Final</wildfly.version>
+		<wildfly.version>11.0.0.Beta1</wildfly.version>
 		<wildfly-arquillian.version>2.1.0.Final</wildfly-arquillian.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

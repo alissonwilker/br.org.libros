@@ -1,7 +1,5 @@
 package br.org.libros.comum.model.persistence.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +20,7 @@ import br.org.libros.comum.model.persistence.entity.validator.annotation.Cpf;
  */
 @Entity
 @Table(name = "Cliente", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
-public class Cliente implements Serializable {
+public class Cliente implements IEntidade {
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,8 +1,12 @@
 O Libros é um sistema de gerenciamento de bibliotecas construído com as seguintes tecnologias: J2EE, JSF, JAX-RS, JPA (Hibernate) e PrimeFaces.
 
-Para executar esse projeto, é preciso ter um servidor de aplicação e um banco de dados. Os passos a seguir o ajudarão a configurar o servidor de aplicação Wildfly 10.x e o banco de dados H2 Database Engine.
+Para executar esse projeto, é preciso ter um servidor de aplicação e um banco de dados. Os passos a seguir o ajudarão a configurar o servidor de aplicação Wildfly 11.0.0.Beta1 e o banco de dados H2 Database Engine.
 
-Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource no arquivo '<WILDFLY_HOME_DIR>/standalone/configuration/standalone.xml'. Procure a tag '<datasources>' e adicione o conteúdo necessário:
+Obs.: o servidor de aplicação Wildfly 11.0.0.Beta1 foi utilizado porque a versão 10.1.0.Final possui um bug relacionado com injeção CDI em EntityListeners (https://issues.jboss.org/browse/WFLY-2387).
+
+Obs.: para ter acesso ao recurso de filas JMS do Wildfly, vamos utilizar o perfil 'standalone-full.xml' ao invés do padrão 'standalone.xml'. Esse perfil já disponibiliza uma fila que vamos utilizar no projeto. ;)
+
+Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource no arquivo '<WILDFLY_HOME_DIR>/standalone/configuration/standalone-full.xml'. Procure a tag '<datasources>' e adicione o conteúdo necessário:
 
             <datasources>
                 ...
@@ -24,7 +28,7 @@ Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource
  
 Obs.: o DataSource 'ExampleDS' pode já estar configurado no arquivo. Porém, se quiser acessar a base de dados por um cliente externo (como o Eclipse Data Tools Platform (DTP), por exemplo), será necessário iniciar o H2 Database Engine em modo servidor e alterar a URL de conexão deste DataSource para 'jdbc:h2:tcp://localhost:9092/libros;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE', por exemplo.
  
-Outra configuração a ser feita no mesmo arquivo 'standalone.xml' diz respeito à criação de um Security Domain. O Security Domain é utilizado para definir como um usuário se autentica e recebe autorização para acessar os recursos da aplicação. Procure a tag '<security-domains>' e adicione o conteúdo necessário:
+Outra configuração a ser feita no mesmo arquivo diz respeito à criação de um Security Domain. O Security Domain é utilizado para definir como um usuário se autentica e recebe autorização para acessar os recursos da aplicação. Procure a tag '<security-domains>' e adicione o conteúdo necessário:
 
             <security-domains>
                 ...
@@ -71,7 +75,7 @@ http://localhost:8080/libros/api/livros (API REST do módulo Livro)
 
 Obs.: o usuário 'admin' (com senha 'admin') e o usuário 'user' (com senha 'user') estão disponíveis e podem ser utilizados para logar na aplicação.
 
-Obs.: a partir do diretório raiz do projeto, digite 'mvn test' para executar os testes unitários ou digite 'mvn integration-test' para executar os testes de integração.
+Obs.: a partir do diretório raiz do projeto, digite 'mvn test' para executar os testes unitários ou digite 'mvn package verify -P wildfly-managed' para executar os testes de integração.
 
 Obs.: se for utilizar a IDE Eclipse para compilar e fazer deploy da aplicação, é preciso instalar o plugin 'm2e-apt' a fim de habilitar o recurso de Annotation Processing utilizado pela biblioteca MapStruct. O plugin pode ser instalado a partir do Eclipse Market. Depois de instalar o plugin, entre em 'Eclipse -> Preferências -> Maven -> Annotation Processing' e selecione a opção 'Automatically configure JDT APT'.
 

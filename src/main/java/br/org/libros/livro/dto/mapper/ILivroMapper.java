@@ -4,8 +4,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import br.org.libros.comum.dto.mapper.IGenericMapper;
-import br.org.libros.comum.model.persistence.entity.Livro;
 import br.org.libros.livro.dto.LivroDto;
+import br.org.libros.livro.model.persistence.entity.Livro;
 
 /**
  * 

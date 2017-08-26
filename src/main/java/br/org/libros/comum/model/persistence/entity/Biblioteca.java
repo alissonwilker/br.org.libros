@@ -1,7 +1,5 @@
 package br.org.libros.comum.model.persistence.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +18,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "Biblioteca", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
-public class Biblioteca implements Serializable {
+public class Biblioteca implements IEntidade {
 
 	private static final long serialVersionUID = 1L;
 

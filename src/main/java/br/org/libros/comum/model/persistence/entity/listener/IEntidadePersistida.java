@@ -9,7 +9,6 @@ import javax.inject.Qualifier;
 
 /**
  * Esta interface representa um classificador para um evento CDI de entidade persistida.
-
  *
  */
 @Qualifier

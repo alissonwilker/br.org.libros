@@ -2,7 +2,6 @@ package br.org.libros.comum.mensageria;
 
 import java.lang.invoke.MethodHandles;
 
-import javax.ejb.Stateless;
 import javax.enterprise.event.Observes;
 import javax.jms.JMSContext;
 import javax.jms.Queue;
@@ -19,7 +18,6 @@ import br.org.libros.comum.model.persistence.entity.listener.IEntidadeRemovida;
  * Classe abstrata responsável por enviar notificações de eventos através de JMS.
  * 
  */
-@Stateless
 public abstract class AbstractNotificadorJms {
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 

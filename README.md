@@ -10,8 +10,24 @@ Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource
 
             <datasources>
                 ...
-                <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                <datasource jndi-name="java:jboss/datasources/LibrosLivroDS" pool-name="LibrosLivroDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:LibrosLivroDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/LibrosBibliotecaDS" pool-name="LibrosBibliotecaDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:LibrosBibliotecaDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+                 <datasource jndi-name="java:jboss/datasources/LibrosUsuarioDS" pool-name="LibrosUsuarioDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:LibrosUsuarioDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
                     <driver>h2</driver>
                     <security>
                         <user-name>sa</user-name>
@@ -26,7 +42,7 @@ Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource
                 ...
             </datasources>
  
-Obs.: o DataSource 'ExampleDS' pode já estar configurado no arquivo. Porém, se quiser acessar a base de dados por um cliente externo (como o Eclipse Data Tools Platform (DTP), por exemplo), será necessário iniciar o H2 Database Engine em modo servidor e alterar a URL de conexão deste DataSource para 'jdbc:h2:tcp://localhost:9092/libros;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE', por exemplo.
+Obs.: Se quiser acessar alguma das bases de dados através um cliente externo (como o Eclipse Data Tools Platform (DTP), por exemplo), será necessário iniciar o H2 Database Engine em modo servidor e alterar a URL de conexão do respectivo DataSource para 'jdbc:h2:tcp://localhost:9092/LibrosBibliotecaDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE', por exemplo.
  
 Outra configuração a ser feita no mesmo arquivo diz respeito à criação de um Security Domain. O Security Domain é utilizado para definir como um usuário se autentica e recebe autorização para acessar os recursos da aplicação. Procure a tag '<security-domains>' e adicione o conteúdo necessário:
 
@@ -35,7 +51,7 @@ Outra configuração a ser feita no mesmo arquivo diz respeito à criação de u
                 <security-domain name="MeuSecurityDomain" cache-type="default">
                     <authentication>
                         <login-module code="Database" flag="required">
-                            <module-option name="dsJndiName" value="java:jboss/datasources/ExampleDS"/>
+                            <module-option name="dsJndiName" value="java:jboss/datasources/LibrosUsuarioDS"/>
                             <module-option name="rolesQuery" value="SELECT role, 'Roles' FROM users WHERE username=?"/>
                             <module-option name="hashAlgorithm" value="MD5"/>
                             <module-option name="hashEncoding" value="hex"/>
@@ -44,7 +60,7 @@ Outra configuração a ser feita no mesmo arquivo diz respeito à criação de u
                     </authentication>
                     <authorization>
                         <policy-module code="Database" flag="required">
-                            <module-option name="dsJndiName" value="java:jboss/datasources/ExampleDS"/>
+                            <module-option name="dsJndiName" value="java:jboss/datasources/LibrosUsuarioDS"/>
                             <module-option name="rolesQuery" value="SELECT role, 'Roles' FROM users WHERE username=?"/>
                             <module-option name="hashAlgorithm" value="MD5"/>
                             <module-option name="hashEncoding" value="hex"/>
@@ -55,7 +71,7 @@ Outra configuração a ser feita no mesmo arquivo diz respeito à criação de u
                 ...
             </security-domains>
  
-Obs.: note que o conteúdo acima faz referência ao DataSource configurado anteriormente nesse tutorial. Além disso, o conteúdo também faz referência à tabela 'users', que será criada automaticamente pela aplicação quando esta for iniciada no servidor de aplicação.
+Obs.: note que o conteúdo acima faz referência ao DataSource 'LibrosUsuarioDS' configurado anteriormente nesse tutorial. Além disso, o conteúdo também faz referência à tabela 'users', que será criada automaticamente pela aplicação quando esta for iniciada no servidor de aplicação.
  
 Pronto! Digite 'mvn clean package javadoc:javadoc' a partir do diretório raiz do projeto para compilar, executar testes e empacotar a aplicação, gerando também javadocs. O pacote WAR será criado no diretório 'target'.
 

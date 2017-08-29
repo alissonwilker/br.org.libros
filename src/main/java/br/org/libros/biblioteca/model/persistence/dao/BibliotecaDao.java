@@ -3,16 +3,15 @@ package br.org.libros.biblioteca.model.persistence.dao;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import br.org.libros.comum.model.persistence.dao.AbstractDao;
 import br.org.libros.comum.model.persistence.entity.Biblioteca;
 
 /**
  * 
- * @see br.org.libros.comum.model.persistence.dao.AbstractDao
+ * @see br.org.libros.biblioteca.model.persistence.dao.BibliotecaAbstractDao
  */
 @Named
 @RequestScoped
-public class BibliotecaDao extends AbstractDao<Biblioteca, Integer> {
+public class BibliotecaDao extends BibliotecaAbstractDao<Biblioteca, Integer> {
 	private static final long serialVersionUID = 1L;
 
 }

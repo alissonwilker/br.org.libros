@@ -151,6 +151,30 @@
                         <password>sa</password>
                     </security>
                 </datasource>
+                <datasource jndi-name="java:jboss/datasources/LibrosLivroDS" pool-name="LibrosLivroDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:LibrosLivroDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/LibrosBibliotecaDS" pool-name="LibrosBibliotecaDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:LibrosBibliotecaDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+                 <datasource jndi-name="java:jboss/datasources/LibrosUsuarioDS" pool-name="LibrosUsuarioDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:LibrosUsuarioDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
@@ -453,10 +477,10 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:security:2.0">
             <security-domains>
-            <security-domain name="MeuSecurityDomain" cache-type="default">
+            <security-domain name="LibrosSecurityDomain" cache-type="default">
                 <authentication>
                     <login-module code="Database" flag="required">
-                        <module-option name="dsJndiName" value="java:jboss/datasources/ExampleDS"/>
+                        <module-option name="dsJndiName" value="java:jboss/datasources/LibrosUsuarioDS"/>
                         <module-option name="rolesQuery" value="SELECT role, 'Roles' FROM users WHERE username=?"/>
                         <module-option name="hashAlgorithm" value="MD5"/>
                         <module-option name="hashEncoding" value="hex"/>
@@ -465,7 +489,7 @@
                 </authentication>
                 <authorization>
                     <policy-module code="Database" flag="required">
-                        <module-option name="dsJndiName" value="java:jboss/datasources/ExampleDS"/>
+                        <module-option name="dsJndiName" value="java:jboss/datasources/LibrosUsuarioDS"/>
                         <module-option name="rolesQuery" value="SELECT role, 'Roles' FROM users WHERE username=?"/>
                         <module-option name="hashAlgorithm" value="MD5"/>
                         <module-option name="hashEncoding" value="hex"/>

@@ -71,7 +71,7 @@
   </security-constraint>
   <login-config>
     <auth-method>FORM</auth-method>
-    <realm-name>MeuSecurityDomain</realm-name>
+    <realm-name>LibrosSecurityDomain</realm-name>
     <form-login-config>
       <form-login-page>/pages/login.xhtml</form-login-page>
       <form-error-page>/WEB-INF/pages/loginFailed.xhtml</form-error-page>

@@ -6,8 +6,6 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.PersistenceException;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -29,9 +27,12 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 
 	private static final long serialVersionUID = 1L;
 
-	@PersistenceContext(unitName = "MinhaPersistenceUnit", type = PersistenceContextType.TRANSACTION)
 	protected EntityManager entityManager;
 	private Class<?> domain;
+	
+	protected void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 
 	private Class<?> getDomainClass() {
 		if (this.domain == null) {

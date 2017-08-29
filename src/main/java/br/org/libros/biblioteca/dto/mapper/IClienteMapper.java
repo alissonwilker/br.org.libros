@@ -1,11 +1,11 @@
-package br.org.libros.cliente.dto.mapper;
+package br.org.libros.biblioteca.dto.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import br.org.libros.cliente.dto.ClienteDto;
+import br.org.libros.biblioteca.dto.ClienteDto;
+import br.org.libros.biblioteca.model.persistente.entity.Cliente;
 import br.org.libros.comum.dto.mapper.IGenericMapper;
-import br.org.libros.comum.model.persistence.entity.Cliente;
 
 /**
  * 

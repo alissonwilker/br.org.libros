@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 
 import br.org.libros.biblioteca.dto.BibliotecaDto;
 import br.org.libros.biblioteca.dto.mapper.IBibliotecaMapper;
+import br.org.libros.biblioteca.model.persistente.entity.Biblioteca;
 import br.org.libros.comum.model.business.facade.AbstractBusinessFacade;
-import br.org.libros.comum.model.persistence.entity.Biblioteca;
 
 /**
  * 

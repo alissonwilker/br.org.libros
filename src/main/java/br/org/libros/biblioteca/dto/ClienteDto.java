@@ -1,9 +1,9 @@
-package br.org.libros.cliente.dto;
+package br.org.libros.biblioteca.dto;
 
 import java.io.Serializable;
 
 /**
- * DTO que representa a Entidade {@link br.org.libros.comum.model.persistence.entity.Cliente Cliente}.
+ * DTO que representa a Entidade {@link br.org.libros.biblioteca.model.persistente.entity.Cliente Cliente}.
  *
  */
 public class ClienteDto implements Serializable {

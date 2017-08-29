@@ -1,16 +1,23 @@
-package br.org.libros.comum.model.persistence.entity;
+package br.org.libros.biblioteca.model.persistente.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import br.org.libros.comum.model.persistence.entity.IEntidade;
 
 /**
  * Entidade que representa uma Biblioteca.
@@ -33,6 +40,9 @@ public class Biblioteca implements IEntidade {
 	@NotNull
 	@Size(max = 20)
 	private String nome;
+
+	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "biblioteca")
+	private Set<Livro> livros;
 
 	@Valid
 	public Biblioteca() {
@@ -57,6 +67,14 @@ public class Biblioteca implements IEntidade {
 
 	public void setNome(@NotNull @Size(max = 20) String nome) {
 		this.nome = nome;
+	}
+
+	public Set<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(Set<Livro> livros) {
+		this.livros = livros;
 	}
 
 }

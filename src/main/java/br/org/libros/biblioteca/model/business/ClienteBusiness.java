@@ -1,10 +1,10 @@
-package br.org.libros.cliente.model.business;
+package br.org.libros.biblioteca.model.business;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import br.org.libros.biblioteca.model.persistente.entity.Cliente;
 import br.org.libros.comum.model.business.AbstractBusiness;
-import br.org.libros.comum.model.persistence.entity.Cliente;
 
 /**
  * 

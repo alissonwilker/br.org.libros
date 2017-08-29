@@ -4,8 +4,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import br.org.libros.comum.dto.mapper.IGenericMapper;
-import br.org.libros.comum.model.persistence.entity.Usuario;
 import br.org.libros.usuario.dto.UsuarioDto;
+import br.org.libros.usuario.model.persistence.entity.Usuario;
 
 /**
  * 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * DTO que representa a Entidade
- * {@link br.org.libros.comum.model.persistence.entity.Usuario Usuario}.
+ * {@link br.org.libros.usuario.model.persistence.entity.Usuario Usuario}.
  *
  */
 public class UsuarioDto implements Serializable {

@@ -1,4 +1,4 @@
-package br.org.libros.cliente.api;
+package br.org.libros.biblioteca.api;
 
 import java.lang.invoke.MethodHandles;
 import java.net.URI;
@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.org.libros.cliente.dto.ClienteDto;
+import br.org.libros.biblioteca.dto.ClienteDto;
 import br.org.libros.comum.api.AbstractApi;
 import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import io.swagger.annotations.Api;

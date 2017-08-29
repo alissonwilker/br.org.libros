@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContextType;
 import br.org.libros.comum.model.persistence.dao.AbstractDao;
 
 /**
+ * Classe abstrata que implementa comportamento padrão dos DAO's do módulo Usuario.
  * 
  * @see br.org.libros.comum.model.persistence.dao.AbstractDao
  */

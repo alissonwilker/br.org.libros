@@ -1,4 +1,6 @@
-package br.org.libros.comum.model.persistence.entity;
+package br.org.libros.usuario.model.persistence.entity;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,15 +14,13 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.org.libros.comum.model.persistence.entity.validator.annotation.Cpf;
-
 /**
  * Entidade que representa um Cliente.
  *
  */
 @Entity
-@Table(name = "Cliente", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
-public class Cliente implements IEntidade {
+@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,24 +31,30 @@ public class Cliente implements IEntidade {
 	@Max(Integer.MAX_VALUE)
 	private int id;
 
-	@Column(name = "CPF", nullable = false, unique = true, length = 11)
+	@Column(name = "password", nullable = false, length = 32)
 	@NotNull
-	@Cpf
-	private String cpf;
+	@Size(max = 32)
+	private String senha; 
 
-	@Column(name = "NOME", nullable = false, unique = false, length = 20)
+	@Column(name = "role", nullable = false, length = 15)
+	@NotNull
+	@Size(max = 15)
+	private String perfil;
+
+	@Column(name = "username", nullable = false, unique = true, length = 20)
 	@NotNull
 	@Size(max = 20)
 	private String nome;
 
 	@Valid
-	public Cliente() {
+	public Usuario() {
 	}
 
 	@Valid
-	public Cliente(String cpf, String nome) {
-		setCpf(cpf);
+	public Usuario(String nome, String senha, String perfil) {
 		setNome(nome);
+		setSenha(senha);
+		setPerfil(perfil);
 	}
 
 	public int getId() {
@@ -59,12 +65,20 @@ public class Cliente implements IEntidade {
 		this.id = id;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setCpf(@NotNull @Cpf String cpf) {
-		this.cpf = cpf;
+	public void setSenha(@NotNull @Size(max = 32) String senha) {
+		this.senha = senha;
+	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(@NotNull @Size(max = 15) String perfil) {
+		this.perfil = perfil;
 	}
 
 	public String getNome() {

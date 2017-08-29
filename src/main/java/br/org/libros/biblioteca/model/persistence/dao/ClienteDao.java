@@ -1,10 +1,9 @@
-package br.org.libros.cliente.model.persistence.dao;
+package br.org.libros.biblioteca.model.persistence.dao;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import br.org.libros.biblioteca.model.persistence.dao.BibliotecaAbstractDao;
-import br.org.libros.comum.model.persistence.entity.Cliente;
+import br.org.libros.biblioteca.model.persistente.entity.Cliente;
 
 /**
  * 

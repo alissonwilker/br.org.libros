@@ -1,4 +1,4 @@
-package br.org.libros.comum.utils;
+package br.org.libros.usuario.utils;
 
 import java.lang.invoke.MethodHandles;
 

@@ -7,7 +7,7 @@
 		<p:menu>
 			<p:submenu label="#{msg['app.acoes']}">
 				<p:menuitem value="#{msg['app.inicio']}" outcome="/pages/app" />
-				<p:menuitem value="#{msg['app.cadastrarBiblioteca']}" rendered="#{loginController.isUserInRole(fn:split('ADMINISTRATOR', ','))}"
+				<p:menuitem value="#{msg['app.cadastrarBiblioteca']}" rendered="#{usuarioController.isUserInRole(fn:split('ADMINISTRATOR', ','))}"
 					outcome="/pages/biblioteca/cadastrarBiblioteca" />
 				<p:menuitem value="#{msg['app.cadastrarCliente']}"
 					outcome="/pages/cliente/cadastrarCliente" />

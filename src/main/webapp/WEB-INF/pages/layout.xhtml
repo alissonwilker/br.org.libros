@@ -20,8 +20,8 @@
 				</div>
 				<div class="ui-g-12 ui-lg-1">
 					<h:form>
-						<p:menuButton rendered="#{loginController.autenticado}" styleClass="nomeUsuario" value="#{loginController.nomeUsuarioAutenticado}">
-							<p:menuitem action="#{loginController.logout}">
+						<p:menuButton rendered="#{usuarioController.autenticado}" styleClass="nomeUsuario" value="#{usuarioController.nomeUsuarioAutenticado}">
+							<p:menuitem action="#{usuarioController.logout}">
 								<span class="fa fa-sign-out" aria-hidden="true"/>
 								<p:outputLabel value="#{msg['app.logout']}"/>
 							</p:menuitem>
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="ui-g-12 ui-lg-3">
-				<h:panelGrid rendered="#{loginController.autenticado}">
+				<h:panelGrid rendered="#{usuarioController.autenticado}">
 					<ui:include src="../facelets/menu.xhtml" />
 				</h:panelGrid>
 			</div>

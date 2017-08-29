@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 	<f:metadata>
-		<f:viewAction action="#{loginController.redirecionarSeAutenticado}" />
+		<f:viewAction action="#{usuarioController.redirecionarSeAutenticado}" />
 	</f:metadata>
 	<ui:param name="pageTitle" value="#{msg['login.logar']}" />
 	<ui:define name="formCadastroContent">
@@ -18,6 +18,6 @@
 			required="true" requiredMessage="#{msg['login.digiteSenha']}"
 			a:placeholder="#{msg['login.senha']}" maxlength="32" />
 		<p:commandButton value="#{msg['app.ok']}"
-			action="#{loginController.login(usuario, senha)}" />
+			action="#{usuarioController.login(usuario, senha)}" />
 	</ui:define>
 </ui:composition>

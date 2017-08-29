@@ -1,24 +1,25 @@
-package br.org.libros.comum.view.controller;
+package br.org.libros.usuario.view.controller;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.security.Principal;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 
+import br.org.libros.comum.view.controller.AbstractController;
 import br.org.libros.comum.view.utils.FacesMessageUtils;
 import br.org.libros.comum.view.utils.JsfUtils;
 import br.org.libros.comum.view.utils.JsfUtils.Pagina;
+import br.org.libros.usuario.dto.UsuarioDto;
 
 /**
- * Controlador responsável pelo fluxo de Login.
- *
+ * 
+ * @see br.org.libros.comum.view.controller.AbstractController
  */
 @Named
 @RequestScoped
-public class LoginController implements Serializable {
+public class UsuarioController extends AbstractController<UsuarioDto, Integer> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,10 +30,10 @@ public class LoginController implements Serializable {
 		return JsfUtils.getRequest().getUserPrincipal() != null;
 	}
 
-	public String getNomeUsuarioAutenticado() { 
+	public String getNomeUsuarioAutenticado() {
 		Principal principal = JsfUtils.getRequest().getUserPrincipal();
 		if (principal != null) {
-			return principal.getName(); 
+			return principal.getName();
 		}
 		return "";
 	}

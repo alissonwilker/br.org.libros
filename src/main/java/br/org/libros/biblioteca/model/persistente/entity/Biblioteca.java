@@ -1,6 +1,6 @@
 package br.org.libros.biblioteca.model.persistente.entity;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,7 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
@@ -41,8 +41,8 @@ public class Biblioteca implements IEntidade {
 	@Size(max = 20)
 	private String nome;
 
-	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "biblioteca")
-	private Set<Livro> livros;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Livro> livros;
 
 	@Valid
 	public Biblioteca() {
@@ -69,11 +69,11 @@ public class Biblioteca implements IEntidade {
 		this.nome = nome;
 	}
 
-	public Set<Livro> getLivros() {
+	public List<Livro> getLivros() {
 		return livros;
 	}
 
-	public void setLivros(Set<Livro> livros) {
+	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
 	}
 

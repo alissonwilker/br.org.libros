@@ -11,7 +11,7 @@ Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource
             <datasources>
                 ...
                 <datasource jndi-name="java:jboss/datasources/LibrosLivroDS" pool-name="LibrosLivroDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:LibrosLivroDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <connection-url>jdbc:h2:mem:LibrosLivroDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
                     <driver>h2</driver>
                     <security>
                         <user-name>sa</user-name>
@@ -19,7 +19,7 @@ Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/LibrosBibliotecaDS" pool-name="LibrosBibliotecaDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:LibrosBibliotecaDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <connection-url>jdbc:h2:mem:LibrosBibliotecaDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
                     <driver>h2</driver>
                     <security>
                         <user-name>sa</user-name>
@@ -27,7 +27,7 @@ Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource
                     </security>
                 </datasource>
                  <datasource jndi-name="java:jboss/datasources/LibrosUsuarioDS" pool-name="LibrosUsuarioDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:LibrosUsuarioDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <connection-url>jdbc:h2:mem:LibrosUsuarioDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
                     <driver>h2</driver>
                     <security>
                         <user-name>sa</user-name>
@@ -42,7 +42,7 @@ Para integrar o Wildfly com uma base de dados H2, é preciso criar um DataSource
                 ...
             </datasources>
  
-Obs.: Se quiser acessar alguma das bases de dados através um cliente externo (como o Eclipse Data Tools Platform (DTP), por exemplo), será necessário iniciar o H2 Database Engine em modo servidor e alterar a URL de conexão do respectivo DataSource para 'jdbc:h2:tcp://localhost:9092/LibrosBibliotecaDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE', por exemplo.
+Obs.: Se quiser acessar alguma das bases de dados através um cliente externo (como o Eclipse Data Tools Platform (DTP), por exemplo), será necessário iniciar o H2 Database Engine em modo servidor e alterar a URL de conexão do respectivo DataSource para 'jdbc:h2:tcp://localhost:9092/~/LibrosH2DB/LibrosLivroDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE', por exemplo.
  
 Outra configuração a ser feita no mesmo arquivo diz respeito à criação de um Security Domain. O Security Domain é utilizado para definir como um usuário se autentica e recebe autorização para acessar os recursos da aplicação. Procure a tag '<security-domains>' e adicione o conteúdo necessário:
 

@@ -1,9 +1,12 @@
 package br.org.libros.biblioteca.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * DTO que representa a Entidade {@link br.org.libros.biblioteca.model.persistente.entity.Biblioteca Biblioteca}.
+ * DTO que representa a Entidade
+ * {@link br.org.libros.biblioteca.model.persistente.entity.Biblioteca
+ * Biblioteca}.
  *
  */
 public class BibliotecaDto implements Serializable {
@@ -12,6 +15,7 @@ public class BibliotecaDto implements Serializable {
 
 	private int id;
 	private String nome;
+	private List<LivroDto> livros;
 
 	public BibliotecaDto() {
 	}
@@ -34,6 +38,14 @@ public class BibliotecaDto implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<LivroDto> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<LivroDto> livros) {
+		this.livros = livros;
 	}
 
 }

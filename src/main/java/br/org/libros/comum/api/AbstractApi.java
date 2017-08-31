@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -18,6 +21,8 @@ import br.org.libros.comum.model.business.facade.IBusinessFacade;
  * 
  * @see br.org.libros.comum.model.business.facade.AbstractBusinessFacade
  */
+@Consumes({ MediaType.APPLICATION_JSON })
+@Produces({ MediaType.APPLICATION_JSON })
 public abstract class AbstractApi<D, PK extends Serializable> {
 
 	@Inject

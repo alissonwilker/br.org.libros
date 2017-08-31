@@ -1,12 +1,11 @@
 package br.org.libros.biblioteca.model.persistente.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
@@ -26,16 +25,13 @@ public class Livro implements IEntidade {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false, unique = true, length = 10)
 	@NotNull
 	@Max(Integer.MAX_VALUE)
 	private int id;
-
-	@ManyToOne
-	@JoinColumn(name = "BIBLIOTECA_ID", nullable = false)
-	@NotNull
-	private Biblioteca biblioteca;
+	
+	@ManyToMany(mappedBy = "livros")
+	private List<Biblioteca> bibliotecas;
 
 	@Valid
 	public Livro() {
@@ -49,12 +45,12 @@ public class Livro implements IEntidade {
 		this.id = id;
 	}
 
-	public Biblioteca getBiblioteca() {
-		return biblioteca;
+	public List<Biblioteca> getBibliotecas() {
+		return bibliotecas;
 	}
 
-	public void setBiblioteca(@NotNull Biblioteca biblioteca) {
-		this.biblioteca = biblioteca;
+	public void setBibliotecas(List<Biblioteca> bibliotecas) {
+		this.bibliotecas = bibliotecas;
 	}
 
 }

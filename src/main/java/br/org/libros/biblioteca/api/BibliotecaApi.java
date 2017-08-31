@@ -10,8 +10,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -23,6 +21,7 @@ import br.org.libros.comum.api.AbstractApi;
 import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 /**
  * 
@@ -30,7 +29,6 @@ import io.swagger.annotations.ApiOperation;
  */
 @Path("/bibliotecas")
 @Api(value = "bibliotecas")
-@Produces({ MediaType.APPLICATION_JSON })
 public class BibliotecaApi extends AbstractApi<BibliotecaDto, Integer> {
 
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -66,13 +64,15 @@ public class BibliotecaApi extends AbstractApi<BibliotecaDto, Integer> {
 		return super.remover(idBiblioteca);
 	}
 
+	@Override
 	@PUT
-	@Path("/{idBiblioteca}/atualizar/{nomeBiblioteca}")
+	@Path("/{idBiblioteca}")
 	@ApiOperation(value = "Atualizar uma biblioteca", response = BibliotecaDto.class)
 	public Response atualizar(@PathParam("idBiblioteca") Integer idBiblioteca,
-			@PathParam("nomeBiblioteca") String nomeBiblioteca) {
-		BibliotecaDto bibliotecaDto = new BibliotecaDto(nomeBiblioteca);
-		bibliotecaDto.setId(idBiblioteca);
+			@ApiParam(value="bibliotecaDto") BibliotecaDto bibliotecaDto) {
+		if (bibliotecaDto == null || idBiblioteca != bibliotecaDto.getId()) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
 		return super.atualizar(idBiblioteca, bibliotecaDto);
 	}
 

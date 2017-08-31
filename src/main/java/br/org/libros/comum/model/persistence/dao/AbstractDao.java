@@ -29,7 +29,7 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 
 	protected EntityManager entityManager;
 	private Class<?> domain;
-	
+
 	protected void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
@@ -71,8 +71,7 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
 		E entidade = recuperar(chavePrimaria);
 		if (entidade != null) {
-			entityManager.remove(entidade);
-			entityManager.flush();
+			remover(entidade);
 		} else {
 			throw new EntidadeNaoEncontradaExcecao();
 		}
@@ -94,6 +93,7 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao {
 		try {
 			E entidadeAtualizada = entityManager.merge(entidade);
+			entityManager.flush();
 			return entidadeAtualizada;
 		} catch (IllegalArgumentException iaex) {
 			throw new EntidadeNaoEncontradaExcecao(iaex);
@@ -104,15 +104,11 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao {
 		E entidadeRecuperada = recuperar(chavePrimaria);
 		if (entidadeRecuperada != null) {
-			try {
-				E entidadeAtualizada = entityManager.merge(entidade);
-				entityManager.flush();
-				return entidadeAtualizada;
-			} catch (IllegalArgumentException iaex) {
-				throw new EntidadeNaoEncontradaExcecao(iaex);
-			}
+			E entidadeAtualizada = atualizar(entidade);
+			return entidadeAtualizada;
+		} else {
+			throw new EntidadeNaoEncontradaExcecao();
 		}
-		throw new EntidadeNaoEncontradaExcecao();
 	}
 
 	@SuppressWarnings("unchecked")

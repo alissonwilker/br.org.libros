@@ -1,7 +1,6 @@
 package br.org.libros.biblioteca.api;
 
-import static io.restassured.RestAssured.get;
-import static io.restassured.RestAssured.post;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasItems;
 
 import org.apache.http.HttpStatus;
@@ -10,6 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.org.libros.AbstractIntegrationTest;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
 
 /**
  * Classe de teste que testa o comportamento da API do módulo Biblioteca.
@@ -18,6 +19,7 @@ import br.org.libros.AbstractIntegrationTest;
 @RunWith(Arquillian.class)
 public class BibliotecaApiITCase extends AbstractIntegrationTest {
 	private static final String BASE_HREF = "/" + TEST_APP_CONTEXT_ROOT + "/api/bibliotecas";
+	private static final RequestSpecification request = given().contentType(ContentType.JSON);
 
 	/**
 	 * Test method for
@@ -26,8 +28,8 @@ public class BibliotecaApiITCase extends AbstractIntegrationTest {
 	 */
 	@Test
 	public void testAdicionarEListar() {
-		post(BASE_HREF + "/aa").then().statusCode(HttpStatus.SC_CREATED);
-		get(BASE_HREF).then().body("id", hasItems(1));
+		request.post(BASE_HREF + "/aa").then().statusCode(HttpStatus.SC_CREATED);
+		request.get(BASE_HREF).then().body("id", hasItems(1));
 	}
 
 }

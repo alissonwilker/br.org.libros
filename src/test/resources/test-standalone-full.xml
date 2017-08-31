@@ -152,7 +152,7 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/LibrosLivroDS" pool-name="LibrosLivroDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:LibrosLivroDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <connection-url>jdbc:h2:mem:LibrosLivroDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
                     <driver>h2</driver>
                     <security>
                         <user-name>sa</user-name>
@@ -160,7 +160,7 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/LibrosBibliotecaDS" pool-name="LibrosBibliotecaDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:LibrosBibliotecaDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <connection-url>jdbc:h2:mem:LibrosBibliotecaDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
                     <driver>h2</driver>
                     <security>
                         <user-name>sa</user-name>
@@ -168,7 +168,7 @@
                     </security>
                 </datasource>
                  <datasource jndi-name="java:jboss/datasources/LibrosUsuarioDS" pool-name="LibrosUsuarioDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:LibrosUsuarioDS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <connection-url>jdbc:h2:mem:LibrosUsuarioDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
                     <driver>h2</driver>
                     <security>
                         <user-name>sa</user-name>

@@ -46,4 +46,5 @@ public interface IGenericMapper<E, D> {
 	 * @return a lista de Entidades que corresponde à lista de DTOs original.
 	 */
 	List<E> converterParaEntidade(List<D> dtos);
+
 }

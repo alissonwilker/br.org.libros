@@ -40,7 +40,7 @@ public abstract class AbstractBusiness<E, PK extends Serializable> implements IB
 	}
 
 	@Override
-	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao {
+	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
 		return dao.atualizar(entidade);
 	}
 
@@ -55,7 +55,7 @@ public abstract class AbstractBusiness<E, PK extends Serializable> implements IB
 	}
 	
 	@Override
-	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao {
+	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
 		return dao.atualizar(chavePrimaria, entidade);
 	}
 

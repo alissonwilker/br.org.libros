@@ -29,7 +29,7 @@ public class Livro implements IEntidade {
 	@NotNull
 	@Max(Integer.MAX_VALUE)
 	private int id;
-	
+
 	@ManyToMany(mappedBy = "livros")
 	private List<Biblioteca> bibliotecas;
 
@@ -37,11 +37,13 @@ public class Livro implements IEntidade {
 	public Livro() {
 	}
 
+	@Override
 	public int getId() {
 		return id;
 	}
 
-	public void setId(@NotNull @Max(Integer.MAX_VALUE) int id) {
+	@Override
+	public void setId(int id) {
 		this.id = id;
 	}
 

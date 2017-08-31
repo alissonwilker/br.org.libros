@@ -52,11 +52,13 @@ public class Cliente implements IEntidade {
 		setNome(nome);
 	}
 
+	@Override
 	public int getId() {
 		return id;
 	}
 
-	public void setId(@NotNull @Max(Integer.MAX_VALUE) int id) {
+	@Override
+	public void setId(int id) {
 		this.id = id;
 	}
 

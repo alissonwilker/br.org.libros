@@ -42,7 +42,7 @@ public class DefaultEntityListener {
 	public void postPersist(IEntidade entidade) {
 		String mensagem = "postPersist de " + entidade.getClass().getSimpleName();
 		logger.info(mensagem);
-		dispararEvento(eventoEntidadePersistida, mensagem);
+		eventoEntidadePersistida.fire(new EventoEntidade(EventoEntidade.Tipo.EntidadePersistida, entidade.getId()));
 	}
 
 	/**
@@ -55,7 +55,8 @@ public class DefaultEntityListener {
 	public void postUpdate(IEntidade entidade) {
 		String mensagem = "postUpdate de " + entidade.getClass().getSimpleName();
 		logger.info(mensagem);
-		dispararEvento(eventoEntidadeAtualizada, mensagem);
+		eventoEntidadeAtualizada.fire(new EventoEntidade(EventoEntidade.Tipo.EntidadeAtualizada, entidade.getId()));
+
 	}
 
 	/**
@@ -68,11 +69,7 @@ public class DefaultEntityListener {
 	public void postRemove(IEntidade entidade) {
 		String mensagem = "postRemove de " + entidade.getClass().getSimpleName();
 		logger.info(mensagem);
-		dispararEvento(eventoEntidadeRemovida, mensagem);
-	}
-
-	private void dispararEvento(Event<EventoEntidade> evento, String payload) {
-		evento.fire(new EventoEntidade(payload));
+		eventoEntidadeRemovida.fire(new EventoEntidade(EventoEntidade.Tipo.EntidadeRemovida, entidade.getId()));
 	}
 
 }

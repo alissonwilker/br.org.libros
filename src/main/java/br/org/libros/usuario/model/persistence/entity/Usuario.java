@@ -1,9 +1,7 @@
 package br.org.libros.usuario.model.persistence.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Entity; 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,13 +12,15 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.org.libros.comum.model.persistence.entity.IEntidade;
+
 /**
  * Entidade que representa um Cliente.
  *
  */
 @Entity
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
-public class Usuario implements Serializable {
+public class Usuario implements IEntidade {
 
 	private static final long serialVersionUID = 1L;
 
@@ -57,11 +57,13 @@ public class Usuario implements Serializable {
 		setPerfil(perfil);
 	}
 
+	@Override
 	public int getId() {
 		return id;
 	}
 
-	public void setId(@NotNull @Max(Integer.MAX_VALUE) int id) {
+	@Override
+	public void setId(int id) {
 		this.id = id;
 	}
 

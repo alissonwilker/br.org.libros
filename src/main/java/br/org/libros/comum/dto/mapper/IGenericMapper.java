@@ -36,7 +36,7 @@ public interface IGenericMapper<E, D> {
 	 *            a lista de Entidades que deve ser convertida em lista de DTOs.
 	 * @return a lista de DTOs que corresponde à lista de Entidades original.
 	 */
-	List<D> converterParaDto(List<E> entidades);
+	List<D> converterParaDtos(List<E> entidades);
 
 	/**
 	 * Converte uma lista de DTOs na lista correspondente de Entidades.
@@ -45,6 +45,6 @@ public interface IGenericMapper<E, D> {
 	 *            a lista de DTOs que deve ser convertida em lista de Entidades.
 	 * @return a lista de Entidades que corresponde à lista de DTOs original.
 	 */
-	List<E> converterParaEntidade(List<D> dtos);
+	List<E> converterParaEntidades(List<D> dtos);
 
 }

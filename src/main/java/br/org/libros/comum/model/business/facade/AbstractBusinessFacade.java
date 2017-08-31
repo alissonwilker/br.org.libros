@@ -37,7 +37,7 @@ public abstract class AbstractBusinessFacade<E, D, PK extends Serializable> impl
 
 	@Override
 	public List<D> listar() {
-		return mapper.converterParaDto(business.listar());
+		return mapper.converterParaDtos(business.listar());
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public abstract class AbstractBusinessFacade<E, D, PK extends Serializable> impl
 	}
 
 	@Override
-	public D atualizar(D dto) throws EntidadeNaoEncontradaExcecao {
+	public D atualizar(D dto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
 		return mapper.converterParaDto(business.atualizar(mapper.converterParaEntidade(dto)));
 	}
 
@@ -61,7 +61,7 @@ public abstract class AbstractBusinessFacade<E, D, PK extends Serializable> impl
 	}
 
 	@Override
-	public D atualizar(PK chavePrimaria, D dto) throws EntidadeNaoEncontradaExcecao {
+	public D atualizar(PK chavePrimaria, D dto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
 		return mapper.converterParaDto(business.atualizar(chavePrimaria, mapper.converterParaEntidade(dto)));
 	}
 

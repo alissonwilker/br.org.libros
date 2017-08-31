@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 
@@ -48,6 +49,8 @@ public abstract class AbstractApi<D, PK extends Serializable> {
 			return Response.ok(dto).build();
 		} catch (EntidadeNaoEncontradaExcecao e) {
 			return Response.status(Status.NOT_FOUND).build();
+		} catch (EntidadeJaExisteExcecao e) {
+			return Response.status(Status.CONFLICT).build();
 		}
 	}
 	

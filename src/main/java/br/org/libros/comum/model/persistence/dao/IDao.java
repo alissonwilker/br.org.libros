@@ -63,8 +63,10 @@ public interface IDao<E, PK extends Serializable> {
 	 * @return um objeto gerenciado da Entidade atualizada.
 	 * @throws EntidadeNaoEncontradaExcecao
 	 *             se a Entidade não for encontrada na base para atualização.
+	 * @throws EntidadeJaExisteExcecao
+	 *             se ocorrer violação de constraint.
 	 */
-	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao;
+	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao;
 
 	/**
 	 * Recupera uma Entidade da base de dados a partir da chave primária.
@@ -88,7 +90,9 @@ public interface IDao<E, PK extends Serializable> {
 	 * @return um objeto gerenciado da Entidade atualizada.
 	 * @throws EntidadeNaoEncontradaExcecao
 	 *             se a Entidada não for encontrada para atualização.
+	 * @throws EntidadeJaExisteExcecao
+	 *             se ocorrer violação de constraint.
 	 */
-	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao;
+	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao;
 
 }

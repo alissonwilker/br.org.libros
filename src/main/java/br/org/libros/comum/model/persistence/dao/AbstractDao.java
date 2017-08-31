@@ -70,11 +70,7 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 	@Override
 	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
 		E entidade = recuperar(chavePrimaria);
-		if (entidade != null) {
-			remover(entidade);
-		} else {
-			throw new EntidadeNaoEncontradaExcecao();
-		}
+		remover(entidade);
 	}
 
 	@Override
@@ -90,25 +86,27 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 	}
 
 	@Override
-	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao {
+	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
 		try {
 			E entidadeAtualizada = entityManager.merge(entidade);
 			entityManager.flush();
 			return entidadeAtualizada;
 		} catch (IllegalArgumentException iaex) {
 			throw new EntidadeNaoEncontradaExcecao(iaex);
+		} catch (PersistenceException eeex) {
+			if (eeex.getCause() instanceof ConstraintViolationException) {
+				throw new EntidadeJaExisteExcecao(eeex);
+			} else {
+				throw eeex;
+			}
 		}
 	}
 
 	@Override
-	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao {
-		E entidadeRecuperada = recuperar(chavePrimaria);
-		if (entidadeRecuperada != null) {
-			E entidadeAtualizada = atualizar(entidade);
-			return entidadeAtualizada;
-		} else {
-			throw new EntidadeNaoEncontradaExcecao();
-		}
+	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
+		recuperar(chavePrimaria);
+		E entidadeAtualizada = atualizar(entidade);
+		return entidadeAtualizada;
 	}
 
 	@SuppressWarnings("unchecked")

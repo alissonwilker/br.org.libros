@@ -1,5 +1,6 @@
 package br.org.libros.comum.mensageria;
 
+import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 
 import javax.enterprise.event.Observes;
@@ -10,12 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.org.libros.comum.model.persistence.entity.listener.EventoEntidade;
+import br.org.libros.comum.model.persistence.entity.listener.EventoEntidade.Tipo;
 import br.org.libros.comum.model.persistence.entity.listener.IEntidadeAtualizada;
 import br.org.libros.comum.model.persistence.entity.listener.IEntidadePersistida;
 import br.org.libros.comum.model.persistence.entity.listener.IEntidadeRemovida;
 
 /**
- * Classe abstrata responsável por enviar notificações de eventos através de JMS.
+ * Classe abstrata responsável por enviar notificações de eventos através de
+ * JMS.
  * 
  */
 public abstract class AbstractNotificadorJms {
@@ -43,17 +46,20 @@ public abstract class AbstractNotificadorJms {
 	@IEntidadePersistida
 	@IEntidadeRemovida
 	public void onEntidadeAtualizada(@Observes EventoEntidade evento) {
-		enviarMensagemJms(evento.getPayload());
+		enviarMensagemJms(evento.getTipo(), evento.getPayload());
 	}
 
 	/**
 	 * Envia mensagem JMS de notifição sobre a mudança na entidade.
 	 * 
+	 * @param tipo
+	 *            o tipo do evento de entidade que ocorreu.
+	 * 
 	 * @param payloadDoEvento
 	 *            conteúdo do evento que será enviado na mensagem JMS.
 	 */
-	protected void enviarMensagemJms(String payloadDoEvento) {
-		contextoJms.createProducer().send(fila, payloadDoEvento);
+	protected void enviarMensagemJms(Tipo tipo, Serializable payloadDoEvento) {
+		contextoJms.createProducer().setProperty("tipoEvento", tipo.name()).send(fila, payloadDoEvento);
 		logger.info("mensagem JMS enviada: " + payloadDoEvento);
 	}
 }

@@ -26,10 +26,10 @@ public class BibliotecaBusiness extends AbstractBusiness<Biblioteca, Integer> {
 
 	@Override
 	public Biblioteca atualizar(Integer pk, Biblioteca entidade) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
-			Client client = ClientBuilder.newClient();
 			if (entidade.getLivros() != null) {
 				for (Livro livro : entidade.getLivros()) {
 					//TODO substituir endereço hardcoded por um service discovery
+					Client client = ClientBuilder.newClient();
 					Response response = client.target("http://localhost:8080/libros/api/livros/" + livro.getId()).request(MediaType.APPLICATION_JSON).get();
 					if (Status.fromStatusCode(response.getStatus()) != Status.OK) {
 						throw new EntidadeNaoEncontradaExcecao();

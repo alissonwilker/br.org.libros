@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.org.libros.AbstractIntegrationTest;
+import br.org.libros.biblioteca.dto.BibliotecaDto;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
@@ -18,7 +19,7 @@ import io.restassured.specification.RequestSpecification;
  */
 @RunWith(Arquillian.class)
 public class BibliotecaApiITCase extends AbstractIntegrationTest {
-	private static final String BASE_HREF = "/" + TEST_APP_CONTEXT_ROOT + "/api/bibliotecas";
+	private static final String BASE_HREF = "/" + TEST_APP_CONTEXT_ROOT + "/api" + BibliotecaApi.PATH;
 	private static final RequestSpecification request = given().contentType(ContentType.JSON);
 
 	/**
@@ -28,7 +29,9 @@ public class BibliotecaApiITCase extends AbstractIntegrationTest {
 	 */
 	@Test
 	public void testAdicionarEListar() {
-		request.post(BASE_HREF + "/aa").then().statusCode(HttpStatus.SC_CREATED);
+		BibliotecaDto dto = new BibliotecaDto();
+		dto.setNome("nova biblioteca");
+		request.body(dto).post(BASE_HREF).then().statusCode(HttpStatus.SC_CREATED);
 		request.get(BASE_HREF).then().body("id", hasItems(1));
 	}
 

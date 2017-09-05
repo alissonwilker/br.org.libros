@@ -1,4 +1,4 @@
-package br.org.libros.comum.exception;
+package br.org.libros.comum.excecao;
 
 import javax.persistence.PersistenceException;
 
@@ -7,7 +7,7 @@ import javax.persistence.PersistenceException;
  * lançada quando uma Entidade que já existe está tentando ser cadastrada
  * novamente.
  *
- * @see br.org.libros.comum.exception.Excecao
+ * @see br.org.libros.comum.excecao.Excecao
  */
 public class EntidadeJaExisteExcecao extends Excecao {
 

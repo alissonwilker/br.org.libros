@@ -10,8 +10,8 @@ import javax.persistence.PersistenceException;
 
 import org.hibernate.exception.ConstraintViolationException;
 
-import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
-import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 
 /**
  * Classe abstrata que implementa comportamento padrão de um DAO.

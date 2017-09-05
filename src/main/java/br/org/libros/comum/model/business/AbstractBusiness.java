@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
-import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.persistence.dao.IDao;
 
 /**

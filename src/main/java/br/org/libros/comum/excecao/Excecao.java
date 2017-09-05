@@ -1,4 +1,4 @@
-package br.org.libros.comum.exception;
+package br.org.libros.comum.excecao;
 
 /**
  * Classe abstrata que representa uma exceção genérica do sistema. 

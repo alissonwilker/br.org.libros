@@ -1,5 +1,7 @@
 package br.org.libros.biblioteca.api;
 
+import java.net.URISyntaxException;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,6 +12,8 @@ import javax.ws.rs.core.Response;
 
 import br.org.libros.biblioteca.dto.ClienteDto;
 import br.org.libros.comum.api.AbstractApi;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -31,7 +35,7 @@ public class ClienteApi extends AbstractApi<ClienteDto, Integer> {
 	@Override
 	@POST
 	@ApiOperation(value = "Adicionar um cliente")
-	public Response adicionar(@ApiParam(value = "clienteDto") ClienteDto clienteDto) {
+	public Response adicionar(@ApiParam(value = "clienteDto") ClienteDto clienteDto) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao, URISyntaxException {
 		return super.adicionar(clienteDto);
 	}
 
@@ -46,14 +50,14 @@ public class ClienteApi extends AbstractApi<ClienteDto, Integer> {
 	@DELETE
 	@Path("/{idCliente}")
 	@ApiOperation(value = "Remover um cliente")
-	public Response remover(@PathParam("idCliente") Integer idCliente) {
+	public Response remover(@PathParam("idCliente") Integer idCliente) throws EntidadeNaoEncontradaExcecao {
 		return super.remover(idCliente);
 	}
 
 	@Override
 	@PUT
 	@ApiOperation(value = "Atualizar um cliente", response = ClienteDto.class)
-	public Response atualizar(@ApiParam(value = "clienteDto") ClienteDto clienteDto) {
+	public Response atualizar(@ApiParam(value = "clienteDto") ClienteDto clienteDto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
 		return super.atualizar(clienteDto);
 	}
 
@@ -61,7 +65,7 @@ public class ClienteApi extends AbstractApi<ClienteDto, Integer> {
 	@GET
 	@Path("/{idCliente}")
 	@ApiOperation(value = "Recuperar um cliente", response = ClienteDto.class)
-	public Response recuperar(@PathParam("idCliente") Integer idCliente) {
+	public Response recuperar(@PathParam("idCliente") Integer idCliente) throws EntidadeNaoEncontradaExcecao {
 		return super.recuperar(idCliente);
 	}
 

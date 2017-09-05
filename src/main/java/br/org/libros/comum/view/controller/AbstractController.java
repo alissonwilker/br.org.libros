@@ -3,8 +3,8 @@ package br.org.libros.comum.view.controller;
 import java.io.Serializable;
 import java.util.List;
 
-import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
-import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 import br.org.libros.comum.view.utils.FacesMessageUtils;
 

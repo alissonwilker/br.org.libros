@@ -1,5 +1,7 @@
 package br.org.libros.livro.api;
 
+import java.net.URISyntaxException;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -9,6 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 import br.org.libros.comum.api.AbstractApi;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 import br.org.libros.livro.dto.LivroDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,7 +35,7 @@ public class LivroApi extends AbstractApi<LivroDto, Integer> {
 	@Override
 	@POST
 	@ApiOperation(value = "Adicionar um livro")
-	public Response adicionar(@ApiParam(value = "livroDto") LivroDto livroDto) {
+	public Response adicionar(@ApiParam(value = "livroDto") LivroDto livroDto) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao, URISyntaxException {
 		return super.adicionar(livroDto);
 	}
 
@@ -46,14 +50,14 @@ public class LivroApi extends AbstractApi<LivroDto, Integer> {
 	@DELETE
 	@Path("/{idLivro}")
 	@ApiOperation(value = "Remover um livro")
-	public Response remover(@PathParam("idLivro") Integer idLivro) {
+	public Response remover(@PathParam("idLivro") Integer idLivro) throws EntidadeNaoEncontradaExcecao {
 		return super.remover(idLivro);
 	}
 
 	@Override
 	@PUT
 	@ApiOperation(value = "Atualizar um livro", response = LivroDto.class)
-	public Response atualizar(@ApiParam(value = "livroDto") LivroDto livroDto) {
+	public Response atualizar(@ApiParam(value = "livroDto") LivroDto livroDto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
 		return super.atualizar(livroDto);
 	}
 
@@ -61,7 +65,7 @@ public class LivroApi extends AbstractApi<LivroDto, Integer> {
 	@GET
 	@Path("/{idLivro}")
 	@ApiOperation(value = "Recuperar um livro", response = LivroDto.class)
-	public Response recuperar(@PathParam("idLivro") Integer idLivro) {
+	public Response recuperar(@PathParam("idLivro") Integer idLivro) throws EntidadeNaoEncontradaExcecao {
 		return super.recuperar(idLivro);
 	}
 

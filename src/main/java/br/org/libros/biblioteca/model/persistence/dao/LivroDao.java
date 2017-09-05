@@ -4,7 +4,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import br.org.libros.biblioteca.model.persistente.entity.Livro;
-import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 
 /**
  * 

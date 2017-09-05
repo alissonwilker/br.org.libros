@@ -3,8 +3,8 @@ package br.org.libros.comum.model.business.facade;
 import java.io.Serializable;
 import java.util.List;
 
-import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
-import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 
 /**
  * Interface de uma fachada para a camada negocial de um módulo. A fachada é o

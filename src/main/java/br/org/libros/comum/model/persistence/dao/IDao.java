@@ -3,8 +3,8 @@ package br.org.libros.comum.model.persistence.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
-import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 
 /**
  * Interface padrão de um DAO.

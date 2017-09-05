@@ -1,5 +1,7 @@
 package br.org.libros.biblioteca.api;
 
+import java.net.URISyntaxException;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,6 +12,8 @@ import javax.ws.rs.core.Response;
 
 import br.org.libros.biblioteca.dto.BibliotecaDto;
 import br.org.libros.comum.api.AbstractApi;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -31,7 +35,7 @@ public class BibliotecaApi extends AbstractApi<BibliotecaDto, Integer> {
 	@Override
 	@POST
 	@ApiOperation(value = "Adicionar uma biblioteca")
-	public Response adicionar(@ApiParam(value = "bibliotecaDto") BibliotecaDto bibliotecaDto) {
+	public Response adicionar(@ApiParam(value = "bibliotecaDto") BibliotecaDto bibliotecaDto) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao, URISyntaxException {
 		return super.adicionar(bibliotecaDto);
 	}
 
@@ -46,14 +50,14 @@ public class BibliotecaApi extends AbstractApi<BibliotecaDto, Integer> {
 	@DELETE
 	@Path("/{idBiblioteca}")
 	@ApiOperation(value = "Remover uma biblioteca")
-	public Response remover(@PathParam("idBiblioteca") Integer idBiblioteca) {
+	public Response remover(@PathParam("idBiblioteca") Integer idBiblioteca) throws EntidadeNaoEncontradaExcecao {
 		return super.remover(idBiblioteca);
 	}
 
 	@Override
 	@PUT
 	@ApiOperation(value = "Atualizar uma biblioteca", response = BibliotecaDto.class)
-	public Response atualizar(@ApiParam(value = "bibliotecaDto") BibliotecaDto bibliotecaDto) {
+	public Response atualizar(@ApiParam(value = "bibliotecaDto") BibliotecaDto bibliotecaDto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
 		return super.atualizar(bibliotecaDto);
 	}
 
@@ -61,7 +65,7 @@ public class BibliotecaApi extends AbstractApi<BibliotecaDto, Integer> {
 	@GET
 	@Path("/{idBiblioteca}")
 	@ApiOperation(value = "Recuperar uma biblioteca", response = BibliotecaDto.class)
-	public Response recuperar(@PathParam("idBiblioteca") Integer idBiblioteca) {
+	public Response recuperar(@PathParam("idBiblioteca") Integer idBiblioteca) throws EntidadeNaoEncontradaExcecao {
 		return super.recuperar(idBiblioteca);
 	}
 

@@ -10,8 +10,8 @@ import javax.ws.rs.core.Response.Status;
 
 import br.org.libros.biblioteca.model.persistente.entity.Biblioteca;
 import br.org.libros.biblioteca.model.persistente.entity.Livro;
-import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
-import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.model.business.AbstractBusiness;
 
 /**

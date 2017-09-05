@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.org.libros.biblioteca.dto.LivroDto;
-import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 import br.org.libros.comum.mensageria.AbstractReceptorJms;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 

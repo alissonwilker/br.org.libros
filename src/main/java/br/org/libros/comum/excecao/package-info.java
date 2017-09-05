@@ -3,4 +3,4 @@
  * 
  * @since 0.0.1
  */
-package br.org.libros.comum.exception;
+package br.org.libros.comum.excecao;

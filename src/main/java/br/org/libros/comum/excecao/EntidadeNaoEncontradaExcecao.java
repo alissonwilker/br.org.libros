@@ -1,11 +1,11 @@
-package br.org.libros.comum.exception;
+package br.org.libros.comum.excecao;
 
 /**
  * Classe que representa uma exceção de Entidade não encontrada. Normalmente
  * lançada quando tenta-se realizar uma operação sobre uma Entidade que não
  * existe.
  *
- * @see br.org.libros.comum.exception.Excecao
+ * @see br.org.libros.comum.excecao.Excecao
  */
 public class EntidadeNaoEncontradaExcecao extends Excecao {
 

@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 
 import br.org.libros.AbstractIntegrationTest;
 import br.org.libros.biblioteca.dto.BibliotecaDto;
-import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
-import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
 
 /**
  * Classe de teste que testa o comportamento da fachada negocial do módulo

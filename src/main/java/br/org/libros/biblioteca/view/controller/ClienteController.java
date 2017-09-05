@@ -41,7 +41,7 @@ public class ClienteController extends AbstractController<ClienteDto, Integer> {
 		if (super.adicionar(clienteDto)) {
 			return JsfUtils.getRedirecionamentoComMensagens(Pagina.app);
 		}
-		return "";
+		return null;
 	}
 
 }

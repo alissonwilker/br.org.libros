@@ -35,7 +35,7 @@ public class UsuarioController extends AbstractController<UsuarioDto, Integer> {
 		if (principal != null) {
 			return principal.getName();
 		}
-		return "";
+		return null;
 	}
 
 	public boolean isUserInRole(String... roles) {
@@ -58,7 +58,7 @@ public class UsuarioController extends AbstractController<UsuarioDto, Integer> {
 			JsfUtils.getRequest().login(usuario, senha);
 		} catch (ServletException e) {
 			FacesMessageUtils.addInfoFacesMessage("login.falhou");
-			return "";
+			return null;
 		}
 
 		return JsfUtils.getRedirecionamentoComMensagens(Pagina.app);
@@ -72,7 +72,7 @@ public class UsuarioController extends AbstractController<UsuarioDto, Integer> {
 			FacesMessageUtils.addInfoFacesMessage("logout.falhou");
 		}
 
-		return "";
+		return null;
 	}
 
 }

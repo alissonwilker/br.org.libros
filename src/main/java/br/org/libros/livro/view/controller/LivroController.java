@@ -38,7 +38,7 @@ public class LivroController extends AbstractController<LivroDto, Integer> {
 		if (super.adicionar(livroDto)) {
 			return JsfUtils.getRedirecionamentoComMensagens(Pagina.app);
 		}
-		return "";
+		return null;
 	}
 
 }

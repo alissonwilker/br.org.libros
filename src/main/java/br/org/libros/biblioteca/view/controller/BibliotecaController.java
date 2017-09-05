@@ -39,7 +39,7 @@ public class BibliotecaController extends AbstractController<BibliotecaDto, Inte
 		if (super.adicionar(bibliotecaDto)) {
 			return JsfUtils.getRedirecionamentoComMensagens(Pagina.app);
 		}
-		return "";
+		return null;
 	}
 
 }

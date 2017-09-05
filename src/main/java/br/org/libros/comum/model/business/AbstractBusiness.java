@@ -54,9 +54,4 @@ public abstract class AbstractBusiness<E, PK extends Serializable> implements IB
 		return dao.recuperar(chavePrimaria);
 	}
 	
-	@Override
-	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
-		return dao.atualizar(chavePrimaria, entidade);
-	}
-
 }

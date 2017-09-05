@@ -60,9 +60,4 @@ public abstract class AbstractBusinessFacade<E, D, PK extends Serializable> impl
 		business.remover(chavePrimaria);
 	}
 
-	@Override
-	public D atualizar(PK chavePrimaria, D dto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
-		return mapper.converterParaDto(business.atualizar(chavePrimaria, mapper.converterParaEntidade(dto)));
-	}
-
 }

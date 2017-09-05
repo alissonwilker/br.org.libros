@@ -102,13 +102,6 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 		}
 	}
 
-	@Override
-	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
-		recuperar(chavePrimaria);
-		E entidadeAtualizada = atualizar(entidade);
-		return entidadeAtualizada;
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {

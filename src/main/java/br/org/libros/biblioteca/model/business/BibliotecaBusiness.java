@@ -25,9 +25,9 @@ public class BibliotecaBusiness extends AbstractBusiness<Biblioteca, Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public Biblioteca atualizar(Integer pk, Biblioteca entidade) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
+	public Biblioteca atualizar(Biblioteca entidade) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
 			verificarExistenciaLivros(entidade);
-			return super.atualizar(pk, entidade);
+			return super.atualizar(entidade);
 	}
 
 	@Override

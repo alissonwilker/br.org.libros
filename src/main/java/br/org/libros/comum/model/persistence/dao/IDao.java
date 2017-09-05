@@ -79,20 +79,4 @@ public interface IDao<E, PK extends Serializable> {
 	 */
 	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao;
 
-	/**
-	 * Atualiza uma Entidade não gerenciada a partir da chave primária.
-	 * 
-	 * @param chavePrimaria
-	 *            a chave primária da Entidade a ser atualizada.
-	 * @param entidade
-	 *            um objeto não gerenciado contendo os dados da Entidade a ser
-	 *            atualizada.
-	 * @return um objeto gerenciado da Entidade atualizada.
-	 * @throws EntidadeNaoEncontradaExcecao
-	 *             se a Entidada não for encontrada para atualização.
-	 * @throws EntidadeJaExisteExcecao
-	 *             se ocorrer violação de constraint.
-	 */
-	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao;
-
 }

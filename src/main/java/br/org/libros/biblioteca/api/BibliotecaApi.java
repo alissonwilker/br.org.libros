@@ -20,14 +20,14 @@ import io.swagger.annotations.ApiParam;
  */
 @Path(BibliotecaApi.PATH)
 @Api(BibliotecaApi.PATH)
-public class BibliotecaApi extends AbstractApi<BibliotecaDto> {
-	
+public class BibliotecaApi extends AbstractApi<BibliotecaDto, Integer> {
+
 	protected static final String PATH = "/bibliotecas";
-	
+
 	public BibliotecaApi() {
 		apiPath = PATH;
 	}
-	
+
 	@Override
 	@POST
 	@ApiOperation(value = "Adicionar uma biblioteca")
@@ -52,11 +52,9 @@ public class BibliotecaApi extends AbstractApi<BibliotecaDto> {
 
 	@Override
 	@PUT
-	@Path("/{idBiblioteca}")
 	@ApiOperation(value = "Atualizar uma biblioteca", response = BibliotecaDto.class)
-	public Response atualizar(@PathParam("idBiblioteca") Integer idBiblioteca,
-			@ApiParam(value = "bibliotecaDto") BibliotecaDto bibliotecaDto) {
-		return super.atualizar(idBiblioteca, bibliotecaDto);
+	public Response atualizar(@ApiParam(value = "bibliotecaDto") BibliotecaDto bibliotecaDto) {
+		return super.atualizar(bibliotecaDto);
 	}
 
 	@Override

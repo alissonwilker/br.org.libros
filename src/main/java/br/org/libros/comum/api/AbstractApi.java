@@ -1,5 +1,6 @@
 package br.org.libros.comum.api;
 
+import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 import java.net.URI;
 import java.util.List;
@@ -30,13 +31,13 @@ import br.org.libros.comum.model.business.facade.IBusinessFacade;
  */
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
-public abstract class AbstractApi<D extends IDto> {
+public abstract class AbstractApi<D extends IDto, PK extends Serializable> {
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	protected String apiPath;
 	
 	@Inject
-	protected IBusinessFacade<D, Integer> businessFacade;
+	protected IBusinessFacade<D, PK> businessFacade;
 
 	public Response adicionar(D dto) {
 		try {
@@ -64,7 +65,7 @@ public abstract class AbstractApi<D extends IDto> {
 		}
 	}
 
-	public Response remover(Integer chavePrimaria) {
+	public Response remover(PK chavePrimaria) {
 		try {
 			businessFacade.remover(chavePrimaria);
 			return Response.ok().build();
@@ -76,12 +77,9 @@ public abstract class AbstractApi<D extends IDto> {
 		}
 	}
 
-	public Response atualizar(Integer chavePrimaria, D dto) {
+	public Response atualizar(D dto) {
 		try {
-			if (dto == null || chavePrimaria != dto.getId()) {
-				return Response.status(Status.BAD_REQUEST).build();
-			}
-			dto = businessFacade.atualizar(chavePrimaria, dto);
+			dto = businessFacade.atualizar(dto);
 			return Response.ok(dto).build();
 		} catch (ConstraintViolationException e) {
 			return Response.status(Status.BAD_REQUEST).build();
@@ -95,7 +93,7 @@ public abstract class AbstractApi<D extends IDto> {
 		}
 	}
 
-	public Response recuperar(Integer chavePrimaria) {
+	public Response recuperar(PK chavePrimaria) {
 		try {
 			D dto = businessFacade.recuperar(chavePrimaria);
 			return Response.ok(dto).build();

@@ -31,5 +31,4 @@ public interface IBusinessFacade<D, PK extends Serializable> extends Serializabl
 
 	public D recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao;
 
-	public D atualizar(PK chavePrimaria, D dto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao;
 }

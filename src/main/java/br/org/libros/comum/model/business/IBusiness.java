@@ -28,6 +28,4 @@ public interface IBusiness<E, PK extends Serializable> {
 
 	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao;
 
-	public E atualizar(PK chavePrimaria, E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao;
-
 }

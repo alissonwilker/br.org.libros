@@ -35,7 +35,7 @@
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<class>br.org.libros.biblioteca.model.persistente.entity.Biblioteca</class>
 		<class>br.org.libros.biblioteca.model.persistente.entity.Cliente</class>
-		<class>br.org.libros.biblioteca.model.persistente.entity.Livro</class>
+		<class>br.org.libros.biblioteca.model.persistente.entity.LivroBiblioteca</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />

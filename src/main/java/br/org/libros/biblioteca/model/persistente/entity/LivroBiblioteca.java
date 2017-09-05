@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
@@ -16,8 +17,8 @@ import br.org.libros.comum.model.persistence.entity.IEntidade;
  *
  */
 @Entity
-@Table(name = "Livro", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
-public class Livro implements IEntidade {
+@Table(name = "LivroBiblioteca", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
+public class LivroBiblioteca implements IEntidade {
 
 	private static final long serialVersionUID = 1L;
 
@@ -26,9 +27,15 @@ public class Livro implements IEntidade {
 	@NotNull
 	@Max(Integer.MAX_VALUE)
 	private int id;
+	
+	@Transient
+	private String nome;
+	
+	@Transient 
+	private String isbn;
 
 	@Valid
-	public Livro() {
+	public LivroBiblioteca() {
 	}
 
 	@Override
@@ -39,6 +46,22 @@ public class Livro implements IEntidade {
 	@Override
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 }

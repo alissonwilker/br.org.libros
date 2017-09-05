@@ -11,7 +11,7 @@ import br.org.libros.comum.dto.mapper.IGenericMapper;
  * 
  * @see br.org.libros.comum.dto.mapper.IGenericMapper
  */
-@Mapper(uses = ILivroMapper.class)
+@Mapper(uses = ILivroBibliotecaMapper.class)
 public interface IBibliotecaMapper extends IGenericMapper<Biblioteca, BibliotecaDto> {
 	IBibliotecaMapper INSTANCE = Mappers.getMapper(IBibliotecaMapper.class);
 

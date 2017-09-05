@@ -12,8 +12,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.org.libros.comum.dto.IDto;
-import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteException;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 
 /**
@@ -33,7 +33,7 @@ public abstract class AbstractApi<D extends IDto, PK extends Serializable> {
 	@Inject
 	protected IBusinessFacade<D, PK> businessFacade;
 
-	public Response adicionar(D dto) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao, URISyntaxException {
+	public Response adicionar(D dto) throws EntidadeJaExisteException, EntidadeNaoEncontradaException, URISyntaxException {
 		dto = businessFacade.adicionar(dto);
 		return Response.created(new URI(apiPath + "/" + dto.getId())).build();
 	}
@@ -43,17 +43,17 @@ public abstract class AbstractApi<D extends IDto, PK extends Serializable> {
 		return Response.ok(dtos).build();
 	}
 
-	public Response remover(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+	public Response remover(PK chavePrimaria) throws EntidadeNaoEncontradaException {
 		businessFacade.remover(chavePrimaria);
 		return Response.ok().build();
 	}
 
-	public Response atualizar(D dto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
+	public Response atualizar(D dto) throws EntidadeNaoEncontradaException, EntidadeJaExisteException {
 		dto = businessFacade.atualizar(dto);
 		return Response.ok(dto).build();
 	}
 
-	public Response recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+	public Response recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaException {
 		D dto = businessFacade.recuperar(chavePrimaria);
 		return Response.ok(dto).build();
 	}

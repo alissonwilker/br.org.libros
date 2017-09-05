@@ -7,13 +7,13 @@ import javax.persistence.PersistenceException;
  * lançada quando uma Entidade que já existe está tentando ser cadastrada
  * novamente.
  *
- * @see br.org.libros.comum.excecao.Excecao
+ * @see br.org.libros.comum.excecao.LibrosException
  */
-public class EntidadeJaExisteExcecao extends Excecao {
+public class EntidadeJaExisteException extends LibrosException {
 
 	private static final long serialVersionUID = 1L;
 
-	public EntidadeJaExisteExcecao(PersistenceException eeex) {
+	public EntidadeJaExisteException(PersistenceException eeex) {
 		super(eeex);
 	}
 

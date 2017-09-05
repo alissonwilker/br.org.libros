@@ -53,9 +53,9 @@
 		</p:fieldset>
 		<p:fieldset legend="#{msg['app.livros']}">
 			<p:dataTable id="livros" var="livro" reflow="true" 
-				value="#{livroController.entidades}" rows="3" paginator="true"
+				value="#{livroBibliotecaController.entidades}" rows="3" paginator="true"
 				emptyMessage="#{msg['app.nenhumItem']}">
-   				<f:event type="preRenderView" listener="#{livroController.carregarEntidades}" />
+   				<f:event type="preRenderView" listener="#{livroBibliotecaController.carregarEntidades}" />
 				<p:column styleClass="textAtCenter" headerText="#{msg['app.isbn']}">
 					<p:outputLabel value="#{livro.isbn}" converter="isbnConverter" />
 				</p:column>
@@ -64,7 +64,7 @@
 				</p:column>
 				<p:column headerText="#{msg['app.remover']}" styleClass="textAtCenter">
 					<h:form>
-						<p:commandLink action="#{livroController.remover(livro)}"
+						<p:commandLink action="#{livroBibliotecaController.remover(livro)}"
 							ajax="true" update="livros" >
 							<span class="fa fa-trash"/>
 						</p:commandLink>

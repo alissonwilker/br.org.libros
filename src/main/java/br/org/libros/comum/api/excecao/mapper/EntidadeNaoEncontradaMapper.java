@@ -4,13 +4,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 
 @Provider
-public class EntidadeNaoEncontradaMapper implements ExceptionMapper<EntidadeNaoEncontradaExcecao> {
+public class EntidadeNaoEncontradaMapper implements ExceptionMapper<EntidadeNaoEncontradaException> {
 
 	@Override
-	public Response toResponse(EntidadeNaoEncontradaExcecao exception) {
+	public Response toResponse(EntidadeNaoEncontradaException exception) {
 		return Response.status(Response.Status.NOT_FOUND).build();
 	}
 

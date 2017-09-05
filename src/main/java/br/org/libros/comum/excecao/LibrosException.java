@@ -5,16 +5,16 @@ package br.org.libros.comum.excecao;
  *
  * @see java.lang.Exception
  */
-public abstract class Excecao extends Exception {
+public abstract class LibrosException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
 	private Throwable causaRaiz;
 	
-	public Excecao() {
+	public LibrosException() {
 	}
 	
-	public Excecao(Throwable eeex) {
+	public LibrosException(Throwable eeex) {
 		this.causaRaiz = eeex;
 	}
 

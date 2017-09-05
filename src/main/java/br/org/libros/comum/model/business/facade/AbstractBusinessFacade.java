@@ -6,8 +6,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import br.org.libros.comum.dto.mapper.IGenericMapper;
-import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteException;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 import br.org.libros.comum.model.business.IBusiness;
 
 /**
@@ -31,7 +31,7 @@ public abstract class AbstractBusinessFacade<E, D, PK extends Serializable> impl
 	protected IGenericMapper<E, D> mapper;
 
 	@Override
-	public D adicionar(D dto) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
+	public D adicionar(D dto) throws EntidadeJaExisteException, EntidadeNaoEncontradaException {
 		return mapper.converterParaDto(business.adicionar(mapper.converterParaEntidade(dto)));
 	}
 
@@ -41,22 +41,22 @@ public abstract class AbstractBusinessFacade<E, D, PK extends Serializable> impl
 	}
 
 	@Override
-	public void remover(D dto) throws EntidadeNaoEncontradaExcecao {
+	public void remover(D dto) throws EntidadeNaoEncontradaException {
 		business.remover(mapper.converterParaEntidade(dto));
 	}
 
 	@Override
-	public D atualizar(D dto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
+	public D atualizar(D dto) throws EntidadeNaoEncontradaException, EntidadeJaExisteException {
 		return mapper.converterParaDto(business.atualizar(mapper.converterParaEntidade(dto)));
 	}
 
 	@Override
-	public D recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+	public D recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaException {
 		return mapper.converterParaDto(business.recuperar(chavePrimaria));
 	}
 
 	@Override
-	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaException {
 		business.remover(chavePrimaria);
 	}
 

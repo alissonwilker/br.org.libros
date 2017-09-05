@@ -10,8 +10,8 @@ import javax.persistence.PersistenceException;
 
 import org.hibernate.exception.ConstraintViolationException;
 
-import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteException;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 
 /**
  * Classe abstrata que implementa comportamento padrão de um DAO.
@@ -54,13 +54,13 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 	}
 
 	@Override
-	public E adicionar(E entidade) throws EntidadeJaExisteExcecao {
+	public E adicionar(E entidade) throws EntidadeJaExisteException {
 		try {
 			entityManager.persist(entidade);
 			return entidade;
 		} catch (PersistenceException eeex) {
 			if (eeex.getCause() instanceof ConstraintViolationException) {
-				throw new EntidadeJaExisteExcecao(eeex);
+				throw new EntidadeJaExisteException(eeex);
 			} else {
 				throw eeex;
 			}
@@ -68,34 +68,34 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 	}
 
 	@Override
-	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaException {
 		E entidade = recuperar(chavePrimaria);
 		remover(entidade);
 	}
 
 	@Override
-	public void remover(E entidade) throws EntidadeNaoEncontradaExcecao {
+	public void remover(E entidade) throws EntidadeNaoEncontradaException {
 		try {
 			entidade = entityManager.merge(entidade);
 			entityManager.remove(entidade);
 			entityManager.flush(); // requerido para mandar mensagem JMS pelo
 									// EntityListener da Entidade.
 		} catch (IllegalArgumentException iaex) {
-			throw new EntidadeNaoEncontradaExcecao(iaex);
+			throw new EntidadeNaoEncontradaException(iaex);
 		}
 	}
 
 	@Override
-	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
+	public E atualizar(E entidade) throws EntidadeNaoEncontradaException, EntidadeJaExisteException {
 		try {
 			E entidadeAtualizada = entityManager.merge(entidade);
 			entityManager.flush();
 			return entidadeAtualizada;
 		} catch (IllegalArgumentException iaex) {
-			throw new EntidadeNaoEncontradaExcecao(iaex);
+			throw new EntidadeNaoEncontradaException(iaex);
 		} catch (PersistenceException eeex) {
 			if (eeex.getCause() instanceof ConstraintViolationException) {
-				throw new EntidadeJaExisteExcecao(eeex);
+				throw new EntidadeJaExisteException(eeex);
 			} else {
 				throw eeex;
 			}
@@ -104,10 +104,10 @@ public abstract class AbstractDao<E, PK extends Serializable> implements IDao<E,
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaException {
 		E entity = (E) entityManager.find(getDomainClass(), chavePrimaria);
 		if (entity == null) {
-			throw new EntidadeNaoEncontradaExcecao();
+			throw new EntidadeNaoEncontradaException();
 		}
 		return entity;
 	}

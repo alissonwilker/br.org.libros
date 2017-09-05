@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteException;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 import br.org.libros.comum.model.persistence.dao.IDao;
 
 /**
@@ -25,22 +25,22 @@ public abstract class AbstractBusiness<E, PK extends Serializable> implements IB
 	private IDao<E, PK> dao;
 
 	@Override
-	public E adicionar(E entidade) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
+	public E adicionar(E entidade) throws EntidadeJaExisteException, EntidadeNaoEncontradaException {
 		return dao.adicionar(entidade);
 	}
 
 	@Override
-	public void remover(E entidade) throws EntidadeNaoEncontradaExcecao {
+	public void remover(E entidade) throws EntidadeNaoEncontradaException {
 		dao.remover(entidade);
 	}
 
 	@Override
-	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+	public void remover(PK chavePrimaria) throws EntidadeNaoEncontradaException {
 		dao.remover(chavePrimaria);
 	}
 
 	@Override
-	public E atualizar(E entidade) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
+	public E atualizar(E entidade) throws EntidadeNaoEncontradaException, EntidadeJaExisteException {
 		return dao.atualizar(entidade);
 	}
 
@@ -50,7 +50,7 @@ public abstract class AbstractBusiness<E, PK extends Serializable> implements IB
 	}
 
 	@Override
-	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaExcecao {
+	public E recuperar(PK chavePrimaria) throws EntidadeNaoEncontradaException {
 		return dao.recuperar(chavePrimaria);
 	}
 	

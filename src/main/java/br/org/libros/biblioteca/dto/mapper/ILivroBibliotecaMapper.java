@@ -5,8 +5,8 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import br.org.libros.biblioteca.dto.LivroDto;
-import br.org.libros.biblioteca.model.persistente.entity.Livro;
+import br.org.libros.biblioteca.dto.LivroBibliotecaDto;
+import br.org.libros.biblioteca.model.persistente.entity.LivroBiblioteca;
 import br.org.libros.comum.dto.mapper.IGenericMapper;
 
 /**
@@ -14,15 +14,15 @@ import br.org.libros.comum.dto.mapper.IGenericMapper;
  * @see br.org.libros.comum.dto.mapper.IGenericMapper
  */
 @Mapper
-public interface ILivroMapper extends IGenericMapper<Livro, LivroDto> {
-	ILivroMapper INSTANCE = Mappers.getMapper(ILivroMapper.class);
+public interface ILivroBibliotecaMapper extends IGenericMapper<LivroBiblioteca, LivroBibliotecaDto> {
+	ILivroBibliotecaMapper INSTANCE = Mappers.getMapper(ILivroBibliotecaMapper.class);
 
-	LivroDto converterParaDto(Livro entidade);
+	LivroBibliotecaDto converterParaDto(LivroBiblioteca entidade);
 
-	Livro converterParaEntidade(LivroDto dto);
+	LivroBiblioteca converterParaEntidade(LivroBibliotecaDto dto);
 
-	List<LivroDto> converterParaDtos(List<Livro> entidades);
+	List<LivroBibliotecaDto> converterParaDtos(List<LivroBiblioteca> entidades);
 
-	List<Livro> converterParaEntidades(List<LivroDto> dtos);
+	List<LivroBiblioteca> converterParaEntidades(List<LivroBibliotecaDto> dtos);
 
 }

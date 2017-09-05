@@ -42,7 +42,7 @@ public class Biblioteca implements IEntidade {
 	private String nome;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Livro> livros;
+	private List<LivroBiblioteca> livros;
 
 	@Valid
 	public Biblioteca() {
@@ -71,11 +71,11 @@ public class Biblioteca implements IEntidade {
 		this.nome = nome;
 	}
 
-	public List<Livro> getLivros() {
+	public List<LivroBiblioteca> getLivros() {
 		return livros;
 	}
 
-	public void setLivros(List<Livro> livros) {
+	public void setLivros(List<LivroBiblioteca> livros) {
 		this.livros = livros;
 	}
 

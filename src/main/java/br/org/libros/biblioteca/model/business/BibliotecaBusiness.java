@@ -9,9 +9,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import br.org.libros.biblioteca.model.persistente.entity.Biblioteca;
-import br.org.libros.biblioteca.model.persistente.entity.Livro;
-import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
+import br.org.libros.biblioteca.model.persistente.entity.LivroBiblioteca;
+import br.org.libros.comum.excecao.EntidadeJaExisteException;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 import br.org.libros.comum.model.business.AbstractBusiness;
 
 /**
@@ -25,25 +25,25 @@ public class BibliotecaBusiness extends AbstractBusiness<Biblioteca, Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public Biblioteca atualizar(Biblioteca entidade) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
+	public Biblioteca atualizar(Biblioteca entidade) throws EntidadeJaExisteException, EntidadeNaoEncontradaException {
 			verificarExistenciaLivros(entidade);
 			return super.atualizar(entidade);
 	}
 
 	@Override
-	public Biblioteca adicionar(Biblioteca entidade) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
+	public Biblioteca adicionar(Biblioteca entidade) throws EntidadeJaExisteException, EntidadeNaoEncontradaException {
 			verificarExistenciaLivros(entidade);
 			return super.atualizar(entidade);
 	}
 	
-	private void verificarExistenciaLivros(Biblioteca entidade) throws EntidadeNaoEncontradaExcecao {
+	private void verificarExistenciaLivros(Biblioteca entidade) throws EntidadeNaoEncontradaException {
 		if (entidade.getLivros() != null) {
-			for (Livro livro : entidade.getLivros()) {
+			for (LivroBiblioteca livro : entidade.getLivros()) {
 				//TODO substituir endereço hardcoded por um service discovery
 				Client client = ClientBuilder.newClient();
 				Response response = client.target("http://localhost:8080/libros/api/livros/" + livro.getId()).request(MediaType.APPLICATION_JSON).get();
 				if (Status.fromStatusCode(response.getStatus()) != Status.OK) {
-					throw new EntidadeNaoEncontradaExcecao();
+					throw new EntidadeNaoEncontradaException();
 				}
 			}
 		}

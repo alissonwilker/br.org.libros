@@ -3,8 +3,8 @@ package br.org.libros.comum.view.controller;
 import java.io.Serializable;
 import java.util.List;
 
-import br.org.libros.comum.excecao.EntidadeJaExisteExcecao;
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaExcecao;
+import br.org.libros.comum.excecao.EntidadeJaExisteException;
+import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 import br.org.libros.comum.view.utils.FacesMessageUtils;
 
@@ -39,11 +39,11 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 			businessFacade.adicionar(dto);
 			adicionarMensagemSucesso();
 			return true;
-		} catch (EntidadeJaExisteExcecao e) {
+		} catch (EntidadeJaExisteException e) {
 			FacesMessageUtils.addInfoFacesMessage("excecao.itemJaCadastrado");
 			return false;
 		}
-		catch (EntidadeNaoEncontradaExcecao e) {
+		catch (EntidadeNaoEncontradaException e) {
 			FacesMessageUtils.addInfoFacesMessage("excecao.itemNaoEncontrado");
 			return false;
 		}
@@ -59,7 +59,7 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 		try {
 			businessFacade.remover(dto);
 			adicionarMensagemSucesso();
-		} catch (EntidadeNaoEncontradaExcecao e) {
+		} catch (EntidadeNaoEncontradaException e) {
 			adicionarMensagemItemNaoEncontrado();
 		}
 	}

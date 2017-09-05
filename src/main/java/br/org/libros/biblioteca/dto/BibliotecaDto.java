@@ -16,7 +16,7 @@ public class BibliotecaDto implements IDto {
 
 	private int id;
 	private String nome;
-	private List<LivroDto> livros;
+	private List<LivroBibliotecaDto> livros;
 
 	public BibliotecaDto() {
 	}
@@ -41,11 +41,11 @@ public class BibliotecaDto implements IDto {
 		this.nome = nome;
 	}
 
-	public List<LivroDto> getLivros() {
+	public List<LivroBibliotecaDto> getLivros() {
 		return livros;
 	}
 
-	public void setLivros(List<LivroDto> livros) {
+	public void setLivros(List<LivroBibliotecaDto> livros) {
 		this.livros = livros;
 	}
 

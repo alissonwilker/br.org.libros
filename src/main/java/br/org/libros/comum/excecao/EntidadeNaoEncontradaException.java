@@ -5,17 +5,17 @@ package br.org.libros.comum.excecao;
  * lançada quando tenta-se realizar uma operação sobre uma Entidade que não
  * existe.
  *
- * @see br.org.libros.comum.excecao.Excecao
+ * @see br.org.libros.comum.excecao.LibrosException
  */
-public class EntidadeNaoEncontradaExcecao extends Excecao {
+public class EntidadeNaoEncontradaException extends LibrosException {
 
 	private static final long serialVersionUID = 1L;
 
-	public EntidadeNaoEncontradaExcecao(IllegalArgumentException iaex) {
+	public EntidadeNaoEncontradaException(IllegalArgumentException iaex) {
 		super(iaex);
 	}
 
-	public EntidadeNaoEncontradaExcecao() {
+	public EntidadeNaoEncontradaException() {
 		super();
 	}
 

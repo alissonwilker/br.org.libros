@@ -1,7 +1,6 @@
 package br.org.libros.biblioteca.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * DTO que representa a Entidade
@@ -13,7 +12,6 @@ public class LivroDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-	private List<BibliotecaDto> bibliotecas;
 
 	public LivroDto() {
 	}
@@ -25,14 +23,5 @@ public class LivroDto implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public List<BibliotecaDto> getBibliotecas() {
-		return bibliotecas;
-	}
-
-	public void setBibliotecas(List<BibliotecaDto> bibliotecas) {
-		this.bibliotecas = bibliotecas;
-	}
-
 
 }

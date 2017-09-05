@@ -1,11 +1,8 @@
 package br.org.libros.biblioteca.model.persistente.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
@@ -30,9 +27,6 @@ public class Livro implements IEntidade {
 	@Max(Integer.MAX_VALUE)
 	private int id;
 
-	@ManyToMany(mappedBy = "livros")
-	private List<Biblioteca> bibliotecas;
-
 	@Valid
 	public Livro() {
 	}
@@ -45,14 +39,6 @@ public class Livro implements IEntidade {
 	@Override
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<Biblioteca> getBibliotecas() {
-		return bibliotecas;
-	}
-
-	public void setBibliotecas(List<Biblioteca> bibliotecas) {
-		this.bibliotecas = bibliotecas;
 	}
 
 }

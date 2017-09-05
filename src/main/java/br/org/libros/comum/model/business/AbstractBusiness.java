@@ -25,7 +25,7 @@ public abstract class AbstractBusiness<E, PK extends Serializable> implements IB
 	private IDao<E, PK> dao;
 
 	@Override
-	public E adicionar(E entidade) throws EntidadeJaExisteExcecao {
+	public E adicionar(E entidade) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
 		return dao.adicionar(entidade);
 	}
 

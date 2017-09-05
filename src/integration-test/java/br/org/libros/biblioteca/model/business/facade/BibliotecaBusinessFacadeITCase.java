@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import br.org.libros.AbstractIntegrationTest;
 import br.org.libros.biblioteca.dto.BibliotecaDto;
 import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
+import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 
 /**
  * Classe de teste que testa o comportamento da fachada negocial do módulo
@@ -35,8 +36,8 @@ public class BibliotecaBusinessFacadeITCase extends AbstractIntegrationTest {
 			bibliotecaDtoResposta = bibliotecaBusinessFacade.adicionar(bibliotecaDto);
 			Assert.assertEquals(bibliotecaDto.getNome(), bibliotecaDtoResposta.getNome());
 			Assert.assertNotNull(bibliotecaDtoResposta.getId());
-		} catch (EntidadeJaExisteExcecao e) {
-			fail("Entidade já existe.");
+		} catch (EntidadeJaExisteExcecao | EntidadeNaoEncontradaExcecao e) {
+			fail("Entidade já existe ou não foi encontrada.");
 		}
 	}
 

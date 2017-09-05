@@ -19,7 +19,7 @@ import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
  * @see br.org.libros.comum.model.business.IBusiness
  */
 public interface IBusinessFacade<D, PK extends Serializable> extends Serializable {
-	public D adicionar(D dto) throws EntidadeJaExisteExcecao;
+	public D adicionar(D dto) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao;
 
 	public List<D> listar();
 

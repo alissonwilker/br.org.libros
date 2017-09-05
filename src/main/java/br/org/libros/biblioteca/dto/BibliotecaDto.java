@@ -1,7 +1,8 @@
 package br.org.libros.biblioteca.dto;
 
-import java.io.Serializable;
 import java.util.List;
+
+import br.org.libros.comum.dto.IDto;
 
 /**
  * DTO que representa a Entidade
@@ -9,7 +10,7 @@ import java.util.List;
  * Biblioteca}.
  *
  */
-public class BibliotecaDto implements Serializable {
+public class BibliotecaDto implements IDto {
 
 	private static final long serialVersionUID = 1L;
 

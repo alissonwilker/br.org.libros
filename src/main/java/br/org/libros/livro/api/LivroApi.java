@@ -1,9 +1,5 @@
 package br.org.libros.livro.api;
 
-import java.lang.invoke.MethodHandles;
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,41 +7,32 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import br.org.libros.comum.api.AbstractApi;
-import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import br.org.libros.livro.dto.LivroDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 /**
  * 
  * @see br.org.libros.comum.api.AbstractApi
  */
-@Path("/livros")
-@Api(value = "livros")
-public class LivroApi extends AbstractApi<LivroDto, Integer> {
+@Path(LivroApi.PATH)
+@Api(LivroApi.PATH)
+public class LivroApi extends AbstractApi<LivroDto> {
 
-	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	protected static final String PATH = "/livros";
 
+	public LivroApi() {
+		apiPath = PATH;
+	}
+
+	@Override
 	@POST
-	@Path("/{isbnLivro}/{nomeLivro}")
 	@ApiOperation(value = "Adicionar um livro")
-	public Response adicionar(@PathParam("isbnLivro") String isbnLivro, @PathParam("nomeLivro") String nomeLivro) {
-		LivroDto livroDto = new LivroDto(isbnLivro, nomeLivro);
-		try {
-			livroDto = businessFacade.adicionar(livroDto);
-			return Response.created(new URI("/livros/" + livroDto.getId())).build();
-		} catch (EntidadeJaExisteExcecao e) {
-			return Response.status(Status.CONFLICT).build();
-		} catch (URISyntaxException e) {
-			logger.error(e.getMessage(), e);
-			return Response.serverError().build();
-		}
+	public Response adicionar(@ApiParam(value = "livroDto") LivroDto livroDto) {
+		return super.adicionar(livroDto);
 	}
 
 	@Override
@@ -63,13 +50,11 @@ public class LivroApi extends AbstractApi<LivroDto, Integer> {
 		return super.remover(idLivro);
 	}
 
+	@Override
 	@PUT
-	@Path("/{idLivro}/atualizar/{isbnLivro}/{nomeLivro}")
+	@Path("/{idLivro}")
 	@ApiOperation(value = "Atualizar um livro", response = LivroDto.class)
-	public Response atualizar(@PathParam("idLivro") Integer idLivro, @PathParam("isbnLivro") String isbnLivro,
-			@PathParam("nomeLivro") String nomeLivro) {
-		LivroDto livroDto = new LivroDto(isbnLivro, nomeLivro);
-		livroDto.setId(idLivro);
+	public Response atualizar(@PathParam("idLivro") Integer idLivro, @ApiParam(value = "livroDto") LivroDto livroDto) {
 		return super.atualizar(idLivro, livroDto);
 	}
 

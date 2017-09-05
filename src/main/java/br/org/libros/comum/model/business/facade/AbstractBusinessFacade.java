@@ -31,7 +31,7 @@ public abstract class AbstractBusinessFacade<E, D, PK extends Serializable> impl
 	protected IGenericMapper<E, D> mapper;
 
 	@Override
-	public D adicionar(D dto) throws EntidadeJaExisteExcecao {
+	public D adicionar(D dto) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
 		return mapper.converterParaDto(business.adicionar(mapper.converterParaEntidade(dto)));
 	}
 

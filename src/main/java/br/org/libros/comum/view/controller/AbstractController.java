@@ -43,6 +43,10 @@ public abstract class AbstractController<D, PK extends Serializable> implements 
 			FacesMessageUtils.addInfoFacesMessage("excecao.itemJaCadastrado");
 			return false;
 		}
+		catch (EntidadeNaoEncontradaExcecao e) {
+			FacesMessageUtils.addInfoFacesMessage("excecao.itemNaoEncontrado");
+			return false;
+		}
 	}
 
 	/**

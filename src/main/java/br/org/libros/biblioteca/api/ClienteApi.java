@@ -1,9 +1,5 @@
 package br.org.libros.biblioteca.api;
 
-import java.lang.invoke.MethodHandles;
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,42 +7,32 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import br.org.libros.biblioteca.dto.ClienteDto;
 import br.org.libros.comum.api.AbstractApi;
-import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 /**
  * 
  * @see br.org.libros.comum.api.AbstractApi
  */
-@Path("/clientes")
-@Api(value = "clientes")
-public class ClienteApi extends AbstractApi<ClienteDto, Integer> {
+@Path(ClienteApi.PATH)
+@Api(ClienteApi.PATH)
+public class ClienteApi extends AbstractApi<ClienteDto> {
 
-	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	protected static final String PATH = "/clientes";
 
+	public ClienteApi() {
+		apiPath = PATH;
+	}
+
+	@Override
 	@POST
-	@Path("/{cpfCliente}/{nomeCliente}")
 	@ApiOperation(value = "Adicionar um cliente")
-	public Response adicionar(@PathParam("cpfCliente") String cpfCliente,
-			@PathParam("nomeCliente") String nomeCliente) {
-		ClienteDto clienteDto = new ClienteDto(cpfCliente, nomeCliente);
-		try {
-			clienteDto = businessFacade.adicionar(clienteDto);
-			return Response.created(new URI("/clientes/" + clienteDto.getId())).build();
-		} catch (EntidadeJaExisteExcecao e) {
-			return Response.status(Status.CONFLICT).build();
-		} catch (URISyntaxException e) {
-			logger.error(e.getMessage(), e);
-			return Response.serverError().build();
-		}
+	public Response adicionar(@ApiParam(value = "clienteDto") ClienteDto clienteDto) {
+		return super.adicionar(clienteDto);
 	}
 
 	@Override
@@ -64,13 +50,12 @@ public class ClienteApi extends AbstractApi<ClienteDto, Integer> {
 		return super.remover(idCliente);
 	}
 
+	@Override
 	@PUT
-	@Path("/{idCliente}/atualizar/{cpfCliente}/{nomeCliente}")
+	@Path("/{idCliente}")
 	@ApiOperation(value = "Atualizar um cliente", response = ClienteDto.class)
-	public Response atualizar(@PathParam("idCliente") Integer idCliente, @PathParam("cpfCliente") String cpfCliente,
-			@PathParam("nomeCliente") String nomeCliente) {
-		ClienteDto clienteDto = new ClienteDto(cpfCliente, nomeCliente);
-		clienteDto.setId(idCliente);
+	public Response atualizar(@PathParam("idCliente") Integer idCliente,
+			@ApiParam(value = "clienteDto") ClienteDto clienteDto) {
 		return super.atualizar(idCliente, clienteDto);
 	}
 

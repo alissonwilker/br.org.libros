@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.org.libros.comum.exception.EntidadeJaExisteExcecao;
+import br.org.libros.comum.exception.EntidadeNaoEncontradaExcecao;
 import br.org.libros.usuario.dto.UsuarioDto;
 import br.org.libros.usuario.model.business.facade.UsuarioBusinessFacade;
 
@@ -40,7 +41,7 @@ public class AppStartupConfigurator {
 			usuarioBusinessFacade
 					.adicionar(new UsuarioDto("admin", "21232f297a57a5a743894a0e4a801fc3", "ADMINISTRATOR"));
 			usuarioBusinessFacade.adicionar(new UsuarioDto("user", "ee11cbb19052e40b07aac0ca060c23ee", "USER"));
-		} catch (EntidadeJaExisteExcecao e) {
+		} catch (EntidadeJaExisteExcecao | EntidadeNaoEncontradaExcecao e) {
 			logger.error(e.getMessage(), e);
 		}
 	}

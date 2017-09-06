@@ -3,7 +3,7 @@ package br.org.libros.biblioteca.dto;
 import br.org.libros.comum.dto.IDto;
 
 /**
- * DTO que representa a Entidade {@link br.org.libros.biblioteca.model.persistente.entity.Cliente Cliente}.
+ * DTO que representa a Entidade {@link br.org.libros.biblioteca.model.persistence.entity.Cliente Cliente}.
  *
  */
 public class ClienteDto implements IDto {

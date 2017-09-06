@@ -1,4 +1,4 @@
-package br.org.libros.biblioteca.model.business.facade;
+package br.org.libros.livrobiblioteca.model.business.facade;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -17,7 +17,7 @@ import br.org.libros.comum.model.business.facade.AbstractBusinessFacade;
 @Named("LivroBibliotecaBusinessFacade")
 @RequestScoped
 @Transactional
-public class LivroBusinessFacade extends AbstractBusinessFacade<LivroBiblioteca, LivroBibliotecaDto, Integer> {
+public class LivroBibliotecaBusinessFacade extends AbstractBusinessFacade<LivroBiblioteca, LivroBibliotecaDto, Integer> {
 
 	private static final long serialVersionUID = 1L;
 

@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 
 import br.org.libros.biblioteca.dto.ClienteDto;
 import br.org.libros.biblioteca.dto.mapper.IClienteMapper;
-import br.org.libros.biblioteca.model.persistente.entity.Cliente;
+import br.org.libros.biblioteca.model.persistence.entity.Cliente;
 import br.org.libros.comum.model.business.facade.AbstractBusinessFacade;
 
 /**

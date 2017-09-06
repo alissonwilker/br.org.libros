@@ -3,7 +3,7 @@ package br.org.libros.biblioteca.model.persistence.dao;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import br.org.libros.biblioteca.model.persistente.entity.Biblioteca;
+import br.org.libros.biblioteca.model.persistence.entity.Biblioteca;
 
 /**
  * 

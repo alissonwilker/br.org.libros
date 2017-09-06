@@ -6,7 +6,7 @@ import br.org.libros.comum.dto.IDto;
 
 /**
  * DTO que representa a Entidade
- * {@link br.org.libros.biblioteca.model.persistente.entity.Biblioteca
+ * {@link br.org.libros.biblioteca.model.persistence.entity.Biblioteca
  * Biblioteca}.
  *
  */

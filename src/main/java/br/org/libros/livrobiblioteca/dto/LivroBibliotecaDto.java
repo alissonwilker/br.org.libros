@@ -1,4 +1,4 @@
-package br.org.libros.biblioteca.dto;
+package br.org.libros.livrobiblioteca.dto;
 
 import br.org.libros.comum.dto.IDto;
 

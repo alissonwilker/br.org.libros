@@ -1,8 +1,9 @@
-package br.org.libros.biblioteca.model.persistence.dao;
+package br.org.libros.livrobiblioteca.model.persistence.dao;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import br.org.libros.biblioteca.model.persistence.dao.BibliotecaAbstractDao;
 import br.org.libros.biblioteca.model.persistence.entity.LivroBiblioteca;
 import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 

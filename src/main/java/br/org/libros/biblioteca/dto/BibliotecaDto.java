@@ -3,6 +3,7 @@ package br.org.libros.biblioteca.dto;
 import java.util.List;
 
 import br.org.libros.comum.dto.IDto;
+import br.org.libros.livrobiblioteca.dto.LivroBibliotecaDto;
 
 /**
  * DTO que representa a Entidade

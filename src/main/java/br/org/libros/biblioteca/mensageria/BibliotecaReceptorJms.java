@@ -11,10 +11,10 @@ import javax.jms.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.org.libros.biblioteca.dto.LivroBibliotecaDto;
 import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 import br.org.libros.comum.mensageria.AbstractReceptorJms;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
+import br.org.libros.livrobiblioteca.dto.LivroBibliotecaDto;
 
 /**
  * 
@@ -28,14 +28,14 @@ public class BibliotecaReceptorJms extends AbstractReceptorJms {
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private IBusinessFacade<LivroBibliotecaDto, Integer> businessFacade;
+	private IBusinessFacade<LivroBibliotecaDto, Integer> livroBibliotecaBusinessFacade;
 
 	@Override
 	public void onMessage(Message mensagem) {
 		try {
 			Integer chavePrimaria = mensagem.getBody(Integer.class);
 			logger.info("mensagem JMS recebida pelo módulo Biblioteca: " + chavePrimaria);
-			businessFacade.remover(chavePrimaria);
+			livroBibliotecaBusinessFacade.remover(chavePrimaria);
 		} catch (JMSException jmsExc) {
 			logger.error(jmsExc.getMessage(), jmsExc);
 		} catch (EntidadeNaoEncontradaException eneExc) {

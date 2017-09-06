@@ -9,10 +9,10 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import br.org.libros.biblioteca.model.persistence.entity.Biblioteca;
-import br.org.libros.biblioteca.model.persistence.entity.LivroBiblioteca;
 import br.org.libros.comum.excecao.EntidadeJaExisteException;
 import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 import br.org.libros.comum.model.business.AbstractBusiness;
+import br.org.libros.livrobiblioteca.model.persistence.entity.LivroBiblioteca;
 
 /**
  * 

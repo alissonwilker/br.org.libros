@@ -13,9 +13,9 @@ import javax.ws.rs.core.MediaType;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.org.libros.biblioteca.model.persistence.entity.LivroBiblioteca;
 import br.org.libros.comum.excecao.LibrosRuntimeException;
 import br.org.libros.comum.model.business.AbstractBusiness;
+import br.org.libros.livrobiblioteca.model.persistence.entity.LivroBiblioteca;
 
 /**
  * 

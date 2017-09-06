@@ -4,7 +4,7 @@ import br.org.libros.comum.dto.IDto;
 
 /**
  * DTO que representa a Entidade
- * {@link br.org.libros.biblioteca.model.persistence.entity.LivroBiblioteca Livro}.
+ * {@link br.org.libros.livrobiblioteca.model.persistence.entity.LivroBiblioteca Livro}.
  *
  */
 public class LivroBibliotecaDto implements IDto {

@@ -3,9 +3,9 @@ package br.org.libros.livrobiblioteca.dto.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import br.org.libros.biblioteca.dto.LivroBibliotecaDto;
-import br.org.libros.biblioteca.model.persistence.entity.LivroBiblioteca;
 import br.org.libros.comum.dto.mapper.IGenericMapper;
+import br.org.libros.livrobiblioteca.dto.LivroBibliotecaDto;
+import br.org.libros.livrobiblioteca.model.persistence.entity.LivroBiblioteca;
 
 /**
  * 

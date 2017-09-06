@@ -5,9 +5,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
-import br.org.libros.biblioteca.dto.LivroBibliotecaDto;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 import br.org.libros.comum.view.controller.AbstractController;
+import br.org.libros.livrobiblioteca.dto.LivroBibliotecaDto;
 
 /**
  * 

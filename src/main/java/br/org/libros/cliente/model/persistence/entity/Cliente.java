@@ -1,4 +1,4 @@
-package br.org.libros.biblioteca.model.persistence.entity;
+package br.org.libros.cliente.model.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

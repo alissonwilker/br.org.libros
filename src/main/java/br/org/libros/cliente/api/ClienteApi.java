@@ -1,4 +1,4 @@
-package br.org.libros.biblioteca.api;
+package br.org.libros.cliente.api;
 
 import java.net.URISyntaxException;
 
@@ -10,7 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-import br.org.libros.biblioteca.dto.ClienteDto;
+import br.org.libros.cliente.dto.ClienteDto;
 import br.org.libros.comum.api.AbstractApi;
 import br.org.libros.comum.excecao.EntidadeJaExisteException;
 import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;

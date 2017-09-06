@@ -34,7 +34,7 @@
 		<jta-data-source>java:jboss/datasources/LibrosBibliotecaDS</jta-data-source>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<class>br.org.libros.biblioteca.model.persistence.entity.Biblioteca</class>
-		<class>br.org.libros.biblioteca.model.persistente.entity.Cliente</class>
+		<class>br.org.libros.cliente.model.persistence.entity.Cliente</class>
 		<class>br.org.libros.livrobiblioteca.model.persistence.entity.LivroBiblioteca</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />

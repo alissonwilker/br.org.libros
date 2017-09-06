@@ -154,9 +154,9 @@
 				<configuration>
 					<apiSources>
 						<apiSource>
-							<locations>br.org.libros.biblioteca.api,br.org.libros.livro.api</locations>
+							<locations>br.org.libros.biblioteca.api,br.org.libros.cliente.api,br.org.libros.livro.api</locations>
 							<info>
-								<title>API's do Libros</title>
+								<title>API's do projeto Libros</title>
 								<version>${project.version}</version>
 							</info>
 							<host>${ambiente.testes}</host>

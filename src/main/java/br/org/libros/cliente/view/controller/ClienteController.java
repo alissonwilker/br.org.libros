@@ -1,11 +1,11 @@
-package br.org.libros.biblioteca.view.controller;
+package br.org.libros.cliente.view.controller;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
-import br.org.libros.biblioteca.dto.ClienteDto;
+import br.org.libros.cliente.dto.ClienteDto;
 import br.org.libros.comum.model.business.facade.IBusinessFacade;
 import br.org.libros.comum.view.controller.AbstractController;
 import br.org.libros.comum.view.utils.JsfUtils;

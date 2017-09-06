@@ -17,7 +17,7 @@ import br.org.libros.comum.model.persistence.dao.AbstractDao;
 public abstract class LivroAbstractDao<E, PK extends Serializable> extends AbstractDao<E, PK> {
 	private static final long serialVersionUID = 1L;
 
-	@PersistenceContext(unitName = "LibrosLivroPersistenceUnit", type = PersistenceContextType.TRANSACTION)
+	@PersistenceContext(unitName = "ProjetoLivroPersistenceUnit", type = PersistenceContextType.TRANSACTION)
 	protected EntityManager entityManager;
 
 	@PostConstruct

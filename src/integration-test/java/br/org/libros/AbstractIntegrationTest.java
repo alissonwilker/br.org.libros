@@ -15,21 +15,21 @@ public abstract class AbstractIntegrationTest {
 	protected static final String TEST_APP_CONTEXT_ROOT = "libros";
 
 	@Deployment
-	public static Archive<?> criarDeploymentTeste() {
-		WebArchive deploymentTeste = ShrinkWrap.create(WebArchive.class, TEST_APP_CONTEXT_ROOT + ".war");
+	public static Archive<?> criarWebArchiveTeste() {
+		WebArchive webArchiveTeste = ShrinkWrap.create(WebArchive.class, TEST_APP_CONTEXT_ROOT + ".war");
 
-		deploymentTeste.merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class)
+		webArchiveTeste.merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class)
 				.importDirectory("src/main/webapp").as(GenericArchive.class), "/", Filters.includeAll());
 
 		File[] bibliotecas = Maven.resolver().loadPomFromFile("pom.xml").importRuntimeAndTestDependencies().resolve()
 				.withTransitivity().asFile();
-		deploymentTeste.addAsLibraries(bibliotecas).addPackages(true, "br.org.libros");
+		webArchiveTeste.addAsLibraries(bibliotecas).addPackages(true, "br.org");
 
-		deploymentTeste.merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class)
+		webArchiveTeste.merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class)
 				.importDirectory("src/main/resources").as(GenericArchive.class), "/WEB-INF/classes",
 				Filters.includeAll());
 
-		return deploymentTeste;
+		return webArchiveTeste;
 	}
 
 }

@@ -5,9 +5,11 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
+import br.org.arquitetura.view.converter.IsbnConverter;
+
 /**
  * Classe de teste que testa o comportamento de
- * {@link br.org.libros.comum.view.converter.IsbnConverter IsbnConverter}.
+ * {@link br.org.arquitetura.view.converter.IsbnConverter IsbnConverter}.
  *
  */
 public class IsbnConverterTest {
@@ -17,7 +19,7 @@ public class IsbnConverterTest {
 	 * Testa recuperar não formatado com ISBN válido.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.view.converter.IsbnConverter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)}.
+	 * {@link br.org.arquitetura.view.converter.IsbnConverter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)}.
 	 */
 	@Test
 	public void testGetAsObjectIsbnOk() {
@@ -29,7 +31,7 @@ public class IsbnConverterTest {
 	 * Testa recuperar não formatado com ISBN nulo ou vazio.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.view.converter.IsbnConverter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)}.
+	 * {@link br.org.arquitetura.view.converter.IsbnConverter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)}.
 	 */
 	@Test
 	public void testGetAsObjectIsbnVazioOuNulo() {
@@ -41,7 +43,7 @@ public class IsbnConverterTest {
 	 * Testa recuperar formatado com ISBN nulo ou vazio.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.view.converter.IsbnConverter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)}.
+	 * {@link br.org.arquitetura.view.converter.IsbnConverter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)}.
 	 */
 	@Test
 	public void testGetAsString() {
@@ -53,7 +55,7 @@ public class IsbnConverterTest {
 	 * Testa recuperar formatado com ISBN válido.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.view.converter.IsbnConverter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)}.
+	 * {@link br.org.arquitetura.view.converter.IsbnConverter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)}.
 	 */
 	@Test
 	public void testGetAsStringIsbnOk() {

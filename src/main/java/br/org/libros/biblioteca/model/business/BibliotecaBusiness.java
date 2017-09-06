@@ -8,15 +8,15 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import br.org.arquitetura.excecao.EntidadeJaExisteExcecao;
+import br.org.arquitetura.excecao.EntidadeNaoEncontradaExcecao;
+import br.org.arquitetura.model.business.AbstractBusiness;
 import br.org.libros.biblioteca.model.persistence.entity.Biblioteca;
-import br.org.libros.comum.excecao.EntidadeJaExisteException;
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
-import br.org.libros.comum.model.business.AbstractBusiness;
 import br.org.libros.livrobiblioteca.model.persistence.entity.LivroBiblioteca;
 
 /**
  * 
- * @see br.org.libros.comum.model.business.AbstractBusiness
+ * @see br.org.arquitetura.model.business.AbstractBusiness
  */
 @Named
 @RequestScoped
@@ -25,25 +25,25 @@ public class BibliotecaBusiness extends AbstractBusiness<Biblioteca, Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public Biblioteca atualizar(Biblioteca entidade) throws EntidadeJaExisteException, EntidadeNaoEncontradaException {
+	public Biblioteca atualizar(Biblioteca entidade) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
 			verificarExistenciaLivros(entidade);
 			return super.atualizar(entidade);
 	}
 
 	@Override
-	public Biblioteca adicionar(Biblioteca entidade) throws EntidadeJaExisteException, EntidadeNaoEncontradaException {
+	public Biblioteca adicionar(Biblioteca entidade) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao {
 			verificarExistenciaLivros(entidade);
 			return super.atualizar(entidade);
 	}
 	
-	private void verificarExistenciaLivros(Biblioteca entidade) throws EntidadeNaoEncontradaException {
+	private void verificarExistenciaLivros(Biblioteca entidade) throws EntidadeNaoEncontradaExcecao {
 		if (entidade.getLivros() != null) {
 			for (LivroBiblioteca livro : entidade.getLivros()) {
 				//TODO substituir endereço hardcoded por um service discovery
 				Client client = ClientBuilder.newClient();
 				Response response = client.target("http://localhost:8080/libros/api/livros/" + livro.getId()).request(MediaType.APPLICATION_JSON).get();
 				if (Status.fromStatusCode(response.getStatus()) != Status.OK) {
-					throw new EntidadeNaoEncontradaException();
+					throw new EntidadeNaoEncontradaExcecao();
 				}
 			}
 		}

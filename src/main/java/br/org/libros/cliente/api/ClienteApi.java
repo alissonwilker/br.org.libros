@@ -10,17 +10,17 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
+import br.org.arquitetura.api.AbstractApi;
+import br.org.arquitetura.excecao.EntidadeJaExisteExcecao;
+import br.org.arquitetura.excecao.EntidadeNaoEncontradaExcecao;
 import br.org.libros.cliente.dto.ClienteDto;
-import br.org.libros.comum.api.AbstractApi;
-import br.org.libros.comum.excecao.EntidadeJaExisteException;
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 /**
  * 
- * @see br.org.libros.comum.api.AbstractApi
+ * @see br.org.arquitetura.api.AbstractApi
  */
 @Path(ClienteApi.PATH)
 @Api(ClienteApi.PATH)
@@ -35,7 +35,7 @@ public class ClienteApi extends AbstractApi<ClienteDto, Integer> {
 	@Override
 	@POST
 	@ApiOperation(value = "Adicionar um cliente")
-	public Response adicionar(@ApiParam(value = "clienteDto") ClienteDto clienteDto) throws EntidadeJaExisteException, EntidadeNaoEncontradaException, URISyntaxException {
+	public Response adicionar(@ApiParam(value = "clienteDto") ClienteDto clienteDto) throws EntidadeJaExisteExcecao, EntidadeNaoEncontradaExcecao, URISyntaxException {
 		return super.adicionar(clienteDto);
 	}
 
@@ -50,14 +50,14 @@ public class ClienteApi extends AbstractApi<ClienteDto, Integer> {
 	@DELETE
 	@Path("/{idCliente}")
 	@ApiOperation(value = "Remover um cliente")
-	public Response remover(@PathParam("idCliente") Integer idCliente) throws EntidadeNaoEncontradaException {
+	public Response remover(@PathParam("idCliente") Integer idCliente) throws EntidadeNaoEncontradaExcecao {
 		return super.remover(idCliente);
 	}
 
 	@Override
 	@PUT
 	@ApiOperation(value = "Atualizar um cliente", response = ClienteDto.class)
-	public Response atualizar(@ApiParam(value = "clienteDto") ClienteDto clienteDto) throws EntidadeNaoEncontradaException, EntidadeJaExisteException {
+	public Response atualizar(@ApiParam(value = "clienteDto") ClienteDto clienteDto) throws EntidadeNaoEncontradaExcecao, EntidadeJaExisteExcecao {
 		return super.atualizar(clienteDto);
 	}
 
@@ -65,7 +65,7 @@ public class ClienteApi extends AbstractApi<ClienteDto, Integer> {
 	@GET
 	@Path("/{idCliente}")
 	@ApiOperation(value = "Recuperar um cliente", response = ClienteDto.class)
-	public Response recuperar(@PathParam("idCliente") Integer idCliente) throws EntidadeNaoEncontradaException {
+	public Response recuperar(@PathParam("idCliente") Integer idCliente) throws EntidadeNaoEncontradaExcecao {
 		return super.recuperar(idCliente);
 	}
 

@@ -3,12 +3,12 @@ package br.org.libros.usuario.model.persistence.dao;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import br.org.libros.biblioteca.model.persistence.dao.LibrosAbstractDao;
+import br.org.libros.comum.model.persistence.dao.LibrosAbstractDao;
 import br.org.libros.usuario.model.persistence.entity.Usuario;
 
 /**
  * 
- * @see br.org.libros.biblioteca.model.persistence.dao.LibrosAbstractDao
+ * @see br.org.libros.comum.model.persistence.dao.LibrosAbstractDao
  */
 @Named
 @RequestScoped

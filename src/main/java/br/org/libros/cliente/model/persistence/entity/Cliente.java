@@ -12,8 +12,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.org.libros.comum.model.persistence.entity.IEntidade;
-import br.org.libros.comum.model.persistence.entity.validator.annotation.Cpf;
+import br.org.arquitetura.model.persistence.entity.IEntidade;
+import br.org.arquitetura.model.persistence.entity.validator.annotation.Cpf;
 
 /**
  * Entidade que representa um Cliente.

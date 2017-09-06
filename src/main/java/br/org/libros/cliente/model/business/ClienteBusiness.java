@@ -3,12 +3,12 @@ package br.org.libros.cliente.model.business;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import br.org.arquitetura.model.business.AbstractBusiness;
 import br.org.libros.cliente.model.persistence.entity.Cliente;
-import br.org.libros.comum.model.business.AbstractBusiness;
 
 /**
  * 
- * @see br.org.libros.comum.model.business.AbstractBusiness
+ * @see br.org.arquitetura.model.business.AbstractBusiness
  */
 @Named
 @RequestScoped

@@ -5,9 +5,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import br.org.arquitetura.utils.VerificadorCpf;
+
 /**
  * Classe de teste que testa o comportamento de
- * {@link br.org.libros.comum.utils.VerificadorCpf VerificadorCpf}.
+ * {@link br.org.arquitetura.utils.VerificadorCpf VerificadorCpf}.
  *
  */
 public class VerificadorCpfTest {
@@ -16,7 +18,7 @@ public class VerificadorCpfTest {
 	 * Testa com um CPF válido.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorCpf#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorCpf#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoCpfOk() {
@@ -27,7 +29,7 @@ public class VerificadorCpfTest {
 	 * Testa com um CPF válido, porém formatado com pontos e traços.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorCpf#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorCpf#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoCpfFormatado() {
@@ -38,7 +40,7 @@ public class VerificadorCpfTest {
 	 * Testa com um CPF válido, porém faltando zeros a esquerda.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorCpf#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorCpf#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoCpfFaltandoZeros() {
@@ -49,7 +51,7 @@ public class VerificadorCpfTest {
 	 * Testa com CPF vazio ou nulo.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorCpf#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorCpf#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoCpfVazioOuNulo() {
@@ -62,7 +64,7 @@ public class VerificadorCpfTest {
 	 * Testa com CPF com dígito verificador errado.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorCpf#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorCpf#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoCpfDigitoVerificadorErrado() {
@@ -73,7 +75,7 @@ public class VerificadorCpfTest {
 	 * Testa com CPF com letras e números.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorCpf#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorCpf#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoCpfLetrasNumeros() {
@@ -84,7 +86,7 @@ public class VerificadorCpfTest {
 	 * Testa com CPF padrão.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorCpf#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorCpf#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoCpfPadrao() {

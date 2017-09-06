@@ -10,8 +10,8 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.org.libros.comum.excecao.EntidadeJaExisteException;
-import br.org.libros.comum.excecao.EntidadeNaoEncontradaException;
+import br.org.arquitetura.excecao.EntidadeJaExisteExcecao;
+import br.org.arquitetura.excecao.EntidadeNaoEncontradaExcecao;
 import br.org.libros.usuario.dto.UsuarioDto;
 import br.org.libros.usuario.model.business.facade.UsuarioBusinessFacade;
 
@@ -41,7 +41,7 @@ public class AppStartupConfigurator {
 			usuarioBusinessFacade
 					.adicionar(new UsuarioDto("admin", "21232f297a57a5a743894a0e4a801fc3", "ADMINISTRATOR"));
 			usuarioBusinessFacade.adicionar(new UsuarioDto("user", "ee11cbb19052e40b07aac0ca060c23ee", "USER"));
-		} catch (EntidadeJaExisteException | EntidadeNaoEncontradaException e) {
+		} catch (EntidadeJaExisteExcecao | EntidadeNaoEncontradaExcecao e) {
 			logger.error(e.getMessage(), e);
 		}
 	}

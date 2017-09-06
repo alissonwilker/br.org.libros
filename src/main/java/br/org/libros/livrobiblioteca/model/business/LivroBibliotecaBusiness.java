@@ -13,13 +13,13 @@ import javax.ws.rs.core.MediaType;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.org.libros.comum.excecao.LibrosRuntimeException;
-import br.org.libros.comum.model.business.AbstractBusiness;
+import br.org.arquitetura.excecao.RuntimeExcecao;
+import br.org.arquitetura.model.business.AbstractBusiness;
 import br.org.libros.livrobiblioteca.model.persistence.entity.LivroBiblioteca;
 
 /**
  * 
- * @see br.org.libros.comum.model.business.AbstractBusiness
+ * @see br.org.arquitetura.model.business.AbstractBusiness
  */
 @Named
 @RequestScoped
@@ -40,7 +40,7 @@ public class LivroBibliotecaBusiness extends AbstractBusiness<LivroBiblioteca, I
 					new TypeReference<List<LivroBiblioteca>>() {
 					});
 		} catch (IOException e) {
-			throw new LibrosRuntimeException(e);
+			throw new RuntimeExcecao(e);
 		}
 		return livrosBibliotecas;
 	}

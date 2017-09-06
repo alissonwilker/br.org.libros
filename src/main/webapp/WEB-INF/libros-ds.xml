@@ -1,29 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <datasources>
-	<datasource jndi-name="java:jboss/datasources/LibrosLivroDS"
-		pool-name="LibrosLivroDS" enabled="true" use-java-context="true">
-		<connection-url>jdbc:h2:mem:LibrosLivroDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
-<!-- 		<connection-url>jdbc:h2:tcp://localhost:9092/~/LibrosH2DB/LibrosLivroDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url> -->
+	<datasource jndi-name="java:jboss/datasources/LivrariaDS"
+		pool-name="LivrariaDS" enabled="true" use-java-context="true">
+		<connection-url>jdbc:h2:mem:LivrariaDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+<!-- 		<connection-url>jdbc:h2:tcp://localhost:9092/~/LivrariaH2DB/LivrariaDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url> -->
 		<driver>h2</driver>
 		<security>
 			<user-name>sa</user-name>
 			<password>sa</password>
 		</security>
 	</datasource>
-	<datasource jndi-name="java:jboss/datasources/LibrosBibliotecaDS"
-		pool-name="LibrosBibliotecaDS" enabled="true" use-java-context="true">
-		<connection-url>jdbc:h2:mem:LibrosBibliotecaDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
-<!-- 		<connection-url>jdbc:h2:tcp://localhost:9092/~/LibrosH2DB/LibrosBibliotecaDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url> -->
-		<driver>h2</driver>
-		<security>
-			<user-name>sa</user-name>
-			<password>sa</password>
-		</security>
-	</datasource>
-	<datasource jndi-name="java:jboss/datasources/LibrosUsuarioDS"
-		pool-name="LibrosUsuarioDS" enabled="true" use-java-context="true">
-		<connection-url>jdbc:h2:mem:LibrosUsuarioDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
-<!-- 		<connection-url>jdbc:h2:tcp://localhost:9092/~/LibrosH2DB/LibrosUsuarioDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url> -->
+	<datasource jndi-name="java:jboss/datasources/LibrosDS"
+		pool-name="LibrosDS" enabled="true" use-java-context="true">
+		<connection-url>jdbc:h2:mem:LibrosDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+<!-- 		<connection-url>jdbc:h2:tcp://localhost:9092/~/LibrosH2DB/LibrosDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url> -->
 		<driver>h2</driver>
 		<security>
 			<user-name>sa</user-name>

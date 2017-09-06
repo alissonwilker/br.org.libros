@@ -1,6 +1,6 @@
 package br.org.libros.livrobiblioteca.dto;
 
-import br.org.libros.comum.dto.IDto;
+import br.org.arquitetura.dto.IDto;
 
 /**
  * DTO que representa a Entidade

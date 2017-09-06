@@ -1,6 +1,6 @@
 package br.org.libros.cliente.dto;
 
-import br.org.libros.comum.dto.IDto;
+import br.org.arquitetura.dto.IDto;
 
 /**
  * DTO que representa a Entidade {@link br.org.libros.cliente.model.persistence.entity.Cliente Cliente}.

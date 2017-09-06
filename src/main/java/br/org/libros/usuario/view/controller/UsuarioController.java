@@ -7,15 +7,15 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 
-import br.org.libros.comum.view.controller.AbstractController;
-import br.org.libros.comum.view.utils.FacesMessageUtils;
-import br.org.libros.comum.view.utils.JsfUtils;
-import br.org.libros.comum.view.utils.JsfUtils.Pagina;
+import br.org.arquitetura.view.controller.AbstractController;
+import br.org.arquitetura.view.utils.FacesMessageUtils;
+import br.org.arquitetura.view.utils.JsfUtils;
+import br.org.arquitetura.view.utils.JsfUtils.Pagina;
 import br.org.libros.usuario.dto.UsuarioDto;
 
 /**
  * 
- * @see br.org.libros.comum.view.controller.AbstractController
+ * @see br.org.arquitetura.view.controller.AbstractController
  */
 @Named
 @RequestScoped

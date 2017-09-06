@@ -4,10 +4,11 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import br.org.libros.biblioteca.model.persistence.entity.Biblioteca;
+import br.org.libros.comum.model.persistence.dao.LibrosAbstractDao;
 
 /**
  * 
- * @see br.org.libros.biblioteca.model.persistence.dao.LibrosAbstractDao
+ * @see br.org.libros.comum.model.persistence.dao.LibrosAbstractDao
  */
 @Named
 @RequestScoped

@@ -5,9 +5,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import br.org.arquitetura.utils.VerificadorIsbn;
+
 /**
  * Classe de teste que testa o comportamento de
- * {@link br.org.libros.comum.utils.VerificadorIsbn VerificadorIsbn}.
+ * {@link br.org.arquitetura.utils.VerificadorIsbn VerificadorIsbn}.
  *
  */
 public class VerificadorIsbnTest {
@@ -16,7 +18,7 @@ public class VerificadorIsbnTest {
 	 * Testa com um ISBN válido.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorIsbn#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorIsbn#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoIsbnOk() {
@@ -28,7 +30,7 @@ public class VerificadorIsbnTest {
 	 * Testa com um ISBN válido, porém formatado com pontos ou traços.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorIsbn#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorIsbn#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoIsbnFormatado() {
@@ -39,7 +41,7 @@ public class VerificadorIsbnTest {
 	 * Testa com ISBN vazio ou nulo.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorIsbn#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorIsbn#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoIsbnVazioOuNulo() {
@@ -52,7 +54,7 @@ public class VerificadorIsbnTest {
 	 * Testa com ISBN com dígito verificador errado.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorIsbn#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorIsbn#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoIsbnDigitoVerificadorErrado() {
@@ -63,7 +65,7 @@ public class VerificadorIsbnTest {
 	 * Testa com ISBN com letras e números.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.utils.VerificadorIsbn#isValido(java.lang.String)}.
+	 * {@link br.org.arquitetura.utils.VerificadorIsbn#isValido(java.lang.String)}.
 	 */
 	@Test
 	public void testIsValidoIsbnLetrasNumeros() {

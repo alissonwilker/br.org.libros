@@ -5,14 +5,14 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
+import br.org.arquitetura.model.business.facade.AbstractBusinessFacade;
 import br.org.libros.biblioteca.dto.BibliotecaDto;
 import br.org.libros.biblioteca.dto.mapper.IBibliotecaMapper;
 import br.org.libros.biblioteca.model.persistence.entity.Biblioteca;
-import br.org.libros.comum.model.business.facade.AbstractBusinessFacade;
 
 /**
  * 
- * @see br.org.libros.comum.model.business.facade.AbstractBusinessFacade
+ * @see br.org.arquitetura.model.business.facade.AbstractBusinessFacade
  */
 @Named
 @RequestScoped

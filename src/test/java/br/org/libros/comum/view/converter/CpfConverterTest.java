@@ -5,9 +5,11 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
+import br.org.arquitetura.view.converter.CpfConverter;
+
 /**
  * Classe de teste que testa o comportamento de
- * {@link br.org.libros.comum.view.converter.CpfConverter CpfConverter}.
+ * {@link br.org.arquitetura.view.converter.CpfConverter CpfConverter}.
  *
  */
 public class CpfConverterTest {
@@ -17,7 +19,7 @@ public class CpfConverterTest {
 	 * Testa recuperar não formatado com CPF válido.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.view.converter.CpfConverter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)}.
+	 * {@link br.org.arquitetura.view.converter.CpfConverter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)}.
 	 */
 	@Test
 	public void testGetAsObjectCpfOk() {
@@ -28,7 +30,7 @@ public class CpfConverterTest {
 	 * Testa recuperar não formatado com CPF nulo ou vazio.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.view.converter.CpfConverter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)}.
+	 * {@link br.org.arquitetura.view.converter.CpfConverter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)}.
 	 */
 	@Test
 	public void testGetAsObjectCpfVazioOuNulo() {
@@ -40,7 +42,7 @@ public class CpfConverterTest {
 	 * Testa recuperar formatado com CPF nulo ou vazio.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.view.converter.CpfConverter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)}.
+	 * {@link br.org.arquitetura.view.converter.CpfConverter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)}.
 	 */
 	@Test
 	public void testGetAsString() {
@@ -52,7 +54,7 @@ public class CpfConverterTest {
 	 * Testa recuperar formatado com CPF válido.
 	 * 
 	 * Test method for
-	 * {@link br.org.libros.comum.view.converter.CpfConverter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)}.
+	 * {@link br.org.arquitetura.view.converter.CpfConverter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)}.
 	 */
 	@Test
 	public void testGetAsStringCpfOk() {

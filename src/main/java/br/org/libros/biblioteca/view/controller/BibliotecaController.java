@@ -5,15 +5,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
+import br.org.arquitetura.model.business.facade.IBusinessFacade;
+import br.org.arquitetura.view.controller.AbstractController;
+import br.org.arquitetura.view.utils.JsfUtils;
+import br.org.arquitetura.view.utils.JsfUtils.Pagina;
 import br.org.libros.biblioteca.dto.BibliotecaDto;
-import br.org.libros.comum.model.business.facade.IBusinessFacade;
-import br.org.libros.comum.view.controller.AbstractController;
-import br.org.libros.comum.view.utils.JsfUtils;
-import br.org.libros.comum.view.utils.JsfUtils.Pagina;
 
 /**
  * 
- * @see br.org.libros.comum.view.controller.AbstractController
+ * @see br.org.arquitetura.view.controller.AbstractController
  */
 @ManagedBean
 @ViewScoped 
